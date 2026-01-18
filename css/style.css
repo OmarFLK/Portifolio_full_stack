@@ -18,10 +18,8 @@ body {
   z-index: 0;
   pointer-events: none;
 
-  background-image: linear-gradient(
-      rgba(90, 160, 255, 0.05) 1px,
-      transparent 1px
-    ),
+  background-image:
+    linear-gradient(rgba(90, 160, 255, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(90, 160, 255, 0.05) 1px, transparent 1px);
 
   background-size: 80px 80px;
@@ -278,4 +276,68 @@ footer {
   50% {
     transform: translateY(-10px);
   }
+}
+/* ======= SEU CSS ORIGINAL (INALTERADO) ======= */
+/* tudo igual ao que você mandou acima */
+/* ... */
+
+/* ======= AJUSTE DEFINITIVO DOS PROJETOS ======= */
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.project-github {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(90, 160, 255, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-github span {
+  color: #7fbaff;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.project-github a {
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #5bc4ff, #3a8bff);
+  color: #020617;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 14px;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.project-github a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(90, 160, 255, 0.45);
+}
+
+.project-github a.disabled {
+  background: rgba(90, 160, 255, 0.15);
+  color: #9bbcff;
+  pointer-events: none;
+}
+
+.project-github a img {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  vertical-align: middle;
 }
