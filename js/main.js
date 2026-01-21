@@ -1,3 +1,4 @@
+// literalmente odeio js KKKKKKKKKKKKKK
 setTimeout(() => {
   const observer = new IntersectionObserver(
     (entries) => {
@@ -13,7 +14,7 @@ setTimeout(() => {
   document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 }, 5000);
 
-// Hamburger menu toggle
+// botao de aborgui xdd
 const hamburger = document.getElementById("hamburger");
 const menu = document.getElementById("menu");
 

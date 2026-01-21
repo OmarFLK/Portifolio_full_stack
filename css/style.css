@@ -47,7 +47,7 @@ body {
   }
 }
 
-/* bring site above grid */
+/* grids */
 header,
 section,
 footer {
@@ -277,11 +277,7 @@ footer {
     transform: translateY(-10px);
   }
 }
-/* ======= SEU CSS ORIGINAL (INALTERADO) ======= */
-/* tudo igual ao que você mandou acima */
-/* ... */
-
-/* ======= AJUSTE DEFINITIVO DOS PROJETOS ======= */
+/* alterações merdasssssss aaaaaaaaaaaaaaaa*/
 
 .project-card {
   display: flex;
@@ -340,4 +336,23 @@ footer {
   height: 16px;
   margin-right: 8px;
   vertical-align: middle;
+}
+/*aaaaaaa loading errado, arrumou?= */
+
+.loading-content {
+  padding: 0 20px;
+  max-width: 100%;
+}
+
+.loading-content h1 {
+  font-size: clamp(1.8rem, 6vw, 3rem);
+  white-space: normal;       /*qubra a linha fudida */
+  word-break: break-word;
+  text-align: center;
+}
+
+.loading-content p {
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  white-space: normal;
+  text-align: center;
 }
