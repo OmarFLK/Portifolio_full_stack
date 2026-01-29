@@ -27,17 +27,18 @@
         justify-content: center;
         align-items: center;
         z-index: 9999;
-        animation: fadeOut 3s 4s forwards;
+        animation: fadeOut 3s 6s forwards;
       }
-      .loading-content {
-        text-align: center;
+      .loading-content h1 {
+        white-space: pre-line;
       }
+
       .loading-content h1 {
         color: white;
         font-size: 3rem;
         margin: 0;
         border-right: 2px solid white;
-        white-space: nowrap;
+        white-space: pre-line;
         overflow: hidden;
       }
       .loading-content p {
@@ -61,7 +62,7 @@
     <script>
       const mainTitle = document.getElementById("main-title");
       const subTitle = document.getElementById("sub-title");
-      const mainText = "Omar Saliba - Portifolio";
+      const mainText = "Omar Saliba\nPortifolio";
       const subText = "Dev FullStack";
       let mainIndex = 0;
       let subIndex = 0;
