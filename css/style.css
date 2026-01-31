@@ -1,0 +1,358 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top, #0b1b35, #050b14 70%);
+  color: white;
+  overflow-x: hidden;
+}
+
+/* GRID */
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(rgba(90, 160, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(90, 160, 255, 0.05) 1px, transparent 1px);
+
+  background-size: 80px 80px;
+  mask-image: radial-gradient(
+    circle at 60% 20%,
+    black 0%,
+    black 45%,
+    transparent 75%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle at 60% 20%,
+    black 0%,
+    black 45%,
+    transparent 75%
+  );
+  animation: gridMove 10s linear infinite;
+}
+
+@keyframes gridMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 80px 80px;
+  }
+}
+
+/* grids */
+header,
+section,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  background: rgba(5, 11, 20, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(90, 160, 255, 0.15);
+  z-index: 10;
+}
+
+.nav {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu a {
+  margin-left: 30px;
+  color: #cfe3ff;
+  text-decoration: none;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #cfe3ff;
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+.menu.active {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: rgba(5, 11, 20, 0.95);
+  padding: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.menu.active a {
+  margin: 10px 0;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+  .menu {
+    display: none;
+  }
+}
+
+.hero {
+  padding: 140px 20px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hero p {
+  max-width: 900px;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #dce7ff;
+}
+
+.btn {
+  margin-top: 30px;
+  padding: 18px 44px;
+  background: linear-gradient(135deg, #5bc4ff, #3a8bff);
+  border-radius: 14px;
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 20px 60px rgba(90, 160, 255, 0.4);
+}
+
+.icons {
+  display: flex;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.icons img {
+  width: 48px;
+}
+
+.section {
+  max-width: 1000px;
+  margin: auto;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.formation-card {
+  margin-top: 40px;
+  background: rgba(15, 30, 60, 0.45);
+  border: 1px solid rgba(90, 160, 255, 0.18);
+  border-radius: 24px;
+  padding: 50px 60px;
+  text-align: left;
+}
+
+.highlight {
+  color: #5bc4ff;
+  font-weight: bold;
+}
+
+.spacer {
+  height: 24px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.card {
+  background: rgba(15, 30, 60, 0.5);
+  padding: 30px;
+  border-radius: 20px;
+  border: 1px solid rgba(90, 160, 255, 0.2);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+footer {
+  text-align: center;
+  padding: 50px;
+  color: #9bbcff;
+}
+.project-card {
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.project-card video {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.project-content {
+  padding: 24px 28px;
+}
+
+.project-card:hover video {
+  filter: brightness(1.1) contrast(1.1);
+  transform: scale(1.02);
+  transition: 0.4s;
+}
+
+.infinite-line {
+  position: fixed;
+  bottom: 20px;
+  right: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: moveLine 15s linear infinite;
+}
+
+.infinite-line img {
+  width: 48px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes moveLine {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+/* alterações merdasssssss aaaaaaaaaaaaaaaa*/
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.project-github {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(90, 160, 255, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-github span {
+  color: #7fbaff;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.project-github a {
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #5bc4ff, #3a8bff);
+  color: #020617;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 14px;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.project-github a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(90, 160, 255, 0.45);
+}
+
+.project-github a.disabled {
+  background: rgba(90, 160, 255, 0.15);
+  color: #9bbcff;
+  pointer-events: none;
+}
+
+.project-github a img {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+/*aaaaaaa loading errado, arrumou?= */
+
+.loading-content {
+  padding: 0 20px;
+  max-width: 100%;
+}
+
+.loading-content h1 {
+  font-size: clamp(1.8rem, 6vw, 3rem);
+  white-space: normal;       /*qubra a linha fudida */
+  word-break: break-word;
+  text-align: center;
+}
+
+.loading-content p {
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  white-space: normal;
+  text-align: center;
+}
