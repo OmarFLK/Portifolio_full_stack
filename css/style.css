@@ -346,7 +346,7 @@ footer {
 
 .loading-content h1 {
   font-size: clamp(1.8rem, 6vw, 3rem);
-  white-space: normal;       /*qubra a linha fudida */
+  white-space: normal; /*qubra a linha fudida */
   word-break: break-word;
   text-align: center;
 }
@@ -355,4 +355,182 @@ footer {
   font-size: clamp(1rem, 4vw, 1.5rem);
   white-space: normal;
   text-align: center;
+}
+/* ===============================
+   GLASS HEADER FLUTUANTE
+   =============================== */
+
+.glass-header {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  height: 80px;
+  z-index: 1000;
+
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+
+  transition: background 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+/* estado ao scroll */
+.glass-header.scrolled {
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+}
+
+/* brilho interno */
+.glass-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.35),
+    rgba(255,255,255,0.05)
+  );
+  pointer-events: none;
+}
+
+/* GARANTE QUE O NAV CONTINUE IGUAL AO SEU */
+.glass-header .nav {
+  height: 100%;
+}
+
+/* MENU MOBILE SOBRE O VIDRO */
+@media (max-width: 768px) {
+  .menu.active {
+    background: rgba(5, 11, 20, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+}
+/* ===============================
+   GLASS HEADER – MAIS ESCURO
+   =============================== */
+
+.glass-header {
+  background: rgba(10, 20, 35, 0.55);
+  backdrop-filter: blur(18px) saturate(1.1);
+  -webkit-backdrop-filter: blur(18px) saturate(1.1);
+
+  border: 1px solid rgba(120, 170, 255, 0.25);
+
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.glass-header.scrolled {
+  background: rgba(8, 16, 28, 0.7);
+  backdrop-filter: blur(22px) saturate(1.15);
+  -webkit-backdrop-filter: blur(22px) saturate(1.15);
+}
+/* ===============================
+   MENU MOBILE GLASS
+   =============================== */
+
+@media (max-width: 768px) {
+  .menu.active {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 32px);
+
+    border-radius: 22px;
+
+    background: rgba(10, 20, 35, 0.9);
+    backdrop-filter: blur(20px) saturate(1.1);
+    -webkit-backdrop-filter: blur(20px) saturate(1.1);
+
+    border: 1px solid rgba(120, 170, 255, 0.25);
+
+    box-shadow:
+      0 20px 50px rgba(0, 0, 0, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+
+    padding: 24px 0;
+  }}
+/* ===============================
+   WATER DISTORTION (SUBTIL)
+   =============================== */
+
+.water-distortion {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes waterMove {
+  0% {
+    backdrop-filter: blur(1.2px);
+  }
+  50% {
+    backdrop-filter: blur(2px);
+  }
+  100% {
+    backdrop-filter: blur(1.2px);
+  }
+}
+/* ===============================
+   BUBBLES
+   =============================== */
+
+.bubbles {
+  position: fixed;
+  top: 0;
+  width: 120px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.bubbles.left {
+  left: 0;
+}
+
+.bubbles.right {
+  right: 0;
+}
+
+.bubbles span {
+  position: absolute;
+  bottom: -100px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255,255,255,0.8),
+    rgba(120,180,255,0.25),
+    rgba(255,255,255,0.05)
+  );
+
+  animation: bubbleUp linear infinite;
+  opacity: 0.4;
+}
+
+@keyframes bubbleUp {
+  from {
+    transform: translateY(0) scale(0.8);
+  }
+  to {
+    transform: translateY(-120vh) scale(1.2);
+  }
 }
