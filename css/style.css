@@ -11,7 +11,7 @@ body {
   overflow-x: hidden;
 }
 
-/* GRID */
+/* fundinho bonito LAAA ELLEEEEEE */
 .bg-grid {
   position: fixed;
   inset: 0;
@@ -293,10 +293,23 @@ footer {
 .project-github {
   margin-top: auto;
   padding-top: 16px;
-  border-top: 1px solid rgba(90, 160, 255, 0.2);
+  border-top: 2px solid rgba(90, 160, 255, 0.2);
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.link-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.link-group span {
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  opacity: 0.7;
 }
 
 .project-github span {
@@ -337,7 +350,8 @@ footer {
   margin-right: 8px;
   vertical-align: middle;
 }
-/*aaaaaaa loading errado, arrumou?= */
+/*aaaaaaa loading errado, arrumou? SIM EU ARRUMEI KKKKK
+SIM IRMAO EU FALO COMM O MEU EU DO PASSADO EU POSSO != */
 
 .loading-content {
   padding: 0 20px;
@@ -357,7 +371,7 @@ footer {
   text-align: center;
 }
 /* ===============================
-   GLASS HEADER FLUTUANTE
+  HEADER FLUTUANTE DE """"""VIDRO""""""
    =============================== */
 
 .glass-header {
@@ -380,7 +394,9 @@ footer {
     0 12px 40px rgba(0, 0, 0, 0.35),
     inset 0 1px 0 rgba(255, 255, 255, 0.35);
 
-  transition: background 0.3s ease, backdrop-filter 0.3s ease;
+  transition:
+    background 0.3s ease,
+    backdrop-filter 0.3s ease;
 }
 
 /* estado ao scroll */
@@ -398,13 +414,13 @@ footer {
   border-radius: inherit;
   background: linear-gradient(
     180deg,
-    rgba(255,255,255,0.35),
-    rgba(255,255,255,0.05)
+    rgba(255, 255, 255, 0.35),
+    rgba(255, 255, 255, 0.05)
   );
   pointer-events: none;
 }
 
-/* GARANTE QUE O NAV CONTINUE IGUAL AO SEU */
+/* GARANTE QUE O NAV CONTINUE IGUAL SE FOR MEXER CUIDADO */
 .glass-header .nav {
   height: 100%;
 }
@@ -439,8 +455,7 @@ footer {
   -webkit-backdrop-filter: blur(22px) saturate(1.15);
 }
 /* ===============================
-   MENU MOBILE GLASS
-   =============================== */
+menu bonitinho   =============================== */
 
 @media (max-width: 768px) {
   .menu.active {
@@ -463,9 +478,10 @@ footer {
       inset 0 1px 0 rgba(255, 255, 255, 0.15);
 
     padding: 24px 0;
-  }}
+  }
+}
 /* ===============================
-   WATER DISTORTION (SUBTIL)
+   cuidado se aumentar é meio forte KK
    =============================== */
 
 .water-distortion {
@@ -487,7 +503,7 @@ footer {
   }
 }
 /* ===============================
-   BUBBLES
+   AI MEU DEUS QUE LIDO BOLINHAS DE AGUA FODASSSSSSSSSSSS
    =============================== */
 
 .bubbles {
@@ -517,9 +533,9 @@ footer {
 
   background: radial-gradient(
     circle at 30% 30%,
-    rgba(255,255,255,0.8),
-    rgba(120,180,255,0.25),
-    rgba(255,255,255,0.05)
+    rgba(255, 255, 255, 0.8),
+    rgba(120, 180, 255, 0.25),
+    rgba(255, 255, 255, 0.05)
   );
 
   animation: bubbleUp linear infinite;

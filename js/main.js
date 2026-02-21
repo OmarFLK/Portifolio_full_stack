@@ -1,4 +1,5 @@
 // literalmente odeio js KKKKKKKKKKKKKK
+//nao sei como ta funcionando direito, mas nao mexe KKKKKK
 setTimeout(() => {
   const observer = new IntersectionObserver(
     (entries) => {
@@ -22,7 +23,7 @@ hamburger.addEventListener("click", () => {
   menu.classList.toggle("active");
   hamburger.classList.toggle("active");
 });
-// glass header scroll
+// header de vidro tlg ne pai, os sites de design sempre salvando everyone KKKK
 const glassHeader = document.querySelector(".glass-header");
 
 window.addEventListener("scroll", () => {
@@ -32,7 +33,7 @@ window.addEventListener("scroll", () => {
     glassHeader.classList.remove("scrolled");
   }
 });
-// bubbles generator
+// aqui é o gerador das bolinhas de agua, mes AEStétiqui xd
 document.querySelectorAll(".bubbles").forEach(side => {
   for (let i = 0; i < 12; i++) {
     const bubble = document.createElement("span");
@@ -47,7 +48,7 @@ document.querySelectorAll(".bubbles").forEach(side => {
     side.appendChild(bubble);
   }
 });
-// water scroll effect
+// scroll de agua la
 window.addEventListener("scroll", () => {
   const distortion = document.querySelector(".water-distortion");
   const intensity = Math.min(window.scrollY / 300, 2);
