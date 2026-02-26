@@ -157,6 +157,34 @@ header {
   box-shadow: 0 20px 60px rgba(90, 160, 255, 0.4);
 }
 
+/* Group for multiple CV buttons */
+.btn-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .btn-group {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .btn {
+    width: 100%;
+    max-width: 360px;
+  }
+}
+
 .icons {
   display: flex;
   gap: 40px;
