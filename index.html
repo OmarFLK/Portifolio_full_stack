@@ -5,7 +5,6 @@
     <title>Omar Saliba | Portfólio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="css/style.css" />
-    <!-- mano que saco fazer isso sem o png KKKKKKKKKKK -->
     <link rel="icon" href="data:image/svg+xml,
 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
   <rect width='100' height='100' rx='20' fill='black'/>
@@ -29,7 +28,6 @@
         <p id="sub-title"></p>
       </div>
     </div>
-    <!-- fds vai ficar inline mesmo nao vou tirar -->
     <style>
       .loading-screen {
         position: fixed;
@@ -74,7 +72,6 @@
         }
       }
     </style>
-    <!-- js é coisa do diabo KKKKKKKKKKKK -->
     <script>
       const mainTitle = document.getElementById("main-title");
       const subTitle = document.getElementById("sub-title");
@@ -121,6 +118,7 @@
         <div class="menu" id="menu">
           <a href="#sobre">Sobre</a>
           <a href="#formacao">Formação</a>
+          <a href="#powerbi">PowerBI/Artigos</a>
           <a href="#projetos">Projetos</a>
           <a href="#experiencia">Experiência</a>
         </div>
@@ -150,28 +148,17 @@
         </a>
       </div>
 
-      <div class="icons">
-        <a href="https://github.com/OmarFLK" target="_blank">
-          <img src="./assets/icons/github.png" />
-        </a>
-        <a
-          href="https://www.linkedin.com/in/omar-saliba-28b870230/"
-          target="_blank"
-        >
-          <img src="./assets/icons/linkedin.png" />
-        </a>
-        <a href="https://wa.me/5511948485194" target="_blank">
-          <img src="./assets/icons/whatsapp.png" />
-        </a>
-      </div>
 
-      <div class="infinite-line">
-        <img src="assets/icons/github.png" alt="GitHub" />
-        <img src="assets/icons/linkedin.png" alt="LinkedIn" />
-        <img src="assets/icons/whatsapp.png" alt="WhatsApp" />
-        <img src="assets/icons/github.png" alt="GitHub" />
-        <img src="assets/icons/linkedin.png" alt="LinkedIn" />
-        <img src="assets/icons/whatsapp.png" alt="WhatsApp" />
+      <div class="social-card">
+          <a href="https://github.com/OmarFLK" target="_blank" aria-label="GitHub" class="social-item">
+            <img src="assets/icons/github.png" alt="GitHub" />
+          </a>
+          <a href="https://wa.me/5511948485194" target="_blank" aria-label="WhatsApp" class="social-item">
+            <img src="assets/icons/whatsapp.png" alt="WhatsApp" />
+          </a>
+          <a href="https://www.linkedin.com/in/omar-saliba-28b870230/" target="_blank" aria-label="LinkedIn" class="social-item">
+            <img src="assets/icons/linkedin.png" alt="LinkedIn" />
+          </a>
       </div>
     </section>
 
@@ -196,6 +183,10 @@
           <b>HTML/CSS</b> e <b>GIT/GITHUB</b>.<br />
           Certificado <b>IMT – Python Para Ciencia De Dados</b>.<br />
           Certificado <b>IMT – Power BI - Básico</b>.<br />
+          Certificado <b>IBM – Web Development Fundamentals
+ </b>.<br />
+   Certificado <b>IBM – Introduction to Cloud Computing
+ </b>.<br />
           Certificado <b>ALR – Excel Intermediário/Avançado</b>.<br />
           Certificado <b>ALR – HTML e CSS</b>.<br />
           Certificado <b>ALR – Python</b>.<br />
@@ -259,9 +250,23 @@
       </div>
     </section>
 
+    <!-- PowerBI / Artigos -->
+    <section id="powerbi" class="section reveal">
+      <h2>PowerBI / Artigos</h2>
+      <p>Confira meus trabalhos no Behance e artigos no Drive. Links temporários abaixo, serão substituídos depois.</p>
+      <div class="btn-group">
+        <a class="btn" href="https://www.behance.net/exemplo" target="_blank" aria-label="Meu Behance">
+          Behance
+        </a>
+        <a class="btn" href="https://drive.google.com/drive/folders/exemplo" target="_blank" aria-label="Artigos no Drive">
+          Artigos no Drive
+        </a>
+      </div>
+    </section>
+
     <!-- projetos legais -->
     <section id="projetos" class="section reveal">
-      <h2>Projetos</h2>
+      <h2>Projetos Desenvolvimento WEB:</h2>
 
       <div class="grid">
         <!-- plataforma do educore -->

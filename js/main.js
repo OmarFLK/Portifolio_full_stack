@@ -34,7 +34,7 @@ window.addEventListener("scroll", () => {
   }
 });
 // aqui é o gerador das bolinhas de agua, mes AEStétiqui xd
-document.querySelectorAll(".bubbles").forEach(side => {
+document.querySelectorAll(".bubbles").forEach((side) => {
   for (let i = 0; i < 12; i++) {
     const bubble = document.createElement("span");
     const size = Math.random() * 12 + 6;
