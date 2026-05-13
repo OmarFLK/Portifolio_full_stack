@@ -116,19 +116,30 @@
         </div>
 
         <div class="menu" id="menu">
-          <a href="#sobre">Sobre</a>
-          <a href="#formacao">Formação</a>
-          <a href="#powerbi">PowerBI/Artigos</a>
-          <a href="#projetos">Projetos</a>
-          <a href="#experiencia">Experiência</a>
+          <a href="#sobre" data-i18n="nav.about">Sobre</a>
+          <a href="#formacao" data-i18n="nav.education">Formação</a>
+          <a href="#powerbi" data-i18n="nav.powerbi">PowerBI/Artigos</a>
+          <a href="#projetos" data-i18n="nav.projects">Projetos</a>
+          <a href="#experiencia" data-i18n="nav.experience">Experiência</a>
+          <div class="language-switcher" id="language-switcher" aria-label="Selecionar idioma">
+            <span class="language-current" id="language-current">PT</span>
+            <button class="language-toggle" id="language-toggle" type="button" aria-expanded="false" aria-haspopup="listbox">
+              <span id="language-label">Português</span>
+            </button>
+            <div class="language-options" id="language-options" role="listbox" aria-label="Selecionar idioma">
+              <button type="button" data-language="pt" role="option">Português</button>
+              <button type="button" data-language="es" role="option">Español</button>
+              <button type="button" data-language="en" role="option">English</button>
+            </div>
+          </div>
         </div>
       </div>
     </header>
 
     <!-- SOBRE -->
     <section id="sobre" class="hero reveal">
-      <h1>| Omar Saliba — DeV. Full Stack | Data Science - I.A. | </h1>
-      <p>
+      <h1 data-i18n="hero.title">| Omar Saliba — DeV. Full Stack | Data Science - I.A. | </h1>
+      <p data-i18n="hero.description">
         Sou profissional da área de tecnologia, apaixonado por avanço tecnológico, formado no Ensino Médio Técnico em TI pelo
         Senac Aclimação e atualmente cursando Inteligência Artificial e Ciência
         de Dados no Instituto Mauá de Tecnologia. Possuo duas certificações em
@@ -140,18 +151,18 @@
       </p>
 
       <div class="btn-group cv-buttons">
-        <a class="btn btn-cv" href="Curriculo_OmarSaliba_PT-BR.pdf"Currículo PT-BR">
+        <a class="btn btn-cv" href="Curriculo_OmarSaliba_PT-BR.pdf" download aria-label="Currículo PT-BR">
           <span class="btn-flag" aria-hidden="true">BR</span>
           <span class="btn-copy">
-            <strong>Baixar Currículo</strong>
-            <small>Versão PT-BR</small>
+            <strong data-i18n="resume.pt.title">Baixar Currículo</strong>
+            <small data-i18n="resume.pt.subtitle">Versão PT-BR</small>
           </span>
         </a>
         <a class="btn btn-cv" href="Curriculo_OmarSaliba_ENG.pdf" download aria-label="Currículo EN">
           <span class="btn-flag" aria-hidden="true">EN</span>
           <span class="btn-copy">
-            <strong>Download Resume</strong>
-            <small>English Version</small>
+            <strong data-i18n="resume.en.title">Download Resume</strong>
+            <small data-i18n="resume.en.subtitle">English Version</small>
           </span>
         </a>
       </div>
@@ -175,9 +186,9 @@
 
     <!-- parte da formação -->
     <section id="formacao" class="section reveal">
-      <h2>Formação</h2>
+      <h2 data-i18n="education.title">Formação</h2>
       <div class="formation-card">
-        <p>
+        <p data-i18n-html="education.academic">
           <span class="highlight">Histórico Acadêmico</span><br /><br />
           Formado no ensino médio técnico em <b>T.I.</b> pelo
           <b>Senac Aclimação</b> no ano de 2024.<br />
@@ -187,7 +198,7 @@
 
         <p class="spacer"></p>
 
-        <p>
+        <p data-i18n-html="education.additional">
           <span class="highlight">Informações adicionais</span><br /><br />
           Idiomas: Inglês básico-Intermediário(B1) e Espanhol intermediário(B2).<br />
           2 cursos concluídos pela <b>Alura</b> em <b>Python</b> ,
@@ -209,22 +220,22 @@
         <p class="spacer"></p>
 
         <div class="languages-chart">
-          <h3 style="color: #5aa0ff; margin-bottom: 30px;">Domínio de Idiomas</h3>
+          <h3 style="color: #5aa0ff; margin-bottom: 30px;" data-i18n="languages.title">Domínio de Idiomas</h3>
           <div class="chart-container">
             <div class="bar-group">
               <div class="bar-row">
-                <span class="bar-label">Português</span>
+                <span class="bar-label" data-i18n="languages.pt">Português</span>
                 <div class="bar-wrapper">
                   <div class="bar-background">
                     <div class="bar" style="--level: 100; --color-index: 0">
-                      <span class="bar-text">Nativo</span>
+                      <span class="bar-text" data-i18n="languages.native">Nativo</span>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div class="bar-row">
-                <span class="bar-label">Espanhol</span>
+                <span class="bar-label" data-i18n="languages.es">Espanhol</span>
                 <div class="bar-wrapper">
                   <div class="bar-background">
                     <div class="bar" style="--level: 65; --color-index: 1">
@@ -235,7 +246,7 @@
               </div>
 
               <div class="bar-row">
-                <span class="bar-label">Inglês</span>
+                <span class="bar-label" data-i18n="languages.en">Inglês</span>
                 <div class="bar-wrapper">
                   <div class="bar-background">
                     <div class="bar" style="--level: 50; --color-index: 2">
@@ -246,7 +257,7 @@
               </div>
 
               <div class="bar-row">
-                <span class="bar-label">Árabe</span>
+                <span class="bar-label" data-i18n="languages.ar">Árabe</span>
                 <div class="bar-wrapper">
                   <div class="bar-background">
                     <div class="bar" style="--level: 30; --color-index: 3">
@@ -263,13 +274,13 @@
 
     <!-- PowerBI / Artigos -->
     <section id="powerbi" class="section reveal">
-      <h2>PowerBI / Artigos</h2>
-      <p>Confira meus trabalhos no Behance e artigos no Drive. Links temporários abaixo, serão substituídos depois.</p>
+      <h2 data-i18n="powerbi.title">PowerBI / Artigos</h2>
+      <p data-i18n="powerbi.description">Confira meus trabalhos no Behance e artigos no Drive. Links temporários abaixo, serão substituídos depois.</p>
       <div class="btn-group resource-buttons">
         <a class="btn btn-resource" href="https://www.behance.net/flokuz" target="_blank" aria-label="Meu Behance">
           Behance
         </a>
-        <a class="btn btn-resource" href="https://drive.google.com/drive/folders/1CNYAGPPW9hi4tpLE_kTS-E526aJl8nvN?usp=sharing" target="_blank" aria-label="Artigos no Drive">
+        <a class="btn btn-resource" href="https://drive.google.com/drive/folders/1CNYAGPPW9hi4tpLE_kTS-E526aJl8nvN?usp=sharing" target="_blank" aria-label="Artigos no Drive" data-i18n="powerbi.drive">
           Artigos no Drive
         </a>
       </div>
@@ -277,76 +288,66 @@
 
     <!-- projetos legais -->
     <section id="projetos" class="section reveal">
-      <h2>Projetos Desenvolvimento WEB:</h2>
+      <h2 data-i18n="projects.title">Projetos</h2>
 
       <div class="grid">
-        <!-- plataforma do educore -->
         <div class="card project-card">
-          <video
-            src="./assets/videos/eduexp.mp4"
-            autoplay
-            muted
-            loop
-            playsinline
-          ></video>
+          <iframe
+            class="project-video"
+            src="https://www.youtube.com/embed/m5FC2Qysmaw?autoplay=1&mute=1&loop=1&playlist=m5FC2Qysmaw&controls=0&modestbranding=1&rel=0&playsinline=1"
+            title="Automação de Enriquecimento de Leads"
+            allow="autoplay; encrypted-media; picture-in-picture"
+            loading="lazy"
+          ></iframe>
           <div class="project-content">
-            <h3>EduCore — Sistema de Gestão Acadêmica</h3>
-            <p>
-              Aplicação web desenvolvida no primeiro ano da graduação, voltada à
-              gestão de alunos, professores e atividades acadêmicas, construída
-              com HTML, CSS, JavaScript, Node.js e MongoDB.
+            <h3 data-i18n="projects.leads.title">Automação de Enriquecimento de Leads</h3>
+            <p data-i18n="projects.leads.description">
+              Script de automação em Python para enriquecimento de bases de leads em Excel, realizando busca de informações públicas via LinkedIn/Google para identificação automática de cargos e descrições profissionais, com foco em automação de processos, manipulação de dados e produtividade.
             </p>
-                <div class="project-github">
+            <div class="project-github">
               <div class="link-group">
                 <span>GitHub</span>
-                <a
-                  href="https://github.com/OmarFLK/Projeto_Poliedro_OFABA"
-                  target="_blank"
-                >
-                  <img src="./assets/icons/github.png" /> EduCore
+                <a href="https://github.com/OmarFLK/script_automa-o_planilha_python" target="_blank">
+                  <img src="./assets/icons/github.png" /> Leads
                 </a>
               </div>
 
               <div class="link-group">
-                <span>Site</span>
-                <a href="https://youtu.be/K9OxcgAbmo8" target="_blank">
-                  <img src="./assets/icons/sites_img.png" /> Site
-                </a>
+                <span data-i18n="projects.link.site">Site</span>
+                <span class="project-unavailable" aria-label="Site indisponível">
+                  <span class="unavailable-icon" aria-hidden="true">×</span>
+                  <span data-i18n="projects.noSite">Sem site</span>
+                </span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- projeto do fincore -->
         <div class="card project-card">
-          <video
-            src="./assets/videos/finexp.mp4"
-            autoplay
-            muted
-            loop
-            playsinline
-          ></video>
+          <iframe
+            class="project-video"
+            src="https://www.youtube.com/embed/mqfGfd3WbR8?autoplay=1&mute=1&loop=1&playlist=mqfGfd3WbR8&controls=0&modestbranding=1&rel=0&playsinline=1"
+            title="Sistema de Reservas para Restaurantes"
+            allow="autoplay; encrypted-media; picture-in-picture"
+            loading="lazy"
+          ></iframe>
           <div class="project-content">
-            <h3>FinCore — Plataforma Financeira</h3>
-            <p>
-              Sistema de controle financeiro pessoal desenvolvido com HTML, CSS
-              e JavaScript, focado em simplicidade, clareza e usabilidade.
+            <h3 data-i18n="projects.reservas.title">Sistema de Reservas para Restaurantes</h3>
+            <p data-i18n="projects.reservas.description">
+              Aplicação web full-stack para gerenciamento inteligente de reservas, desenvolvida com Python, FastAPI, React, PostgreSQL, TailwindCSS e JWT, com foco em autenticação segura, prevenção de conflitos, responsividade e arquitetura escalável.
             </p>
             <div class="project-github">
               <div class="link-group">
                 <span>GitHub</span>
-                <a
-                  href="https://github.com/OmarFLK/FinCore.git"
-                  target="_blank"
-                >
-                  <img src="./assets/icons/github.png" /> FinCore
+                <a href="https://github.com/OmarFLK/sistemaReservaRestaurantes" target="_blank">
+                  <img src="./assets/icons/github.png" /> Reservas
                 </a>
               </div>
 
               <div class="link-group">
-                <span>Site</span>
-                <a href="https://youtu.be/UhHdgLxBPW4" target="_blank">
-                  <img src="./assets/icons/sites_img.png" /> Site
+                <span data-i18n="projects.link.site">Site</span>
+                <a href="https://sistema-reserva-restaurantes.vercel.app" target="_blank">
+                  <img src="./assets/icons/sites_img.png" /> <span data-i18n="projects.link.site">Site</span>
                 </a>
               </div>
             </div>
@@ -363,8 +364,8 @@
             playsinline
           ></video>
           <div class="project-content">
-            <h3>OpenSource Lab — Portfólio Open Source</h3>
-            <p>
+            <h3 data-i18n="projects.openlab.title">OpenSource Lab — Portfólio Open Source</h3>
+            <p data-i18n="projects.openlab.description">
               Hub de projetos e soluções em código aberto, voltado à
               documentação, colaboração e reutilização de aplicações e
               bibliotecas.
@@ -381,13 +382,113 @@
               </div>
 
               <div class="link-group">
-                <span>Site</span>
+                <span data-i18n="projects.link.site">Site</span>
                 <a href="https://fullstackdevomar.vercel.app" target="_blank">
-                  <img src="./assets/icons/sites_img.png" /> Site
+                  <img src="./assets/icons/sites_img.png" /> <span data-i18n="projects.link.site">Site</span>
                 </a>
               </div>
             </div>
 
+          </div>
+        </div>
+
+        <!-- plataforma do educore -->
+        <div class="card project-card">
+          <video
+            src="./assets/videos/eduexp.mp4"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+          <div class="project-content">
+            <h3 data-i18n="projects.educore.title">EduCore — Sistema de Gestão Acadêmica</h3>
+            <p data-i18n="projects.educore.description">
+              Aplicação web desenvolvida no primeiro ano da graduação, voltada à
+              gestão de alunos, professores e atividades acadêmicas, construída
+              com HTML, CSS, JavaScript, Node.js e MongoDB.
+            </p>
+                <div class="project-github">
+              <div class="link-group">
+                <span>GitHub</span>
+                <a
+                  href="https://github.com/OmarFLK/Projeto_Poliedro_OFABA"
+                  target="_blank"
+                >
+                  <img src="./assets/icons/github.png" /> EduCore
+                </a>
+              </div>
+
+              <div class="link-group">
+                <span data-i18n="projects.link.site">Site</span>
+                <a href="https://youtu.be/K9OxcgAbmo8" target="_blank">
+                  <img src="./assets/icons/sites_img.png" /> <span data-i18n="projects.link.site">Site</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- projeto do fincore -->
+        <div class="card project-card">
+          <video
+            src="./assets/videos/finexp.mp4"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+          <div class="project-content">
+            <h3 data-i18n="projects.fincore.title">FinCore — Plataforma Financeira</h3>
+            <p data-i18n="projects.fincore.description">
+              Sistema de controle financeiro pessoal desenvolvido com HTML, CSS
+              e JavaScript, focado em simplicidade, clareza e usabilidade.
+            </p>
+            <div class="project-github">
+              <div class="link-group">
+                <span>GitHub</span>
+                <a
+                  href="https://github.com/OmarFLK/FinCore.git"
+                  target="_blank"
+                >
+                  <img src="./assets/icons/github.png" /> FinCore
+                </a>
+              </div>
+
+              <div class="link-group">
+                <span data-i18n="projects.link.site">Site</span>
+                <a href="https://youtu.be/UhHdgLxBPW4" target="_blank">
+                  <img src="./assets/icons/sites_img.png" /> <span data-i18n="projects.link.site">Site</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card project-card project-card-empty">
+          <div class="project-placeholder">
+            <span data-i18n="projects.placeholder.badge">Novo projeto</span>
+          </div>
+          <div class="project-content">
+            <h3 data-i18n="projects.placeholder3.title">Projeto 06 — Título do projeto</h3>
+            <p data-i18n="projects.placeholder.description">
+              Espaço reservado para você adicionar a descrição, tecnologias usadas, vídeo ou imagem e links do seu próximo projeto.
+            </p>
+            <div class="project-github">
+              <div class="link-group">
+                <span>GitHub</span>
+                <a class="disabled" href="#" aria-disabled="true">
+                  <img src="./assets/icons/github.png" /> <span data-i18n="projects.placeholder.github">Adicionar</span>
+                </a>
+              </div>
+
+              <div class="link-group">
+                <span data-i18n="projects.link.site">Site</span>
+                <a class="disabled" href="#" aria-disabled="true">
+                  <img src="./assets/icons/sites_img.png" /> <span data-i18n="projects.placeholder.site">Adicionar</span>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -395,12 +496,12 @@
 
     <!-- exp legal -->
     <section id="experiencia" class="section reveal">
-      <h2>Experiência</h2>
+      <h2 data-i18n="experience.title">Experiência</h2>
 
       <div class="grid experience-grid">
         <div class="card experience-card">
-          <h3>Assistente de Suporte Técnico e Atendimento ao Cliente</h3>
-          <p>
+          <h3 data-i18n="experience.support.title">Assistente de Suporte Técnico e Atendimento ao Cliente</h3>
+          <p data-i18n="experience.support.description">
             Atuei como responsável pela montagem, manutenção e configuração de
             computadores e notebooks, além de prestar suporte técnico direto aos
             clientes, realizando diagnóstico e resolução de problemas de
@@ -410,18 +511,23 @@
         </div>
 
         <div class="card experience-card">
-          <h3>Programador autônomo Júnior</h3>
-          <p>
-            Durante o último ano, atuei de forma autônoma no desenvolvimento de
-            soluções digitais e aplicações web, com foco em Python, HTML, CSS,
-            JavaScript e Node.js, criando sistemas completos do back-end ao
-            front-end.
+          <h3 data-i18n="experience.consultant.title">Consultor Tecnológico na Mauá Júnior | Cargo Atual</h3>
+          <p data-i18n="experience.consultant.description">
+            Como consultor, atuo no desenvolvimento de soluções digitais
+             e inteligência de negócios, unindo experiência em desenvolvimento
+              web, análise de dados e automação de processos com tecnologias
+               como Python, HTML, CSS, JavaScript, SQL, Java, Power BI e Excel.
+               Também desenvolvo sistemas baseados em redes neurais e modelos de
+                linguagem (LLMs), criando soluções inovadoras e personalizadas
+                 para empresas parceiras, desde plataformas web e dashboards 
+                 estratégicos até automações inteligentes que aumentam a
+                  eficiência, reduzem custos e geram vantagem competitiva real.
           </p>
         </div>
 
         <div class="card experience-card">
-          <h3>Trainee na Mauá Júnior | Formação Multidisciplinar</h3>
-          <p>
+          <h3 data-i18n="experience.trainee.title">Trainee na Mauá Júnior | Formação Multidisciplinar</h3>
+          <p data-i18n="experience.trainee.description">
             Durante meu período como trainee na Mauá Júnior, 
             passei por diversas áreas como marketing, financeiro
              e projetos, adquirindo uma visão prática e completa 
@@ -435,23 +541,18 @@
         </div>
 
         <div class="card experience-card">
-          <h3>Consultor Tecnológico na Mauá Júnior | Cargo Atual</h3>
-          <p>
-            Como consultor, atuo no desenvolvimento de soluções digitais
-             e inteligência de negócios, unindo experiência em desenvolvimento
-              web, análise de dados e automação de processos com tecnologias
-               como Python, HTML, CSS, JavaScript, SQL, Java, Power BI e Excel.
-               Também desenvolvo sistemas baseados em redes neurais e modelos de
-                linguagem (LLMs), criando soluções inovadoras e personalizadas
-                 para empresas parceiras, desde plataformas web e dashboards 
-                 estratégicos até automações inteligentes que aumentam a
-                  eficiência, reduzem custos e geram vantagem competitiva real.
+          <h3 data-i18n="experience.freelance.title">Programador autônomo Júnior</h3>
+          <p data-i18n="experience.freelance.description">
+            Durante o último ano, atuei de forma autônoma no desenvolvimento de
+            soluções digitais e aplicações web, com foco em Python, HTML, CSS,
+            JavaScript e Node.js, criando sistemas completos do back-end ao
+            front-end.
           </p>
         </div>
       </div>
     </section>
 
-    <footer>© Omar Saliba — Todos os direitos reservados</footer>
+    <footer data-i18n="footer.rights">© Omar Saliba — Todos os direitos reservados</footer>
 
     <script src="js/main.js"></script>
   </body>
