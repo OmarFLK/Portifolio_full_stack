@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
+import { clamp, interpolateKeyframes, mapDocumentScroll } from '../../utils/scroll';
 import styles from './DesktopStarScene.module.css';
 
 export interface DesktopStarSceneProps {
@@ -31,12 +32,11 @@ function createStarShape(): THREE.Shape {
 }
 
 function scrollProgress(): number {
-  const scrollableDistance = Math.max(
-    1,
-    document.documentElement.scrollHeight - window.innerHeight,
+  return mapDocumentScroll(
+    window.scrollY,
+    document.documentElement.scrollHeight,
+    window.innerHeight,
   );
-
-  return THREE.MathUtils.clamp(window.scrollY / scrollableDistance, 0, 1);
 }
 
 export default function DesktopStarScene({ onReady }: DesktopStarSceneProps) {
@@ -130,15 +130,14 @@ export default function DesktopStarScene({ onReady }: DesktopStarSceneProps) {
       }
 
       const progress = scrollProgress();
-      const wave = Math.sin(progress * Math.PI * 3);
-
       starGroup.position.x = -0.12 + pointer.x * 0.16;
-      starGroup.position.y = THREE.MathUtils.lerp(0.68, -0.72, progress) - pointer.y * 0.1;
+      starGroup.position.y =
+        interpolateKeyframes(progress, [0.68, 0.18, -0.18, -0.72]) - pointer.y * 0.1;
       starGroup.rotation.x = 0.24 + progress * Math.PI * 0.68 - pointer.y * 0.2;
       starGroup.rotation.y = -0.38 + progress * Math.PI * 1.05 + pointer.x * 0.52;
       starGroup.rotation.z = progress * Math.PI * 2.2 + pointer.x * 0.18;
 
-      const scale = 0.88 + wave * 0.045;
+      const scale = interpolateKeyframes(progress, [0.88, 0.925, 0.835, 0.88]);
       starGroup.scale.setScalar(scale);
       keyLight.position.x = 2.5 + pointer.x * 1.5;
       keyLight.position.y = 3.5 - pointer.y;
@@ -173,8 +172,8 @@ export default function DesktopStarScene({ onReady }: DesktopStarSceneProps) {
 
     const handlePointerMove = (event: PointerEvent) => {
       pointer.set(
-        THREE.MathUtils.clamp((event.clientX / window.innerWidth) * 2 - 1, -1, 1),
-        THREE.MathUtils.clamp(-(event.clientY / window.innerHeight) * 2 + 1, -1, 1),
+        clamp((event.clientX / window.innerWidth) * 2 - 1, -1, 1),
+        clamp(-(event.clientY / window.innerHeight) * 2 + 1, -1, 1),
       );
       scheduleRender();
     };
