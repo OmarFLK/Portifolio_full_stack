@@ -2,6 +2,7 @@ import {
   ArrowDownRight,
   ArrowUpRight,
   Braces,
+  Bug,
   CloudCog,
   ContactRound,
   Database,
@@ -21,7 +22,9 @@ import {
   experiences,
   languages,
   localize,
+  localizeTechnology,
   projects,
+  resultMetrics,
   socialLinks,
   type Project,
 } from '../data/portfolio';
@@ -41,6 +44,7 @@ const capabilityIcons = {
   data: Database,
   frontend: PanelsTopLeft,
   delivery: ArrowUpRight,
+  quality: Bug,
 } as const;
 
 function ProjectArtwork({ project }: { project: Project }) {
@@ -49,7 +53,7 @@ function ProjectArtwork({ project }: { project: Project }) {
       <div className={`${styles.artwork} ${styles.signalArtwork}`} aria-hidden="true">
         <div className={styles.artworkChrome}>
           <span>LEAD_SCAN.PY</span>
-          <span>RUN 01</span>
+          <span>RUN {project.index}</span>
         </div>
         <div className={styles.signalCore}>
           <span className={styles.signalTarget} />
@@ -75,26 +79,26 @@ function ProjectArtwork({ project }: { project: Project }) {
     return (
       <div className={`${styles.artwork} ${styles.ledgerArtwork}`} aria-hidden="true">
         <div className={styles.artworkChrome}>
-          <span>RESERVATIONS / LIVE</span>
-          <span>02</span>
+          <span>VIRA_PRICE / SUPPLIERS</span>
+          <span>{project.index}</span>
         </div>
         <div className={styles.bookingDate}>
-          <span>19</span>
+          <span>VP</span>
           <div>
-            <strong>TABLE 04</strong>
-            <small>20:30 — 04 GUESTS</small>
+            <strong>SUPPLIER LISTS</strong>
+            <small>ORGANIZE / CONSULT / MAINTAIN</small>
           </div>
         </div>
         <div className={styles.bookingSlots}>
-          {['18:00', '19:00', '20:30', '21:15'].map((slot, index) => (
+          {['SUPPLIERS', 'RETAILERS', 'SEARCH', 'UPDATE'].map((slot, index) => (
             <span key={slot} data-active={index === 2}>
               {slot}
             </span>
           ))}
         </div>
         <div className={styles.bookingFooter}>
-          <span>JWT VERIFIED</span>
-          <span>NO CONFLICTS</span>
+          <span>ONE PLACE</span>
+          <span>LESS FRICTION</span>
         </div>
       </div>
     );
@@ -104,26 +108,23 @@ function ProjectArtwork({ project }: { project: Project }) {
     return (
       <div className={`${styles.artwork} ${styles.terminalArtwork}`} aria-hidden="true">
         <div className={styles.artworkChrome}>
-          <span>opensource.lab</span>
-          <span>main</span>
+          <span>VERITHAZ / ANALYSIS</span>
+          <span>{project.index}</span>
         </div>
         <div className={styles.terminalCopy}>
           <span>
-            <i>01</i> const knowledge = open(
+            <i>01</i> claims = split(news)
           </span>
           <span>
-            <i>02</i> &nbsp;&nbsp;documentation,
+            <i>02</i> sources = review(claims)
           </span>
           <span>
-            <i>03</i> &nbsp;&nbsp;collaboration,
+            <i>03</i> signals = inspect(context)
           </span>
           <span>
-            <i>04</i> &nbsp;&nbsp;reuse
+            <i>04</i> lens = eristicDialectic
           </span>
-          <span>
-            <i>05</i> );
-          </span>
-          <strong>BUILD TO SHARE_</strong>
+          <strong>VERIFY BEFORE VERDICT_</strong>
         </div>
       </div>
     );
@@ -133,7 +134,7 @@ function ProjectArtwork({ project }: { project: Project }) {
     return (
       <div className={`${styles.artwork} ${styles.paperArtwork}`} aria-hidden="true">
         <div className={styles.paperSheet}>
-          <span className={styles.paperStamp}>EDU / 04</span>
+          <span className={styles.paperStamp}>EDU / {project.index}</span>
           <strong>
             ACADEMIC
             <br />
@@ -152,17 +153,17 @@ function ProjectArtwork({ project }: { project: Project }) {
   return (
     <div className={`${styles.artwork} ${styles.gridArtwork}`} aria-hidden="true">
       <div className={styles.artworkChrome}>
-        <span>FINCORE / OVERVIEW</span>
-        <span>05</span>
+        <span>OPENSOURCE / REPOSITORY</span>
+        <span>{project.index}</span>
       </div>
-      <div className={styles.financeTotal}>
-        <small>BALANCE</small>
-        <strong>R$ 4.820</strong>
-        <span>CONTROL / CLARITY</span>
+      <div className={styles.repositorySummary}>
+        <small>PUBLIC BUILD</small>
+        <strong>OPEN</strong>
+        <span>STUDY / REUSE / IMPROVE</span>
       </div>
-      <div className={styles.financeBars}>
-        {[46, 78, 58, 92, 64, 84].map((height, index) => (
-          <span key={index} style={{ '--bar-height': `${height}%` } as React.CSSProperties} />
+      <div className={styles.repositoryModules}>
+        {['CODE', 'DOCS', 'COLLAB', 'REUSE'].map((label) => (
+          <span key={label}>{label}</span>
         ))}
       </div>
     </div>
@@ -198,14 +199,19 @@ export function Hero() {
   const { text } = useLocale();
 
   return (
-    <section className={styles.hero} aria-labelledby="hero-title">
+    <section
+      className={styles.hero}
+      id="hero"
+      aria-labelledby="hero-title"
+      data-star-waypoint="hero"
+    >
       <div className={styles.heroLiquid} aria-hidden="true" data-liquid="hero">
         <span className={styles.heroLiquidNoise} />
       </div>
 
       <div className={styles.heroTopline} data-hero>
         <p>{text.heroEyebrow}</p>
-        <p>OMAR SALIBA / SANTO ANDRÉ</p>
+        <p>OMAR SALIBA / BUILDING SYSTEMS</p>
       </div>
 
       <div className={styles.heroComposition}>
@@ -223,7 +229,7 @@ export function Hero() {
           <p className={styles.heroAreas} data-hero>
             AI / AUTOMATION / DATA / SOFTWARE
           </p>
-          <h1 id="hero-title" data-hero>
+          <h1 id="hero-title" data-hero data-star-protected>
             <span>{text.heroTitleTop}</span>
             <BoundingBoxFrame
               className={styles.selectedWord}
@@ -237,7 +243,7 @@ export function Hero() {
             </BoundingBoxFrame>
             <span>{text.heroTitleBottom}</span>
           </h1>
-          <p className={styles.heroLead} data-hero>
+          <p className={styles.heroLead} data-hero data-hero-lead>
             {text.heroLead}
           </p>
           <div className={styles.heroActions} data-hero>
@@ -260,7 +266,7 @@ export function Hero() {
           title={text.heroStatus}
           tone="light"
         >
-          <span>{text.heroLocation}</span>
+          <span>{text.heroAvailability}</span>
         </SystemNotice>
       </div>
 
@@ -282,13 +288,20 @@ export function About() {
   const { text } = useLocale();
 
   return (
-    <section className={styles.about} id="about" aria-labelledby="about-title" data-draw>
+    <section
+      className={styles.about}
+      id="about"
+      aria-labelledby="about-title"
+      data-draw
+      data-star-safe="about"
+      data-star-waypoint="about"
+    >
       <div className={styles.aboutLabel} data-reveal>
+        <span>ASK</span>
         <span>BUILD</span>
-        <span>MEASURE</span>
-        <span>IMPROVE</span>
+        <span>REFINE</span>
       </div>
-      <div className={styles.aboutCopy} data-reveal>
+      <div className={styles.aboutCopy} data-reveal data-star-protected>
         <p className={styles.sectionIndex}>{text.aboutIndex}</p>
         <h2 id="about-title">{text.aboutTitle}</h2>
         <div className={styles.aboutColumns}>
@@ -306,7 +319,12 @@ export function Projects() {
   const { locale, text } = useLocale();
 
   return (
-    <section className={styles.projects} id="projects" aria-labelledby="projects-title">
+    <section
+      className={styles.projects}
+      id="projects"
+      aria-labelledby="projects-title"
+      data-star-waypoint="projects"
+    >
       <SectionIntro
         index={text.projectsIndex}
         title={text.projectsTitle}
@@ -315,7 +333,7 @@ export function Projects() {
         tone="paper"
       />
 
-      <div className={styles.projectList}>
+      <div className={styles.projectList} data-star-safe="projects">
         {projects.map((project, index) => {
           const hasLiveLink = project.links.some((link) => link.kind === 'live');
 
@@ -324,6 +342,8 @@ export function Projects() {
               className={styles.project}
               data-featured={index === 0}
               data-visual={project.visual}
+              data-project-id={project.id}
+              data-star-protected
               data-reveal
               key={project.id}
             >
@@ -335,8 +355,10 @@ export function Projects() {
                 <h3>{localize(project.title, locale)}</h3>
                 <p className={styles.projectDescription}>{localize(project.description, locale)}</p>
                 <p className={styles.techLine}>
-                  <span>STACK</span>
-                  {project.technologies.join(' · ')}
+                  <span>{project.metaLabel ? localize(project.metaLabel, locale) : 'STACK'}</span>
+                  {project.technologies
+                    .map((technology) => localizeTechnology(technology, locale))
+                    .join(' · ')}
                 </p>
                 <div className={styles.projectLinks}>
                   {project.links.map((link) => (
@@ -388,11 +410,91 @@ export function Projects() {
   );
 }
 
+export function Results() {
+  const { locale, text } = useLocale();
+
+  return (
+    <section
+      className={styles.results}
+      id="resultados"
+      aria-labelledby="resultados-title"
+      data-star-waypoint="results"
+    >
+      <div className={styles.resultsGrid} aria-hidden="true" />
+
+      <div className={styles.resultsHeader}>
+        <div className={styles.resultsHeadingMeta} data-star-protected>
+          <p className={styles.sectionIndex}>{text.resultsIndex}</p>
+          <p>{text.resultsEyebrow}</p>
+        </div>
+        <div className={styles.resultsHeadingCopy} data-star-protected>
+          <h2 id="resultados-title">{text.resultsTitle}</h2>
+          <p>{text.resultsIntro}</p>
+        </div>
+        <div className={styles.resultsStaticStar} aria-hidden="true" data-star-anchor="results">
+          <StaticSignalStar />
+          <span>
+            {localize(
+              {
+                pt: 'IMPACTO / VERIFICADO',
+                en: 'IMPACT / VERIFIED',
+                es: 'IMPACTO / VERIFICADO',
+              },
+              locale,
+            )}
+          </span>
+        </div>
+      </div>
+
+      <div className={styles.resultsPanel} data-star-protected data-star-waypoint="results-metrics">
+        {resultMetrics.map((metric, index) => (
+          <article
+            className={styles.resultMetric}
+            data-primary={index === 0}
+            data-result-metric
+            data-result-id={metric.id}
+            key={metric.id}
+          >
+            <div className={styles.metricChrome} aria-hidden="true">
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <span>{metric.id.toUpperCase()}</span>
+            </div>
+            <strong className={styles.metricValue} aria-hidden="true">
+              {metric.counter ? (
+                <>
+                  {localize(metric.counter.prefix, locale)}
+                  <span data-result-counter={metric.counter.target}>{metric.counter.target}</span>
+                  {localize(metric.counter.suffix, locale)}
+                </>
+              ) : (
+                localize(metric.displayValue, locale)
+              )}
+            </strong>
+            <span className="sr-only">{localize(metric.accessibleLabel, locale)}</span>
+            <h3>{localize(metric.title, locale)}</h3>
+            <p>{localize(metric.description, locale)}</p>
+          </article>
+        ))}
+      </div>
+
+      <div className={styles.resultsFooter} data-result-line>
+        <span>{text.resultsLog}</span>
+        <span aria-hidden="true">COST ↓ / SPEED ↑ / MANUAL WORK ↓</span>
+      </div>
+    </section>
+  );
+}
+
 export function Experience() {
   const { locale, text } = useLocale();
 
   return (
-    <section className={styles.experience} id="experience" aria-labelledby="experience-title">
+    <section
+      className={styles.experience}
+      id="experience"
+      aria-labelledby="experience-title"
+      data-star-waypoint="experience"
+    >
       <SectionIntro
         index={text.experienceIndex}
         title={text.experienceTitle}
@@ -400,7 +502,7 @@ export function Experience() {
         id="experience-title"
       />
 
-      <ol className={styles.experienceLedger}>
+      <ol className={styles.experienceLedger} data-star-safe="experience" data-star-protected>
         {experiences.map((experience, index) => (
           <li key={experience.id} data-reveal>
             <span className={styles.ledgerNode} aria-hidden="true">
@@ -415,7 +517,9 @@ export function Experience() {
               <p>{localize(experience.description, locale)}</p>
               <p className={styles.techLine}>
                 <span>TOOLS</span>
-                {experience.technologies.join(' · ')}
+                {experience.technologies
+                  .map((technology) => localizeTechnology(technology, locale))
+                  .join(' · ')}
               </p>
             </div>
           </li>
@@ -429,7 +533,12 @@ export function Skills() {
   const { locale, text } = useLocale();
 
   return (
-    <section className={styles.skills} id="skills" aria-labelledby="skills-title">
+    <section
+      className={styles.skills}
+      id="skills"
+      aria-labelledby="skills-title"
+      data-star-waypoint="skills"
+    >
       <SectionIntro
         index={text.skillsIndex}
         title={text.skillsTitle}
@@ -461,7 +570,11 @@ export function Skills() {
                 <span>{String(index + 1).padStart(2, '0')}</span>
               </div>
               <h3>{localize(group.label, locale)}</h3>
-              <p>{group.items.join(' / ')}</p>
+              <p>
+                {group.items
+                  .map((technology) => localizeTechnology(technology, locale))
+                  .join(' / ')}
+              </p>
             </article>
           );
         })}
@@ -474,7 +587,12 @@ export function Education() {
   const { locale, text } = useLocale();
 
   return (
-    <section className={styles.education} id="education" aria-labelledby="education-title">
+    <section
+      className={styles.education}
+      id="education"
+      aria-labelledby="education-title"
+      data-star-waypoint="education"
+    >
       <SectionIntro
         index={text.educationIndex}
         title={text.educationTitle}
@@ -482,7 +600,7 @@ export function Education() {
         id="education-title"
       />
 
-      <div className={styles.educationGrid}>
+      <div className={styles.educationGrid} data-star-safe="education">
         <div className={styles.academicRecords} data-reveal>
           <h3>{text.educationAcademic}</h3>
           {education.map((item, index) => (
@@ -525,30 +643,47 @@ export function Education() {
 }
 
 export function Laboratory() {
-  const { text } = useLocale();
+  const { locale, text } = useLocale();
   const links = [
     {
       label: text.behance,
       href: socialLinks.behance,
-      detail: 'VISUAL STUDIES / UI',
+      detail: {
+        pt: 'ESTUDOS VISUAIS / UI',
+        en: 'VISUAL STUDIES / UI',
+        es: 'ESTUDIOS VISUALES / UI',
+      },
       icon: PanelsTopLeft,
     },
     {
       label: text.drive,
       href: socialLinks.drive,
-      detail: 'ARTICLES / RESEARCH',
+      detail: {
+        pt: 'ARTIGOS / PESQUISA',
+        en: 'ARTICLES / RESEARCH',
+        es: 'ARTÍCULOS / INVESTIGACIÓN',
+      },
       icon: FileText,
     },
     {
       label: text.github,
       href: socialLinks.github,
-      detail: 'CODE / OPEN SOURCE',
+      detail: {
+        pt: 'CÓDIGO / CÓDIGO ABERTO',
+        en: 'CODE / OPEN SOURCE',
+        es: 'CÓDIGO / CÓDIGO ABIERTO',
+      },
       icon: GitFork,
     },
   ];
 
   return (
-    <section className={styles.laboratory} aria-labelledby="laboratory-title">
+    <section
+      className={styles.laboratory}
+      id="laboratory"
+      aria-labelledby="laboratory-title"
+      data-star-waypoint="laboratory"
+    >
       <SectionIntro
         index={text.labIndex}
         title={text.labTitle}
@@ -562,7 +697,7 @@ export function Laboratory() {
             <span>{String(index + 1).padStart(2, '0')}</span>
             <Icon aria-hidden="true" />
             <strong>{label}</strong>
-            <small>{detail}</small>
+            <small>{localize(detail, locale)}</small>
             <ArrowUpRight aria-hidden="true" />
           </a>
         ))}
@@ -575,12 +710,17 @@ export function Contact() {
   const { text } = useLocale();
 
   return (
-    <section className={styles.contact} id="contact" aria-labelledby="contact-title">
+    <section
+      className={styles.contact}
+      id="contact"
+      aria-labelledby="contact-title"
+      data-star-waypoint="contact"
+    >
       <div className={styles.contactLiquid} aria-hidden="true" />
       <p className={styles.sectionIndex} data-reveal>
         {text.contactIndex}
       </p>
-      <div className={styles.contactLayout}>
+      <div className={styles.contactLayout} data-star-safe="contact" data-star-protected>
         <div data-reveal>
           <h2 id="contact-title">{text.contactTitle}</h2>
           <p>{text.contactBody}</p>

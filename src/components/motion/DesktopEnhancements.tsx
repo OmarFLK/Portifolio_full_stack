@@ -9,7 +9,6 @@ import {
   type RefObject,
 } from 'react';
 import { useHeavyVisuals } from '../../hooks/useHeavyVisuals';
-import styles from './DesktopEnhancements.module.css';
 
 const LazyDesktopStarScene = lazy(async () => {
   const module = await import('../../visuals/DesktopStarScene/DesktopStarScene');
@@ -38,35 +37,30 @@ class SceneErrorBoundary extends Component<SceneErrorBoundaryProps, SceneErrorBo
   }
 }
 
-function StaticStarPoster({ muted = false }: { muted?: boolean }) {
-  const className = muted ? `${styles.poster} ${styles.posterMuted}` : styles.poster;
-
-  return (
-    <div className={className} aria-hidden="true">
-      <svg viewBox="0 0 220 220" role="presentation">
-        <path
-          d="m110 8 23.8 73.2h77L148.5 126l23.8 73.2L110 154l-62.3 45.2L71.5 126 9.2 81.2h77Z"
-          fill="currentColor"
-          stroke="#111"
-          strokeLinejoin="round"
-          strokeWidth="5"
-        />
-        <path d="M19 28h26M32 15v26M175 190h28" fill="none" stroke="#111" strokeWidth="3" />
-      </svg>
-    </div>
-  );
-}
-
 function ActiveDesktopScene({ scopeRef }: { scopeRef: RefObject<HTMLDivElement | null> }) {
   const [sceneReady, setSceneReady] = useState(false);
   const handleReady = useCallback(() => setSceneReady(true), []);
+  const handleUnavailable = useCallback(() => setSceneReady(false), []);
+
+  useEffect(() => {
+    const scope = scopeRef.current;
+
+    if (!scope) {
+      return;
+    }
+
+    scope.dataset.desktopStarReady = String(sceneReady);
+
+    return () => {
+      delete scope.dataset.desktopStarReady;
+    };
+  }, [sceneReady, scopeRef]);
 
   return (
     <>
-      <StaticStarPoster muted={sceneReady} />
       <SceneErrorBoundary>
         <Suspense fallback={null}>
-          <LazyDesktopStarScene onReady={handleReady} />
+          <LazyDesktopStarScene onReady={handleReady} onUnavailable={handleUnavailable} />
         </Suspense>
       </SceneErrorBoundary>
       <SceneErrorBoundary>
@@ -144,5 +138,5 @@ export function DesktopEnhancements({ scopeRef }: { scopeRef: RefObject<HTMLDivE
   const enabled = useHeavyVisuals();
   useDesktopSmoothScroll(enabled);
 
-  return enabled ? <ActiveDesktopScene scopeRef={scopeRef} /> : <StaticStarPoster />;
+  return enabled ? <ActiveDesktopScene scopeRef={scopeRef} /> : null;
 }

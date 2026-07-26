@@ -4,14 +4,25 @@ import { useLocale } from '../../app/locale';
 import { localeNames, type Locale } from '../../data/portfolio';
 import styles from './Header.module.css';
 
+type SectionId =
+  'about' | 'projects' | 'resultados' | 'experience' | 'skills' | 'education' | 'contact';
+
+type NavLabelKey =
+  'about' | 'projects' | 'results' | 'experience' | 'skills' | 'education' | 'contact';
+
 const navItems = [
-  { id: 'about', index: '01' },
-  { id: 'projects', index: '02' },
-  { id: 'experience', index: '03' },
-  { id: 'skills', index: '04' },
-  { id: 'education', index: '05' },
-  { id: 'contact', index: '07' },
-] as const;
+  { id: 'about', labelKey: 'about', index: '01' },
+  { id: 'projects', labelKey: 'projects', index: '02' },
+  { id: 'resultados', labelKey: 'results', index: '03' },
+  { id: 'experience', labelKey: 'experience', index: '04' },
+  { id: 'skills', labelKey: 'skills', index: '05' },
+  { id: 'education', labelKey: 'education', index: '06' },
+  { id: 'contact', labelKey: 'contact', index: '08' },
+] as const satisfies ReadonlyArray<{
+  id: SectionId;
+  labelKey: NavLabelKey;
+  index: string;
+}>;
 
 const locales: Locale[] = ['pt', 'en', 'es'];
 
@@ -59,7 +70,85 @@ function LanguageSwitcher({ className, onSelect }: { className?: string; onSelec
   );
 }
 
-function Navigation({ mobile = false, onNavigate }: { mobile?: boolean; onNavigate?: () => void }) {
+function getHashSection(): SectionId | null {
+  if (typeof window === 'undefined') return null;
+
+  const hash = window.location.hash.slice(1);
+  return navItems.some((item) => item.id === hash) ? (hash as SectionId) : null;
+}
+
+function useActiveSection(paused = false): SectionId | null {
+  const [activeSection, setActiveSection] = useState<SectionId | null>(() => getHashSection());
+
+  useEffect(() => {
+    if (paused) return;
+
+    const sections = navItems
+      .map(({ id }) => document.getElementById(id))
+      .filter((section): section is HTMLElement => section !== null);
+    let frameId: number | null = null;
+
+    const updateFromPosition = () => {
+      frameId = null;
+      const marker = window.innerHeight * 0.3;
+      const currentSection =
+        sections.find((section) => {
+          const rect = section.getBoundingClientRect();
+          return rect.top <= marker && rect.bottom > marker;
+        }) ??
+        [...sections].reverse().find((section) => section.getBoundingClientRect().top <= marker);
+
+      setActiveSection(currentSection ? (currentSection.id as SectionId) : null);
+    };
+
+    const schedulePositionUpdate = () => {
+      if (frameId === null) {
+        frameId = window.requestAnimationFrame(updateFromPosition);
+      }
+    };
+
+    const handleHashChange = () => {
+      const hashSection = getHashSection();
+      if (hashSection) setActiveSection(hashSection);
+      schedulePositionUpdate();
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    window.addEventListener('scroll', schedulePositionUpdate, { passive: true });
+    window.addEventListener('resize', schedulePositionUpdate, { passive: true });
+
+    const observer =
+      typeof IntersectionObserver === 'undefined'
+        ? null
+        : new IntersectionObserver(schedulePositionUpdate, {
+            rootMargin: '-22% 0px -62% 0px',
+            threshold: 0.01,
+          });
+
+    sections.forEach((section) => observer?.observe(section));
+    schedulePositionUpdate();
+
+    return () => {
+      if (frameId !== null) window.cancelAnimationFrame(frameId);
+      observer?.disconnect();
+      window.removeEventListener('hashchange', handleHashChange);
+      window.removeEventListener('scroll', schedulePositionUpdate);
+      window.removeEventListener('resize', schedulePositionUpdate);
+    };
+  }, [paused]);
+
+  return activeSection;
+}
+
+function Navigation({
+  activeSection,
+  mobile = false,
+  onNavigate,
+}: {
+  activeSection: SectionId | null;
+  mobile?: boolean;
+  onNavigate?: () => void;
+}) {
   const { locale, text } = useLocale();
 
   return (
@@ -68,11 +157,16 @@ function Navigation({ mobile = false, onNavigate }: { mobile?: boolean; onNaviga
       aria-label={navigationLabels[locale]}
     >
       <ol>
-        {navItems.map(({ id, index }) => (
+        {navItems.map(({ id, index, labelKey }) => (
           <li key={id}>
-            <a href={`#${id}`} onClick={onNavigate}>
+            <a
+              href={`#${id}`}
+              aria-current={activeSection === id ? 'location' : undefined}
+              data-current={activeSection === id}
+              onClick={onNavigate}
+            >
               {mobile && <span aria-hidden="true">{index}</span>}
-              {text.nav[id]}
+              {text.nav[labelKey]}
             </a>
           </li>
         ))}
@@ -84,6 +178,8 @@ function Navigation({ mobile = false, onNavigate }: { mobile?: boolean; onNaviga
 export function Header() {
   const { locale, text } = useLocale();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [menuActiveSection, setMenuActiveSection] = useState<SectionId | null>(null);
+  const activeSection = useActiveSection(isMenuOpen);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const menuPanelRef = useRef<HTMLDivElement>(null);
   const shouldRestoreMenuFocusRef = useRef(false);
@@ -174,7 +270,7 @@ export function Header() {
           </span>
         </a>
 
-        <Navigation />
+        <Navigation activeSection={activeSection} />
 
         <LanguageSwitcher className={styles.desktopLanguages} />
 
@@ -185,7 +281,20 @@ export function Header() {
           aria-label={isMenuOpen ? text.closeMenu : text.menu}
           aria-expanded={isMenuOpen}
           aria-controls="mobile-menu"
-          onClick={() => setIsMenuOpen((current) => !current)}
+          onClick={() => {
+            if (!isMenuOpen) {
+              const hashSection = getHashSection();
+              const hashTarget = hashSection ? document.getElementById(hashSection) : null;
+              const hashRect = hashTarget?.getBoundingClientRect();
+              const hashTargetIsVisible =
+                hashRect !== undefined && hashRect.bottom > 0 && hashRect.top < window.innerHeight;
+
+              setMenuActiveSection(
+                hashTargetIsVisible && hashSection ? hashSection : activeSection,
+              );
+            }
+            setIsMenuOpen((current) => !current);
+          }}
         >
           <span>{isMenuOpen ? text.closeMenu : text.menu}</span>
           {isMenuOpen ? (
@@ -200,14 +309,20 @@ export function Header() {
         <div className={styles.mobilePanel} id="mobile-menu" ref={menuPanelRef}>
           <div className={styles.panelIndex} aria-hidden="true">
             <span>INDEX</span>
-            <span>06 ENTRIES / {locale.toUpperCase()}</span>
+            <span>
+              {String(navItems.length).padStart(2, '0')} ENTRIES / {locale.toUpperCase()}
+            </span>
           </div>
 
-          <Navigation mobile onNavigate={() => closeMenu(true)} />
+          <Navigation
+            activeSection={menuActiveSection ?? activeSection}
+            mobile
+            onNavigate={() => closeMenu(true)}
+          />
 
           <div className={styles.panelFooter}>
             <LanguageSwitcher className={styles.mobileLanguages} onSelect={() => closeMenu(true)} />
-            <span aria-hidden="true">SANTO ANDRÉ / SP</span>
+            <span aria-hidden="true">OPEN / TO GOOD IDEAS</span>
           </div>
         </div>
       )}

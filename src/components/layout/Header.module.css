@@ -119,12 +119,14 @@
 }
 
 .desktopNavigation a:hover,
-.desktopNavigation a:focus-visible {
+.desktopNavigation a:focus-visible,
+.desktopNavigation a[data-current='true'] {
   color: var(--header-white);
 }
 
 .desktopNavigation a:hover::after,
-.desktopNavigation a:focus-visible::after {
+.desktopNavigation a:focus-visible::after,
+.desktopNavigation a[data-current='true']::after {
   transform: scaleX(1);
   transform-origin: left center;
 }
@@ -269,7 +271,8 @@
 }
 
 .mobileNavigation a:hover,
-.mobileNavigation a:focus-visible {
+.mobileNavigation a:focus-visible,
+.mobileNavigation a[data-current='true'] {
   padding-left: 0.5rem;
   color: var(--header-ink);
   background: var(--header-signal);

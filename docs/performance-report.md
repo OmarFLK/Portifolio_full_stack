@@ -1,38 +1,42 @@
 # Relatório de performance
 
-Data do snapshot: 25/07/2026
+Data do snapshot-base: 25/07/2026
 
-Escopo: build final React + Vite, isolamento da ilha desktop, Lighthouse e validação automatizada.
+Atualização documental: 25/07/2026
+
+Escopo do snapshot-base: build React + Vite, isolamento da ilha desktop, Lighthouse e validação automatizada antes da seção de Resultados e da nova coreografia da estrela.
 
 Importante: Lighthouse fornece métricas laboratoriais, não Web Vitals de campo. INP, FPS e memória em hardware representativo não são inferidos destes resultados.
 
+Os números abaixo permanecem como baseline reproduzível anterior de 25/07, não como medição da revisão cirúrgica feita mais tarde no mesmo dia. A seção `#resultados`, a animação de suas métricas e a cena Three.js reescrita alteram CSS e chunks dinâmicos; por isso, build, suíte integral e Lighthouse precisam de um novo snapshot antes do fechamento.
+
 ## Resumo
 
-O JavaScript inicial soma **250,07 kB bruto / 79,55 kB gzip**, abaixo do budget de **170 kB gzip**. O caminho inicial contém apenas `index`, ícones e o runtime do bundler.
+No snapshot-base, o JavaScript inicial somava **250,07 kB bruto / 79,55 kB gzip**, abaixo do budget de **170 kB gzip**. O caminho inicial continha apenas `index`, ícones e o runtime do bundler.
 
-GSAP, `@gsap/react`, ScrollTrigger, Lenis e Three.js foram removidos completamente do caminho inicial. Eles pertencem a uma ilha desktop dinâmica de aproximadamente **192,87 kB gzip**, liberada somente pelo capability gate.
+GSAP, `@gsap/react`, ScrollTrigger, Lenis e Three.js permanecem fora do caminho inicial. No baseline, pertenciam a uma ilha desktop dinâmica de aproximadamente **192,87 kB gzip**, liberada somente pelo capability gate.
 
-Clientes abaixo de 1280 px, touch primário, `Save-Data`, hardware com pouca memória ou `prefers-reduced-motion: reduce` permanecem na composição estática e não solicitam EditorialMotion/GSAP, ScrollTrigger, Lenis, DesktopStarScene ou Three.js.
+Clientes abaixo de 1280 px, touch primário, `Save-Data`, hardware com pouca memória, WebGL indisponível ou `prefers-reduced-motion: reduce` permanecem na composição estática e não devem solicitar EditorialMotion/GSAP, ScrollTrigger, Lenis, DesktopStarScene ou Three.js.
 
 Os vídeos locais somam aproximadamente **25,5 MiB**, mas não fazem parte da carga inicial: o elemento `<video>` só é montado após abertura explícita do dialog do projeto.
 
 ## Budgets
 
-| Área                            |   Budget | Resultado final                        | Estado                                 |
-| ------------------------------- | -------: | -------------------------------------- | -------------------------------------- |
-| JavaScript inicial, gzip        | ≤ 170 kB | 79,55 kB                               | dentro, margem de 90,45 kB             |
-| Motion + smooth scroll, gzip    |  ≤ 80 kB | 50,75 kB dinâmicos                     | dentro e ausente do caminho compacto   |
-| Fontes WOFF2 ativas             | ≤ 140 kB | 70,92 kB                               | dentro                                 |
-| LCP desktop                     |  ≤ 2,5 s | 0,7 s                                  | dentro                                 |
-| LCP mobile, mediana de 3 runs   |  ≤ 2,5 s | 2,12 s                                 | dentro                                 |
-| CLS desktop / mobile            |    ≤ 0,1 | 0,036 / 0,007                          | dentro                                 |
-| INP                             | ≤ 200 ms | não medido                             | requer dado de campo ou instrumentação |
-| Requests desktop-only em mobile |        0 | confirmado pela suíte Playwright final | aprovado                               |
-| Vídeos na carga inicial         |        0 | montados somente após interação        | aprovado                               |
+| Área                            |   Budget | Snapshot-base de 25/07                | Estado naquele snapshot                |
+| ------------------------------- | -------: | ------------------------------------- | -------------------------------------- |
+| JavaScript inicial, gzip        | ≤ 170 kB | 79,55 kB                              | dentro, margem de 90,45 kB             |
+| Motion + smooth scroll, gzip    |  ≤ 80 kB | 50,75 kB dinâmicos                    | dentro e ausente do caminho compacto   |
+| Fontes WOFF2 ativas             | ≤ 140 kB | 70,92 kB                              | dentro                                 |
+| LCP desktop                     |  ≤ 2,5 s | 0,7 s                                 | dentro                                 |
+| LCP mobile, mediana de 3 runs   |  ≤ 2,5 s | 2,12 s                                | dentro                                 |
+| CLS desktop / mobile            |    ≤ 0,1 | 0,036 / 0,007                         | dentro                                 |
+| INP                             | ≤ 200 ms | não medido                            | requer dado de campo ou instrumentação |
+| Requests desktop-only em mobile |        0 | confirmado pela suíte Playwright-base | aprovado                               |
+| Vídeos na carga inicial         |        0 | montados somente após interação       | aprovado                               |
 
 O budget de motion/scroll inclui `EditorialMotion` (`0,44 kB gzip`), `motion` com GSAP/ScrollTrigger (`44,98 kB gzip`) e `desktop-scroll` com Lenis (`5,33 kB gzip`). Os três são dinâmicos e protegidos pelo mesmo gate.
 
-## Resultado do build
+## Resultado do build-base
 
 ### JavaScript
 
@@ -77,7 +81,7 @@ O CSS concentra tokens, reset, tipografia, composição responsiva e módulos do
 
 As fontes são empacotadas localmente por Fontsource, sem dependência de CDN.
 
-## Lighthouse final
+## Lighthouse do baseline
 
 Os relatórios completos foram gerados localmente nestes caminhos (o diretório `artifacts/` é ignorado no Git):
 
@@ -103,7 +107,7 @@ Três amostras mobile produziram scores de Performance **96, 97 e 98**. A median
 | CLS                     |     0,007 |
 | TBT                     |      7 ms |
 
-Desktop atinge 100 nas quatro categorias. Mobile mantém acessibilidade, boas práticas e SEO em 100 e estabiliza Performance em 97. A mediana de LCP fica 0,38 s abaixo do budget. A redução do TBT confirma o benefício de retirar toda a ilha de motion do caminho inicial.
+Naquele snapshot, desktop atingiu 100 nas quatro categorias. Mobile manteve acessibilidade, boas práticas e SEO em 100 e estabilizou Performance em 97. A mediana de LCP ficou 0,38 s abaixo do budget. A medição não deve ser atribuída automaticamente à revisão cirúrgica posterior.
 
 Lighthouse não mede INP de campo neste snapshot. TBT ajuda a localizar custo de main thread, mas não deve ser apresentado como substituto de INP.
 
@@ -118,6 +122,7 @@ hover: hover
 prefers-reduced-motion: no-preference
 Save-Data = false
 deviceMemory ausente ou >= 4
+WebGL/WebGL2 disponível sem major performance caveat
 ```
 
 Quando o gate falha:
@@ -126,8 +131,8 @@ Quando o gate falha:
 - GSAP, `@gsap/react` e ScrollTrigger não são solicitados;
 - `desktop-scroll`/Lenis não são solicitados;
 - `DesktopStarScene` e `desktop-3d` não são solicitados;
-- não é criado contexto WebGL;
-- a estrela SVG estática mantém a composição;
+- não é criada a cena Three.js nem mantido um contexto WebGL de renderização;
+- estrelas SVG estáticas no Hero e em Resultados mantêm a composição;
 - as entradas editoriais permanecem no estado final legível;
 - o scroll permanece nativo.
 
@@ -135,7 +140,7 @@ Essa separação é feita por `import()` e `React.lazy`, não por `display: none
 
 ## Evidência Playwright
 
-A suíte final executa seis projetos:
+O snapshot-base executou seis projetos:
 
 - 320×720;
 - 375×812;
@@ -144,26 +149,41 @@ A suíte final executa seis projetos:
 - 1440×900;
 - 1920×1080.
 
-Resultado: **48 testes, 40 aprovados, 8 ignorados intencionalmente por viewport e 0 falhas**.
+Resultado histórico: **48 testes, 40 aprovados, 8 ignorados intencionalmente por viewport e 0 falhas**.
 
 Os cenários de rede rejeitam requests que correspondam a `EditorialMotion`, `motion`, `desktop-scroll`, `lenis`, `DesktopStarScene`, `desktop-3d` ou `three` em clientes compactos e reduced motion. Os oito skips pertencem a cenários deliberadamente restritos aos viewports onde fazem sentido; não são falhas.
 
 Screenshots completos dos seis viewports foram gerados localmente em `artifacts/`, diretório ignorado no Git.
 
+A suíte atual adiciona 1024×768 e 1366×768, além de:
+
+- acesso direto, scrollspy e `aria-current` para `#resultados`;
+- copy e métricas em PT/EN/ES;
+- labels acessíveis para `≈ R$ 70 mil`, `+15%` e “Semanas”;
+- limite dimensional de 300 px no Hero e 230 px nos demais pontos;
+- opacidade zero em Projetos e ausência de interseção com `data-star-protected`;
+- desmontagem/remontagem da ilha ao redimensionar 1440 → 1024 → 1366;
+- 64 screenshots seccionais previstos em oito larguras e oito posições.
+
+O resultado integral da matriz atual e a inspeção desses screenshots ainda estão pendentes. A contagem histórica acima não substitui essa execução.
+
 ## Custo e comportamento do 3D
 
 A cena Three.js é decorativa e não contém texto, links ou informação essencial. Ela:
 
-- usa `src/utils/scroll.ts` para clamp, mapeamento e interpolação do progresso, cobertos por testes unitários;
+- usa o `clamp` de `src/utils/scroll.ts` para conter o objeto na viewport;
 - limita `devicePixelRatio` a `1.5`;
-- usa uma geometria extrudada, uma malha, edges e três luzes;
-- renderiza somente quando há scroll, resize, pointer move ou retorno à aba;
+- mantém um canvas quadrado de 190–230 px e escala de Hero abaixo de 300 px;
+- usa uma geometria extrudada mais fina, uma malha, edges e três luzes;
+- resolve a timeline por waypoints semânticos de Hero, Sobre, Projetos, Resultados, Experiência, Ferramentas, Formação, Laboratório, Contato e footer;
+- fica invisível em Projetos e outras zonas densas; gutters só são usados quando comportam objeto, 32 px de respiro e 16 px de padding;
+- renderiza somente quando a timeline muda, há resize ou a aba volta a ficar visível;
 - não mantém um RAF infinito;
 - não renderiza com a aba oculta;
 - remove observers, listeners, geometria, materiais, renderer e contexto no cleanup;
-- preserva o poster SVG se a importação ou criação do WebGL falhar.
+- preserva/restaura posters SVG locais se a importação, criação do renderer ou contexto WebGL falhar.
 
-O chunk Three.js é maior do que todo o JavaScript inicial gzip. A decisão continua aceitável porque ele é estritamente desktop-only e progressivo.
+No snapshot-base, o chunk Three.js era maior do que todo o JavaScript inicial gzip. A decisão continua condicionada ao isolamento desktop-only; o tamanho atual do chunk deve ser recolhido no próximo build.
 
 ## Vídeos e mídia
 
@@ -198,6 +218,7 @@ Medidas de contenção:
 - propriedades principais limitadas a `transform` e `opacity`;
 - Lenis usa o ticker GSAP, evitando um segundo loop independente;
 - no máximo uma ilha 3D e um recorte líquido scroll-linked.
+- os cards de Resultados entram uma vez; somente 70 e 15 recebem contador visual, enquanto labels acessíveis permanecem estáticos.
 
 ## Limitações e oportunidades
 
@@ -219,15 +240,14 @@ Oportunidades priorizadas:
 5. Comparar desktop com e sem Lenis usando INP e experiência de teclado.
 6. Reavaliar a ilha Three.js se o custo dinâmico crescer ou o ganho visual deixar de justificar o chunk.
 
-## Estado final
+## Estado da revisão atual
 
-- build: aprovado;
-- JavaScript inicial: dentro do budget;
-- Lighthouse desktop/mobile: aprovado;
-- LCP e CLS laboratoriais: dentro dos budgets;
-- Vitest: 15/15;
-- Playwright: 40 aprovados, 8 skips intencionais e 0 falhas;
-- isolamento de motion/Lenis/Three em mobile, tablet e reduced motion: aprovado;
-- vídeos sob demanda: aprovado.
+- build e tamanhos de bundle da revisão: **pendentes de snapshot final**;
+- Lighthouse desktop/mobile da revisão: **não reexecutado neste relatório**;
+- LCP e CLS atuais: **não medidos**; os valores acima são do baseline;
+- Vitest e Playwright: **pendentes de registro do último run integral após todos os ajustes**;
+- isolamento de motion/Lenis/Three em mobile, tablet, reduced motion e WebGL indisponível: **implementado; regressão integral pendente**;
+- screenshots seccionais da estrela/Resultados: **pendentes de geração e inspeção final**;
+- vídeos sob demanda: comportamento preservado no código; preview de deploy continua pendente.
 
 INP, FPS e memória permanecem métricas complementares de campo/runtime; não são apresentados como resultados já medidos.

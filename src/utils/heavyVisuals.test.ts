@@ -7,6 +7,7 @@ const eligibleEnvironment = {
   hover: true,
   reducedMotion: false,
   saveData: false,
+  webglSupported: true,
 };
 
 describe('shouldEnableHeavyVisuals', () => {
@@ -26,6 +27,7 @@ describe('shouldEnableHeavyVisuals', () => {
     ['a device without hover', { hover: false }],
     ['reduced-motion preference', { reducedMotion: true }],
     ['data-saving preference', { saveData: true }],
+    ['missing WebGL support', { webglSupported: false }],
     ['less than 4 GB of reported memory', { deviceMemory: 3 }],
   ])('disables desktop enhancements for %s', (_reason, override) => {
     expect(

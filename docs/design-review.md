@@ -1,20 +1,22 @@
-# Revisão final de design — SIGNAL / SELECTED WORK
+# Revisão de design — SIGNAL / SELECTED WORK
 
-Data da auditoria: 25 de julho de 2026.
+Revisão cirúrgica: 25 de julho de 2026.
 
 ## Veredito
 
-**Resultado visual e técnico: aprovado, 9,3/10.**
+**Status da implementação:** a nova seção de Resultados, a copy PT/EN/ES e a coreografia semântica da estrela estão presentes no código.
 
-**Resultado do gate de implementação: aprovado, sem blockers abertos.**
+**Status do gate final:** em validação. A suíte integral, os novos screenshots seccionais e um novo snapshot de bundle/Lighthouse ainda precisam ser fechados para esta revisão.
 
-O redesign concretiza a tese “Engenharia em modo de edição”. A identidade é editorial, técnica, tátil e reconhecível: Ink/Paper/Signal, artefatos em CSS/SVG, ledger de experiência, cinco projetos com composições distintas e uma recomposição específica para mobile.
+O score **9,3/10** registrado em 25/07/2026 pertence ao baseline anterior. Ele continua documentado abaixo como referência histórica, mas não é transferido automaticamente para o estado atual.
 
-O gate único começa em 1280 px e controla EditorialMotion/GSAP, ScrollTrigger, Lenis e Three.js. Mobile, tablet compacto e reduced motion preservam a composição estática completa sem baixar nenhum desses runtimes.
+O redesign mantém a tese “Engenharia em modo de edição”. A identidade continua editorial, técnica, tátil e reconhecível: Ink/Paper/Signal, artefatos em CSS/SVG, ledger de experiência, cinco projetos com composições distintas e uma recomposição específica para mobile. A nova seção `#resultados` acrescenta impacto sem virar um bloco genérico de KPIs.
+
+O gate único começa em 1280 px e controla EditorialMotion/GSAP, ScrollTrigger, Lenis e Three.js. Ele agora também exige suporte WebGL real. Mobile, tablet compacto, `Save-Data`, hardware restrito, WebGL indisponível e reduced motion preservam a composição estática completa sem baixar a ilha pesada.
 
 ## Escopo e evidências
 
-Auditoria feita sobre os seguintes artefatos locais (o diretório `artifacts/` é ignorado no Git):
+O baseline de 25/07 foi auditado sobre os seguintes artefatos locais (o diretório `artifacts/` é ignorado no Git):
 
 - `artifacts/mobile-320-320x720-full.png` — 320 × 16691;
 - `artifacts/mobile-375-375x812-full.png` — 375 × 16188;
@@ -27,10 +29,10 @@ Auditoria feita sobre os seguintes artefatos locais (o diretório `artifacts/` �
 - `docs/design-plan.md`;
 - `docs/design-dna.json`;
 - `docs/animation-map.md`;
-- implementação final em `src/`;
+- implementação do baseline em `src/`;
 - configuração e artefatos do build.
 
-Resultados automatizados:
+Resultados automatizados daquele baseline:
 
 - Vitest: **15/15**;
 - Playwright: **48 testes — 40 aprovados, 8 skips intencionais por viewport e 0 falhas**;
@@ -39,9 +41,13 @@ Resultados automatizados:
 - três amostras mobile: Performance 96/97/98, mediana 97;
 - build de produção: **aprovado**.
 
-Screenshots comprovam composição, reflow e estado final. Lighthouse acrescenta evidência laboratorial de carregamento, estabilidade visual, acessibilidade, boas práticas e SEO. INP de campo, FPS, memória, leitor de tela e zoom continuam medições complementares.
+Esses screenshots e números comprovam o baseline, não a revisão atual. Para o novo estado, a suíte está configurada com dez viewports (320, 375, 390, 768, 1024, 1280, 1366, 1440, 1600 e 1920 px) e evidências seccionais nas seis larguras obrigatórias, mais 1280 e 1600 px para validar as fronteiras da estrela. Ainda falta registrar a execução completa e revisar os novos arquivos em `artifacts/star-results/`.
 
-## Matriz GStack final
+INP de campo, FPS, memória, leitor de tela e zoom continuam medições complementares.
+
+## Matriz GStack do baseline
+
+As notas abaixo foram fechadas antes da seção de Resultados e da nova trajetória da estrela. Servem como régua de comparação; uma nova nota só deve ser publicada depois do gate atual.
 
 | Dimensão            | Alvo inicial | Nota final | Evidência concreta                                                                                                                 |
 | ------------------- | -----------: | ---------: | ---------------------------------------------------------------------------------------------------------------------------------- |
@@ -73,49 +79,62 @@ O Hero mantém o foco dominante. O liquid amarelo/cromo ocupa o gutter esquerdo,
 
 Os cinco projetos são o ponto mais forte: mudam proporção, lado, superfície, sombra e linguagem de arte sem parecer cinco produtos desconectados. O projeto de leads recebe o maior peso, conforme o plano.
 
+Resultados entra logo depois dos projetos como um painel técnico assimétrico, com grid de baixa opacidade, handles, tipografia de impacto e três provas. A escala editorial dá mais peso a `≈ R$ 70 mil`, preserva `+15%` e trata “Semanas” como texto deliberadamente não quantificado.
+
 ### Mobile e tablet
 
-Os quatro renders compactos comprovam uma direção própria:
+A recomposição compacta atual preserva uma direção própria, ainda pendente das novas evidências seccionais:
 
 - o wordmark vira barra compacta;
 - nome, proposição, CTAs e status preservam a ordem;
 - a estrela SVG entra no fluxo sem significado essencial;
+- Resultados mantém os três artigos, labels acessíveis e valores finais sem depender de contador;
 - o bounding box abandona medidas pequenas;
 - projetos exibem contexto e ações antes da mídia;
 - experiência, formação e capacidades empilham sem perder relações;
 - nenhum título principal é truncado;
-- não há overflow horizontal observável em 320, 375, 390 ou 768 px.
+- as regras responsivas evitam overflow horizontal em 320, 375, 390 ou 768 px; a matriz final ainda precisa reconfirmar isso depois da nova seção.
 
 ## Reauditoria técnica
 
-### Gate 1280/1279 — aprovado
+### Gate 1280/1279 — implementado; regressão final pendente
 
-- `src/utils/heavyVisuals.ts`: habilita apenas em `width >= 1280`;
-- testes unitários: aprovam 1280 e rejeitam 1279;
+- `src/utils/heavyVisuals.ts`: habilita apenas em `width >= 1280` e com contexto WebGL/WebGL2 disponível;
+- os testes unitários cobrem 1280/1279 e o caso sem WebGL;
 - CSS: corte coerente em `79.999rem`;
 - `DesktopEnhancements.tsx`: EditorialMotion, Lenis e DesktopStarScene só são importados depois do gate;
-- E2E: clientes compactos e reduced motion rejeitam requests de `EditorialMotion`, `motion`, `desktop-scroll`, `lenis`, `DesktopStarScene`, `desktop-3d` e `three`.
+- a suíte E2E mantém as asserções que rejeitam `EditorialMotion`, `motion`, `desktop-scroll`, `lenis`, `DesktopStarScene`, `desktop-3d` e `three` em clientes compactos e reduced motion; execução integral da revisão pendente.
 
-### Motion lazy — aprovado
+### Motion lazy — implementado; revisão visual pendente
 
 GSAP, `@gsap/react` e ScrollTrigger vivem em `src/components/motion/EditorialMotion.tsx`, montado com `React.lazy`.
 
-- A01, A02, A03 e A04 existem apenas no desktop elegível;
+- A01–A04 e a animação de Resultados existem apenas no desktop elegível;
 - tablet, mobile e reduced motion mantêm o estado estático completo;
 - `App.tsx` não importa runtime de motion;
 - Lenis compartilha o mesmo gate e ticker GSAP;
 - cleanup permanece ligado ao ciclo de vida React.
 
-### Performance — aprovada
+### Estrela semântica — implementada; evidência final pendente
 
-Build:
+- canvas quadrado de 190–230 px, com escala do Hero abaixo de 300 px;
+- waypoints derivados de seções e projetos reais, não de frações uniformes da página;
+- estrela oculta em Projetos, painel de métricas, Ferramentas, Laboratório e footer;
+- slots laterais só aparecem se o gutter comportar objeto, respiro e padding;
+- entre 1280 e 1599 px, a presença se concentra no Hero e no slot de Resultados;
+- posters locais permanecem no Hero e em Resultados até o primeiro frame válido e voltam a aparecer quando a cena fica indisponível;
+- a interação por ponteiro foi removida para reduzir ruído e manter a estrela como fio narrativo.
+
+### Performance — baseline aprovado; revisão atual pendente
+
+Build de 25/07:
 
 - JS inicial: **250,07 kB bruto / 79,55 kB gzip**;
 - CSS inicial: **69,31 kB bruto / 14,28 kB gzip**;
 - ilha desktop adicional: aproximadamente **192,87 kB gzip**;
 - total com todos os enhancements: aproximadamente **272,42 kB gzip**.
 
-Lighthouse:
+Lighthouse de 25/07:
 
 | Perfil                | Performance | Acessibilidade | Best Practices | SEO |    FCP |    LCP |   CLS |   TBT |
 | --------------------- | ----------: | -------------: | -------------: | --: | -----: | -----: | ----: | ----: |
@@ -123,7 +142,7 @@ Lighthouse:
 | Mobile, amostra final |          97 |            100 |            100 | 100 |  2,0 s |  2,1 s | 0,007 | 30 ms |
 | Mobile, mediana de 3  |          97 |              — |              — |   — | 1,97 s | 2,12 s | 0,007 |  7 ms |
 
-A queda do TBT e o ganho da Performance mobile são coerentes com a remoção do runtime de motion do caminho inicial.
+Esses valores não devem ser apresentados como medição da nova seção ou da cena reescrita. O próximo fechamento precisa repetir build e Lighthouse, preservando os mesmos budgets.
 
 ### Legado — limpeza aprovada
 
@@ -133,21 +152,23 @@ A queda do TBT e o ganho da Performance mobile são coerentes com a remoção do
 - `node_modules` removido do índice Git em commit separado, com instalação local preservada.
 - hook `useReducedMotion` sem consumidores removido; utilitários de scroll agora alimentam a cena e permanecem cobertos por testes.
 
-## Gate final
+## Gate da revisão atual
 
-| Item                                            | Estado                                                                             |
-| ----------------------------------------------- | ---------------------------------------------------------------------------------- |
-| Screenshots 320, 375, 390, 768, 1440 e 1920     | **Aprovado:** seis renders finais arquivados.                                      |
-| Um foco dominante por viewport                  | **Aprovado** nos seis renders.                                                     |
-| Ornamento comunica seleção, processo ou autoria | **Aprovado.**                                                                      |
-| Projetos não repetem o mesmo template           | **Aprovado com destaque.**                                                         |
-| Mobile/tablet sem motion, Lenis ou Three        | **Aprovado:** gate e E2E cobrem todos os chunks.                                   |
-| Reduced motion completo                         | **Aprovado:** estado estático e zero requests dos runtimes pesados.                |
-| Teclado, foco e 320 px                          | **Aprovado;** leitor de tela e zoom continuam complementares.                      |
-| Bundle, LCP e CLS                               | **Aprovado.**                                                                      |
-| Lighthouse                                      | **Aprovado:** 100 desktop e Performance mediana 97 mobile.                         |
-| Testes e build                                  | **Aprovado:** 15/15 unit, 40 passes, 8 skips intencionais, 0 falhas e build final. |
-| Nenhuma nota abaixo de 8                        | **Aprovado:** menor nota 8,4.                                                      |
+| Item                                               | Estado                                                                             |
+| -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `#resultados` após Projetos e antes de Experiência | **Implementado**                                                                   |
+| Menu, hash direto, scrollspy e `aria-current`      | **Implementado; execução E2E final pendente**                                      |
+| Copy orgânica e consistente em PT/EN/ES            | **Implementada; revisão humana por pessoa fluente recomendada**                    |
+| Métricas sem valor inventado                       | **Implementado:** `≈ R$ 70 mil`, `+15%` e “Semanas” sem quantidade                 |
+| Waypoints semânticos e ausência em áreas densas    | **Implementado; screenshots e asserções integrais pendentes**                      |
+| Fallback Hero/Resultados e gate sem WebGL          | **Implementado; cenário manual de context loss ainda recomendado**                 |
+| Mobile/tablet sem motion, Lenis ou Three           | **Proteção implementada; regressão de Network pendente no estado final**           |
+| Reduced motion completo                            | **Proteção implementada; regressão final pendente**                                |
+| Screenshots seccionais em oito larguras            | **PENDENTE QA:** 64 evidências em `artifacts/star-results/`                        |
+| Lint, types e formatação                           | **APROVADOS**                                                                      |
+| Build, unit e matriz E2E                           | **PENDENTE FECHAMENTO:** registrar apenas o último run, depois de todos os ajustes |
+| Bundle e Lighthouse                                | **PENDENTE NOVO SNAPSHOT:** números de 25/07 são somente baseline                  |
+| Leitor de tela, zoom 200%, INP, FPS e memória      | **PENDENTE QA COMPLEMENTAR**                                                       |
 
 ## Melhorias não bloqueantes
 
@@ -157,7 +178,8 @@ A queda do TBT e o ganho da Performance mobile são coerentes com a remoção do
 4. Testar leitor de tela e zoom a 200%.
 5. Verificar requests reais dos subsets de fonte antes de otimizar.
 6. Gerar posters e transcodes leves para os MP4s.
+7. Recalcular a rubrica GStack somente depois de revisar as evidências da nova estrela e de Resultados.
 
 ## Conclusão
 
-As divergências técnicas encontradas nas auditorias foram corrigidas e verificadas. O design está pronto do ponto de vista visual e funcional, com build, seis screenshots e relatórios Lighthouse gerados localmente, além de Vitest e Playwright aprovados. As medições complementares não alteram o score GStack final de **9,3/10**.
+A revisão cirúrgica preserva o sistema visual aprovado e corrige dois pontos estruturais: o impacto ganhou um capítulo navegável e a estrela deixou de percorrer a página como uma camada global indiferente ao conteúdo. O código está alinhado à direção pretendida, mas o veredito final depende do fechamento das evidências listadas acima. Até lá, **9,3/10** permanece apenas como score histórico do baseline.

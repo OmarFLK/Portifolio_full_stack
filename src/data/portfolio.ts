@@ -12,6 +12,7 @@ export interface Project {
   index: string;
   title: LocalizedText;
   description: LocalizedText;
+  metaLabel?: LocalizedText;
   technologies: string[];
   links: ExternalLink[];
   localVideo?: string;
@@ -27,6 +28,19 @@ export interface Experience {
   technologies: string[];
 }
 
+export interface ResultMetric {
+  id: 'ai-savings' | 'efficiency' | 'manual-weeks';
+  displayValue: LocalizedText;
+  accessibleLabel: LocalizedText;
+  title: LocalizedText;
+  description: LocalizedText;
+  counter?: {
+    target: number;
+    prefix: LocalizedText;
+    suffix: LocalizedText;
+  };
+}
+
 export const localeNames: Record<Locale, string> = {
   pt: 'Português',
   en: 'English',
@@ -39,6 +53,7 @@ export const copy = {
     nav: {
       about: 'Sobre',
       projects: 'Projetos',
+      results: 'Resultados',
       experience: 'Experiência',
       skills: 'Ferramentas',
       education: 'Formação',
@@ -52,59 +67,66 @@ export const copy = {
     heroTitleSelected: 'software',
     heroTitleBottom: 'em movimento.',
     heroLead:
-      'Estudante de Inteligência Artificial e Ciência de Dados que constrói automações, APIs e produtos digitais com atenção à engenharia e ao design.',
-    heroStatus: 'Disponível para conversar',
-    heroLocation: 'Santo André, SP',
+      'Curso Inteligência Artificial e Ciência de Dados e gosto de pegar problemas meio bagunçados e transformar em sistemas que funcionam — automações, APIs e produtos digitais feitos com lógica, cuidado e curiosidade.',
+    heroStatus: 'Sempre aberto a uma boa conversa',
+    heroAvailability: 'Projetos, ideias e problemas interessantes são bem-vindos.',
     heroProjects: 'Explorar projetos',
     heroContact: 'Entrar em contato',
     heroResumePt: 'Currículo PT-BR',
     heroResumeEn: 'Resume EN',
     selectedLabel: 'objeto selecionado',
     aboutIndex: '01 / contexto',
-    aboutTitle: 'Curiosidade técnica com vontade de colocar coisas no mundo.',
+    aboutTitle: 'Gosto de entender como as coisas funcionam — e depois fazer funcionar melhor.',
     aboutBody:
-      'Sou formado no Ensino Médio Técnico em TI pelo Senac Aclimação e curso Inteligência Artificial e Ciência de Dados no Instituto Mauá de Tecnologia. Meu trabalho cruza desenvolvimento full stack, automação, dados e experimentação com IA.',
+      'Minha base veio do Ensino Médio Técnico em TI do Senac Aclimação. Hoje curso Inteligência Artificial e Ciência de Dados no Instituto Mauá de Tecnologia e, no dia a dia, misturo desenvolvimento full stack, automação, dados e experimentos com IA.',
     aboutBody2:
-      'Gosto de transformar problemas abertos em sistemas claros: entender o contexto, projetar a arquitetura, construir, medir e melhorar.',
-    aboutNote: 'Pensar → prototipar → construir → revisar',
+      'Eu gosto da parte em que o problema ainda está meio aberto: faço perguntas, rascunho uma solução, construo, testo e vou ajustando até ela ficar clara e útil.',
+    aboutNote: 'Perguntar → rascunhar → construir → testar de verdade',
     projectsIndex: '02 / provas',
     projectsTitle: 'Projetos selecionados',
     projectsIntro:
-      'Sistemas e experimentos reais — de automações em Python a aplicações full stack.',
+      'Aqui estão alguns projetos em que fui do “será que dá?” até o código rodando — de automações em Python a aplicações full stack.',
     projectCode: 'Código',
     projectLive: 'Abrir site',
     projectVideo: 'Ver demonstração',
     projectClose: 'Fechar demonstração',
-    projectUnavailable: 'Sem site publicado',
-    experienceIndex: '03 / trajetória',
-    experienceTitle: 'Experiência em registro',
+    projectUnavailable: 'Sem site público por enquanto',
+    resultsIndex: '03 / impacto',
+    resultsEyebrow: 'DO CÓDIGO / PARA A OPERAÇÃO',
+    resultsTitle: 'Resultados que viraram impacto real',
+    resultsIntro:
+      'Código só vale o esforço quando melhora o trabalho de alguém. Estes três resultados saíram da tela e chegaram à operação.',
+    resultsLog: 'IMPACT.LOG / 03 RESULTADOS REAIS',
+    experienceIndex: '04 / trajetória',
+    experienceTitle: 'Experiência, na prática.',
     experienceIntro:
-      'Responsabilidades, contextos e tecnologias — sem inflar cargo, resultado ou data.',
-    skillsIndex: '04 / ferramentas',
-    skillsTitle: 'Stack por função',
+      'Um recorte do que já construí, mantive e aprendi em cada contexto — do suporte técnico à IA e automação.',
+    skillsIndex: '05 / ferramentas',
+    skillsTitle: 'Ferramentas que entram em jogo',
     skillsIntro:
-      'Tecnologia é meio. Organizo as ferramentas pelo tipo de problema que ajudam a resolver.',
-    educationIndex: '05 / base',
-    educationTitle: 'Formação e repertório',
+      'Não coleciono tecnologia por nome. Escolho a stack pelo problema, pelo contexto e pelo que precisa continuar funcionando depois.',
+    educationIndex: '06 / base',
+    educationTitle: 'A base que continua crescendo',
     educationAcademic: 'Formação acadêmica',
     educationCerts: 'Certificações',
     educationLanguages: 'Idiomas',
     current: 'Em andamento',
-    labIndex: '06 / laboratório',
-    labTitle: 'Dados, artigos e experimentos',
-    labBody: 'Uma extensão do portfólio para dashboards, estudos visuais, artigos e código aberto.',
+    labIndex: '07 / laboratório',
+    labTitle: 'Coisas que não cabem só em um card',
+    labBody:
+      'Dashboards, estudos visuais, artigos e código aberto que fazem parte do mesmo laboratório — só vivem em outros cantos da internet.',
     behance: 'Projetos no Behance',
     drive: 'Artigos no Drive',
     github: 'Laboratório no GitHub',
-    contactIndex: '07 / próximo sinal',
-    contactTitle: 'Tem um problema interessante para construir?',
+    contactIndex: '08 / próximo sinal',
+    contactTitle: 'Tem um problema difícil, repetitivo ou simplesmente interessante?',
     contactBody:
-      'Estou sempre aberto a conversar sobre IA, automação, dados, APIs e produtos digitais.',
+      'Se envolver IA, automação, dados, APIs ou produto digital, provavelmente vamos ter assunto. Me chama e a gente entende o resto.',
     contactEmail: 'Enviar e-mail',
     contactWhatsapp: 'Conversar no WhatsApp',
     socialLabel: 'Outros canais',
     backTop: 'Voltar ao topo',
-    footerNote: 'Projetado e desenvolvido por Omar Saliba.',
+    footerNote: 'Pensado, desenhado e colocado no ar por Omar Saliba.',
     rights: 'Todos os direitos reservados.',
     mediaDialogTitle: 'Demonstração do projeto',
   },
@@ -113,6 +135,7 @@ export const copy = {
     nav: {
       about: 'About',
       projects: 'Projects',
+      results: 'Results',
       experience: 'Experience',
       skills: 'Toolkit',
       education: 'Education',
@@ -126,59 +149,66 @@ export const copy = {
     heroTitleSelected: 'software',
     heroTitleBottom: 'in motion.',
     heroLead:
-      'Artificial Intelligence and Data Science student building automations, APIs and digital products with equal care for engineering and design.',
-    heroStatus: 'Open to conversations',
-    heroLocation: 'Santo André, Brazil',
+      'I study Artificial Intelligence and Data Science, and I like taking messy problems and turning them into systems that work — automations, APIs, and digital products built with logic, care, and curiosity.',
+    heroStatus: 'Always up for a good conversation',
+    heroAvailability: 'Projects, ideas, and interesting problems are all welcome.',
     heroProjects: 'Explore projects',
     heroContact: 'Get in touch',
     heroResumePt: 'CV in Portuguese',
     heroResumeEn: 'Resume in English',
     selectedLabel: 'selected object',
     aboutIndex: '01 / context',
-    aboutTitle: 'Technical curiosity with the urge to ship real things.',
+    aboutTitle: 'I like figuring out how things work — then making them work better.',
     aboutBody:
-      'I graduated from the IT technical high school program at Senac Aclimação and study Artificial Intelligence and Data Science at Instituto Mauá de Tecnologia. My work connects full stack development, automation, data and AI experimentation.',
+      'My foundation came from the IT technical high school program at Senac Aclimação. Today, I study Artificial Intelligence and Data Science at Instituto Mauá de Tecnologia while working across full stack development, automation, data, and AI experiments.',
     aboutBody2:
-      'I like turning open-ended problems into clear systems: understand the context, design the architecture, build, measure and improve.',
-    aboutNote: 'Think → prototype → build → review',
+      'I enjoy the stage where the problem is still open-ended: I ask questions, sketch a solution, build, test, and keep refining it until it feels clear and useful.',
+    aboutNote: 'Ask → sketch → build → test for real',
     projectsIndex: '02 / evidence',
     projectsTitle: 'Selected projects',
     projectsIntro:
-      'Real systems and experiments — from Python automations to full stack applications.',
+      'A few projects where I went from “could this work?” to working code — from Python automations to full stack applications.',
     projectCode: 'Source code',
     projectLive: 'Open website',
     projectVideo: 'Watch demo',
     projectClose: 'Close demo',
-    projectUnavailable: 'No published website',
-    experienceIndex: '03 / journey',
-    experienceTitle: 'Experience ledger',
+    projectUnavailable: 'No public website yet',
+    resultsIndex: '03 / impact',
+    resultsEyebrow: 'FROM CODE / TO OPERATIONS',
+    resultsTitle: 'Results that created real impact',
+    resultsIntro:
+      'Code is worth the effort when it makes someone’s work better. These three results made it past the screen and into day-to-day operations.',
+    resultsLog: 'IMPACT.LOG / 03 REAL RESULTS',
+    experienceIndex: '04 / journey',
+    experienceTitle: 'Experience, in practice.',
     experienceIntro:
-      'Responsibilities, contexts and technologies — without inflating roles, outcomes or dates.',
-    skillsIndex: '04 / toolkit',
-    skillsTitle: 'Stack by purpose',
-    skillsIntro: 'Technology is a means. I organize tools by the kind of problem they help solve.',
-    educationIndex: '05 / foundation',
-    educationTitle: 'Education and repertoire',
+      'A snapshot of what I have built, maintained, and learned along the way — from technical support to AI and automation.',
+    skillsIndex: '05 / toolkit',
+    skillsTitle: 'Tools I bring into the mix',
+    skillsIntro:
+      'I do not collect tools just for the name. I choose a stack around the problem, the context, and what needs to keep working afterwards.',
+    educationIndex: '06 / foundation',
+    educationTitle: 'A foundation that keeps growing',
     educationAcademic: 'Academic background',
     educationCerts: 'Certifications',
     educationLanguages: 'Languages',
     current: 'In progress',
-    labIndex: '06 / laboratory',
-    labTitle: 'Data, articles and experiments',
+    labIndex: '07 / laboratory',
+    labTitle: 'Work that does not fit into a single card',
     labBody:
-      'An extension of the portfolio for dashboards, visual studies, articles and open-source code.',
+      'Dashboards, visual studies, articles, and open-source code from the same lab — they just live in other corners of the internet.',
     behance: 'Work on Behance',
     drive: 'Articles on Drive',
     github: 'Lab on GitHub',
-    contactIndex: '07 / next signal',
-    contactTitle: 'Have an interesting problem to build?',
+    contactIndex: '08 / next signal',
+    contactTitle: 'Got a problem that is difficult, repetitive, or just plain interesting?',
     contactBody:
-      'I am always open to conversations about AI, automation, data, APIs and digital products.',
+      'If it involves AI, automation, data, APIs, or a digital product, we will probably have plenty to talk about. Send me a message and we can figure out the rest.',
     contactEmail: 'Send an email',
     contactWhatsapp: 'Chat on WhatsApp',
     socialLabel: 'Other channels',
     backTop: 'Back to top',
-    footerNote: 'Designed and developed by Omar Saliba.',
+    footerNote: 'Thought through, designed, and shipped by Omar Saliba.',
     rights: 'All rights reserved.',
     mediaDialogTitle: 'Project demonstration',
   },
@@ -187,6 +217,7 @@ export const copy = {
     nav: {
       about: 'Sobre mí',
       projects: 'Proyectos',
+      results: 'Resultados',
       experience: 'Experiencia',
       skills: 'Herramientas',
       education: 'Formación',
@@ -200,78 +231,204 @@ export const copy = {
     heroTitleSelected: 'software',
     heroTitleBottom: 'en movimiento.',
     heroLead:
-      'Estudiante de Inteligencia Artificial y Ciencia de Datos que construye automatizaciones, APIs y productos digitales con atención a la ingeniería y al diseño.',
-    heroStatus: 'Disponible para conversar',
-    heroLocation: 'Santo André, Brasil',
+      'Estudio Inteligencia Artificial y Ciencia de Datos, y me gusta tomar problemas algo desordenados y convertirlos en sistemas que funcionan: automatizaciones, APIs y productos digitales hechos con lógica, cuidado y curiosidad.',
+    heroStatus: 'Siempre dispuesto a una buena conversación',
+    heroAvailability: 'Los proyectos, las ideas y los problemas interesantes son bienvenidos.',
     heroProjects: 'Explorar proyectos',
     heroContact: 'Entrar en contacto',
     heroResumePt: 'CV en portugués',
-    heroResumeEn: 'Resume en inglés',
+    heroResumeEn: 'CV en inglés',
     selectedLabel: 'objeto seleccionado',
     aboutIndex: '01 / contexto',
-    aboutTitle: 'Curiosidad técnica con ganas de lanzar cosas reales.',
+    aboutTitle: 'Me gusta entender cómo funcionan las cosas y después hacer que funcionen mejor.',
     aboutBody:
-      'Me gradué del programa técnico de secundaria en TI de Senac Aclimação y estudio Inteligencia Artificial y Ciencia de Datos en el Instituto Mauá de Tecnologia. Mi trabajo conecta desarrollo full stack, automatización, datos y experimentación con IA.',
+      'Construí mi base en la secundaria técnica en TI de Senac Aclimação. Hoy estudio Inteligencia Artificial y Ciencia de Datos en el Instituto Mauá de Tecnologia mientras trabajo con desarrollo full stack, automatización, datos y experimentos con IA.',
     aboutBody2:
-      'Me gusta convertir problemas abiertos en sistemas claros: entender el contexto, diseñar la arquitectura, construir, medir y mejorar.',
-    aboutNote: 'Pensar → prototipar → construir → revisar',
+      'Me gusta la etapa en la que el problema todavía está abierto: hago preguntas, bosquejo una solución, construyo, pruebo y la voy afinando hasta que quede clara y útil.',
+    aboutNote: 'Preguntar → bosquejar → construir → probar de verdad',
     projectsIndex: '02 / pruebas',
     projectsTitle: 'Proyectos seleccionados',
     projectsIntro:
-      'Sistemas y experimentos reales — desde automatizaciones en Python hasta aplicaciones full stack.',
+      'Algunos proyectos en los que pasé de “¿será que funciona?” al código en marcha: desde automatizaciones en Python hasta aplicaciones full stack.',
     projectCode: 'Código',
     projectLive: 'Abrir sitio',
     projectVideo: 'Ver demostración',
     projectClose: 'Cerrar demostración',
-    projectUnavailable: 'Sin sitio publicado',
-    experienceIndex: '03 / trayectoria',
-    experienceTitle: 'Experiencia en registro',
+    projectUnavailable: 'Sin sitio público por ahora',
+    resultsIndex: '03 / impacto',
+    resultsEyebrow: 'DEL CÓDIGO / A LA OPERACIÓN',
+    resultsTitle: 'Resultados que generaron impacto real',
+    resultsIntro:
+      'El código vale el esfuerzo cuando mejora el trabajo de alguien. Estos tres resultados salieron de la pantalla y llegaron a la operación.',
+    resultsLog: 'IMPACT.LOG / 03 RESULTADOS REALES',
+    experienceIndex: '04 / trayectoria',
+    experienceTitle: 'Experiencia, en la práctica.',
     experienceIntro:
-      'Responsabilidades, contextos y tecnologías — sin inflar cargos, resultados ni fechas.',
-    skillsIndex: '04 / herramientas',
-    skillsTitle: 'Stack por función',
+      'Un recorrido por lo que construí, mantuve y aprendí en cada etapa: desde soporte técnico hasta IA y automatización.',
+    skillsIndex: '05 / herramientas',
+    skillsTitle: 'Herramientas que entran en juego',
     skillsIntro:
-      'La tecnología es un medio. Organizo las herramientas por el tipo de problema que ayudan a resolver.',
-    educationIndex: '05 / base',
-    educationTitle: 'Formación y repertorio',
+      'No colecciono tecnologías solo por el nombre. Elijo la stack según el problema, el contexto y lo que tendrá que seguir funcionando después.',
+    educationIndex: '06 / base',
+    educationTitle: 'Una base que sigue creciendo',
     educationAcademic: 'Formación académica',
     educationCerts: 'Certificaciones',
     educationLanguages: 'Idiomas',
     current: 'En curso',
-    labIndex: '06 / laboratorio',
-    labTitle: 'Datos, artículos y experimentos',
+    labIndex: '07 / laboratorio',
+    labTitle: 'Cosas que no caben en una sola tarjeta',
     labBody:
-      'Una extensión del portafolio para dashboards, estudios visuales, artículos y código abierto.',
+      'Dashboards, estudios visuales, artículos y código abierto del mismo laboratorio; simplemente viven en otros rincones de internet.',
     behance: 'Proyectos en Behance',
     drive: 'Artículos en Drive',
     github: 'Laboratorio en GitHub',
-    contactIndex: '07 / próxima señal',
-    contactTitle: '¿Tienes un problema interesante para construir?',
+    contactIndex: '08 / próxima señal',
+    contactTitle: '¿Tienes un problema difícil, repetitivo o simplemente interesante?',
     contactBody:
-      'Siempre estoy abierto a conversar sobre IA, automatización, datos, APIs y productos digitales.',
+      'Si tiene que ver con IA, automatización, datos, APIs o un producto digital, seguramente tendremos de qué hablar. Escríbeme y vemos el resto.',
     contactEmail: 'Enviar correo',
     contactWhatsapp: 'Hablar por WhatsApp',
     socialLabel: 'Otros canales',
     backTop: 'Volver arriba',
-    footerNote: 'Diseñado y desarrollado por Omar Saliba.',
+    footerNote: 'Pensado, diseñado y publicado por Omar Saliba.',
     rights: 'Todos los derechos reservados.',
     mediaDialogTitle: 'Demostración del proyecto',
   },
 } as const;
 
+export const resultMetrics: ResultMetric[] = [
+  {
+    id: 'ai-savings',
+    displayValue: {
+      pt: '≈ R$ 70 mil',
+      en: '≈ R$ 70K',
+      es: '≈ R$ 70 mil',
+    },
+    accessibleLabel: {
+      pt: 'Aproximadamente setenta mil reais economizados em gastos com inteligência artificial.',
+      en: 'Approximately seventy thousand Brazilian reais saved on AI expenses.',
+      es: 'Aproximadamente setenta mil reales brasileños ahorrados en gastos de inteligencia artificial.',
+    },
+    title: {
+      pt: 'Economizados em gastos com IA',
+      en: 'Saved on AI expenses',
+      es: 'Ahorrados en gastos de IA',
+    },
+    description: {
+      pt: 'Revisei ferramentas, modelos e fluxos de IA para cortar desperdício sem baixar a régua das entregas.',
+      en: 'I reviewed AI tools, models, and workflows to cut waste without lowering the bar for delivery.',
+      es: 'Revisé herramientas, modelos y flujos de IA para reducir desperdicios sin comprometer la calidad de las entregas.',
+    },
+    counter: {
+      target: 70,
+      prefix: { pt: '≈ R$ ', en: '≈ R$ ', es: '≈ R$ ' },
+      suffix: { pt: ' mil', en: 'K', es: ' mil' },
+    },
+  },
+  {
+    id: 'efficiency',
+    displayValue: { pt: '+15%', en: '+15%', es: '+15%' },
+    accessibleLabel: {
+      pt: 'Quinze por cento de aumento na eficiência operacional.',
+      en: 'Fifteen percent increase in operational efficiency.',
+      es: 'Quince por ciento de aumento en la eficiencia operativa.',
+    },
+    title: {
+      pt: 'De eficiência operacional',
+      en: 'Operational efficiency',
+      es: 'De eficiencia operativa',
+    },
+    description: {
+      pt: 'Automatizei etapas repetitivas e construí sistemas que deram mais velocidade à operação e chegaram a um ganho de 15% em eficiência.',
+      en: 'I automated repetitive steps and built systems that sped up operations, delivering a 15% gain in efficiency.',
+      es: 'Automaticé etapas repetitivas y construí sistemas que aceleraron la operación, alcanzando una mejora del 15% en eficiencia.',
+    },
+    counter: {
+      target: 15,
+      prefix: { pt: '+', en: '+', es: '+' },
+      suffix: { pt: '%', en: '%', es: '%' },
+    },
+  },
+  {
+    id: 'manual-weeks',
+    displayValue: { pt: 'Semanas', en: 'Weeks', es: 'Semanas' },
+    accessibleLabel: {
+      pt: 'Semanas de trabalho manual poupadas.',
+      en: 'Weeks of manual work saved.',
+      es: 'Semanas de trabajo manual ahorradas.',
+    },
+    title: {
+      pt: 'De trabalho manual poupadas',
+      en: 'Of manual work saved',
+      es: 'De trabajo manual ahorradas',
+    },
+    description: {
+      pt: 'Troquei rotinas manuais demoradas por fluxos mais rápidos, organizados e confiáveis — semanas que deixaram de ser gastas no repetitivo.',
+      en: 'I replaced slow manual routines with faster, more organized, and reliable flows — saving weeks that would otherwise have gone into repetitive work.',
+      es: 'Reemplacé rutinas manuales lentas por flujos más rápidos, organizados y confiables: semanas que dejaron de perderse en tareas repetitivas.',
+    },
+  },
+];
+
 export const projects: Project[] = [
   {
-    id: 'lead-enrichment',
+    id: 'verithaz',
     index: '01',
+    title: {
+      pt: 'Verithaz — IA Investigativa',
+      en: 'Verithaz — Investigative AI',
+      es: 'Verithaz — IA Investigativa',
+    },
+    description: {
+      pt: 'Uma IA investigativa que separa notícias em afirmações, revisa as fontes por trás delas e procura indícios de campanha ou manipulação. As estratégias da dialética erística descritas por Arthur Schopenhauer entram como lente crítica — não como atalho para um veredito automático.',
+      en: 'An investigative AI that breaks news into individual claims, reviews the sources behind them, and looks for signs of campaigning or manipulation. The strategies of eristic dialectic described by Arthur Schopenhauer serve as a critical lens — not as a shortcut to an automatic verdict.',
+      es: 'Una IA investigativa que separa noticias en afirmaciones, revisa las fuentes que las sustentan y busca indicios de campaña o manipulación. Las estrategias de la dialéctica erística descritas por Arthur Schopenhauer funcionan como lente crítica, no como atajo hacia un veredicto automático.',
+    },
+    metaLabel: { pt: 'FOCO', en: 'FOCUS', es: 'ENFOQUE' },
+    technologies: [
+      'IA investigativa',
+      'Análise de afirmações',
+      'Revisão de fontes',
+      'Sinais de manipulação',
+    ],
+    links: [],
+    visual: 'terminal',
+  },
+  {
+    id: 'vira-price',
+    index: '02',
+    title: {
+      pt: 'Vira Price',
+      en: 'Vira Price',
+      es: 'Vira Price',
+    },
+    description: {
+      pt: 'Uma startup criada para ajudar lojistas a cuidar das listas de fornecedores com menos atrito. A ideia é deixar tudo organizado, fácil de consultar e simples de manter no corre do dia a dia.',
+      en: 'A startup built to help retailers manage supplier lists with less friction. The idea is to keep everything organized, easy to consult, and simple to maintain in the middle of day-to-day operations.',
+      es: 'Una startup creada para ayudar a los comercios minoristas a gestionar sus listas de proveedores con menos fricción. La idea es mantener todo organizado, fácil de consultar y sencillo de actualizar en el ritmo del día a día.',
+    },
+    metaLabel: { pt: 'FOCO', en: 'FOCUS', es: 'ENFOQUE' },
+    technologies: [
+      'Gestão de fornecedores',
+      'Listas comerciais',
+      'Operação do lojista',
+      'Produto para varejo',
+    ],
+    links: [],
+    visual: 'ledger',
+  },
+  {
+    id: 'lead-enrichment',
+    index: '03',
     title: {
       pt: 'Automação de Enriquecimento de Leads',
       en: 'Lead Enrichment Automation',
       es: 'Automatización de Enriquecimiento de Leads',
     },
     description: {
-      pt: 'Script em Python que automatiza o enriquecimento de bases em Excel, pesquisa informações públicas e organiza cargos e descrições profissionais para reduzir trabalho manual.',
-      en: 'A Python script that automates Excel database enrichment, searches public information and structures roles and professional descriptions to reduce manual work.',
-      es: 'Script en Python que automatiza el enriquecimiento de bases en Excel, busca información pública y organiza cargos y descripciones profesionales para reducir trabajo manual.',
+      pt: 'Criei este script em Python para tirar o trabalho repetitivo do caminho: ele percorre bases de leads em Excel, busca informações públicas e organiza cargos e descrições profissionais automaticamente.',
+      en: 'I built this Python script to take repetitive work out of the way: it goes through Excel lead lists, searches public information, and automatically organizes job titles and professional descriptions.',
+      es: 'Creé este script en Python para quitar trabajo repetitivo del camino: recorre bases de leads en Excel, busca información pública y organiza automáticamente cargos y descripciones profesionales.',
     },
     technologies: ['Python', 'Selenium', 'Pandas', 'Excel'],
     links: [
@@ -289,68 +446,6 @@ export const projects: Project[] = [
     visual: 'signal',
   },
   {
-    id: 'restaurant-reservations',
-    index: '02',
-    title: {
-      pt: 'Sistema de Reservas para Restaurantes',
-      en: 'Restaurant Reservation System',
-      es: 'Sistema de Reservas para Restaurantes',
-    },
-    description: {
-      pt: 'Aplicação full stack para gerenciamento de reservas, com autenticação JWT, prevenção de conflitos, interface responsiva e arquitetura preparada para evolução.',
-      en: 'A full stack reservation management application with JWT authentication, conflict prevention, a responsive interface and an architecture designed to evolve.',
-      es: 'Aplicación full stack para gestionar reservas, con autenticación JWT, prevención de conflictos, interfaz responsive y arquitectura preparada para evolucionar.',
-    },
-    technologies: ['React', 'Python', 'FastAPI', 'PostgreSQL', 'Tailwind CSS', 'JWT'],
-    links: [
-      {
-        label: 'GitHub',
-        href: 'https://github.com/OmarFLK/sistemaReservaRestaurantes',
-        kind: 'github',
-      },
-      {
-        label: 'Website',
-        href: 'https://sistema-reserva-restaurantes.vercel.app',
-        kind: 'live',
-      },
-      {
-        label: 'YouTube',
-        href: 'https://www.youtube.com/watch?v=mqfGfd3WbR8',
-        kind: 'video',
-      },
-    ],
-    visual: 'ledger',
-  },
-  {
-    id: 'open-source-lab',
-    index: '03',
-    title: {
-      pt: 'OpenSource Lab',
-      en: 'OpenSource Lab',
-      es: 'OpenSource Lab',
-    },
-    description: {
-      pt: 'Hub de projetos e soluções em código aberto, voltado a documentação, colaboração e reutilização de aplicações e bibliotecas.',
-      en: 'A hub for open-source projects and solutions focused on documentation, collaboration and the reuse of applications and libraries.',
-      es: 'Hub de proyectos y soluciones de código abierto, enfocado en documentación, colaboración y reutilización de aplicaciones y bibliotecas.',
-    },
-    technologies: ['Open source', 'Documentação', 'Colaboração'],
-    links: [
-      {
-        label: 'GitHub',
-        href: 'https://github.com/OmarFLK/Portifolio_full_stack',
-        kind: 'github',
-      },
-      {
-        label: 'Website',
-        href: 'https://fullstackdevomar.vercel.app',
-        kind: 'live',
-      },
-    ],
-    localVideo: '/assets/videos/opensourceexp.mp4',
-    visual: 'terminal',
-  },
-  {
     id: 'educore',
     index: '04',
     title: {
@@ -359,9 +454,9 @@ export const projects: Project[] = [
       es: 'EduCore — Gestión Académica',
     },
     description: {
-      pt: 'Aplicação web desenvolvida no primeiro ano da graduação para gerenciar alunos, professores, notas e atividades acadêmicas.',
-      en: 'A web application built during the first year of college to manage students, teachers, grades and academic activities.',
-      es: 'Aplicación web desarrollada durante el primer año de la carrera para gestionar alumnos, profesores, notas y actividades académicas.',
+      pt: 'Meu projeto do primeiro ano da graduação: uma aplicação web para organizar alunos, professores, notas e atividades acadêmicas.',
+      en: 'My first-year college project: a web application for organizing students, teachers, grades, and academic activities.',
+      es: 'Mi proyecto del primer año de la carrera: una aplicación web para organizar alumnos, profesores, notas y actividades académicas.',
     },
     technologies: ['HTML', 'CSS', 'JavaScript', 'Node.js', 'MongoDB'],
     links: [
@@ -380,32 +475,32 @@ export const projects: Project[] = [
     visual: 'paper',
   },
   {
-    id: 'fincore',
+    id: 'open-source-lab',
     index: '05',
     title: {
-      pt: 'FinCore — Plataforma Financeira',
-      en: 'FinCore — Financial Platform',
-      es: 'FinCore — Plataforma Financiera',
+      pt: 'OpenSource Lab',
+      en: 'OpenSource Lab',
+      es: 'OpenSource Lab',
     },
     description: {
-      pt: 'Sistema de controle financeiro pessoal desenvolvido com foco em simplicidade, clareza e usabilidade.',
-      en: 'A personal finance control system developed with a focus on simplicity, clarity and usability.',
-      es: 'Sistema de control financiero personal desarrollado con foco en simplicidad, claridad y usabilidad.',
+      pt: 'Um espaço para reunir projetos que outras pessoas podem estudar, reutilizar e melhorar, com documentação, colaboração e código aberto no centro.',
+      en: 'A place for projects other people can study, reuse, and improve, with documentation, collaboration, and open source at its core.',
+      es: 'Un espacio para reunir proyectos que otras personas pueden estudiar, reutilizar y mejorar, con documentación, colaboración y código abierto en el centro.',
     },
-    technologies: ['HTML', 'CSS', 'JavaScript'],
+    technologies: ['Open source', 'Documentação', 'Colaboração'],
     links: [
       {
         label: 'GitHub',
-        href: 'https://github.com/OmarFLK/FinCore',
+        href: 'https://github.com/OmarFLK/Portifolio_full_stack',
         kind: 'github',
       },
       {
-        label: 'YouTube',
-        href: 'https://youtu.be/UhHdgLxBPW4',
-        kind: 'video',
+        label: 'Website',
+        href: 'https://fullstackdevomar.vercel.app',
+        kind: 'live',
       },
     ],
-    localVideo: '/assets/videos/finexp.mp4',
+    localVideo: '/assets/videos/opensourceexp.mp4',
     visual: 'grid',
   },
 ];
@@ -421,9 +516,9 @@ export const experiences: Experience[] = [
     organization: 'OneBox - DNE',
     period: { pt: 'Atual', en: 'Current', es: 'Actual' },
     description: {
-      pt: 'Desenvolvimento e manutenção de soluções de IA e automação com serviços da AWS; criação e integração de APIs REST com Java, Python e FastAPI; manutenção de sistemas, correção de bugs e integração com MySQL e PostgreSQL.',
-      en: 'Developing and maintaining AI and automation solutions with AWS services; building and integrating REST APIs with Java, Python and FastAPI; maintaining systems, fixing bugs and integrating MySQL and PostgreSQL.',
-      es: 'Desarrollo y mantenimiento de soluciones de IA y automatización con servicios de AWS; creación e integración de APIs REST con Java, Python y FastAPI; mantenimiento de sistemas, corrección de errores e integración con MySQL y PostgreSQL.',
+      pt: 'No estágio, trabalho com IA e automação dentro de sistemas que já precisam funcionar no mundo real. Uso serviços da AWS, Java, Python e FastAPI para criar e integrar APIs REST; também mantenho sistemas, investigo e corrijo bugs e trabalho com MySQL e PostgreSQL.',
+      en: 'In my internship, I work with AI and automation in systems that already need to perform in the real world. I use AWS services, Java, Python, and FastAPI to build and integrate REST APIs; I also maintain systems, investigate and fix bugs, and work with MySQL and PostgreSQL.',
+      es: 'En mis prácticas, trabajo con IA y automatización en sistemas que ya tienen que funcionar en el mundo real. Uso servicios de AWS, Java, Python y FastAPI para crear e integrar APIs REST; también mantengo sistemas, investigo y corrijo errores, y trabajo con MySQL y PostgreSQL.',
     },
     technologies: ['AWS', 'Java', 'Python', 'FastAPI', 'REST APIs', 'MySQL', 'PostgreSQL'],
   },
@@ -437,9 +532,9 @@ export const experiences: Experience[] = [
     organization: 'Mauá Júnior',
     period: { pt: 'Atual', en: 'Current', es: 'Actual' },
     description: {
-      pt: 'Desenvolvimento de soluções digitais, análise de dados e automação de processos para empresas parceiras, incluindo aplicações web, dashboards, scripts e experimentos com redes neurais e modelos de linguagem.',
-      en: 'Development of digital solutions, data analysis and process automation for partner companies, including web applications, dashboards, scripts and experiments with neural networks and language models.',
-      es: 'Desarrollo de soluciones digitales, análisis de datos y automatización de procesos para empresas asociadas, incluyendo aplicaciones web, dashboards, scripts y experimentos con redes neuronales y modelos de lenguaje.',
+      pt: 'Na Mauá Júnior, transformo necessidades de empresas parceiras em entregas práticas: aplicações web, dashboards, scripts, análises e automações. Também experimento com redes neurais e LLMs quando elas realmente fazem sentido para o problema.',
+      en: 'At Mauá Júnior, I turn partner companies’ needs into practical deliverables: web applications, dashboards, scripts, analysis, and automations. I also experiment with neural networks and LLMs when they genuinely fit the problem.',
+      es: 'En Mauá Júnior, convierto las necesidades de empresas asociadas en entregas prácticas: aplicaciones web, dashboards, scripts, análisis y automatizaciones. También experimento con redes neuronales y LLMs cuando realmente encajan con el problema.',
     },
     technologies: ['Python', 'Java', 'SQL', 'Power BI', 'JavaScript', 'LLMs'],
   },
@@ -453,9 +548,9 @@ export const experiences: Experience[] = [
     organization: 'Mauá Júnior',
     period: { pt: 'Formação interna', en: 'Internal training', es: 'Formación interna' },
     description: {
-      pt: 'Passagem por marketing, financeiro e projetos para compreender a operação de uma empresa júnior e desenvolver comunicação, organização e trabalho em equipe.',
-      en: 'Rotation through marketing, finance and projects to understand a junior company operation and develop communication, organization and teamwork.',
-      es: 'Rotación por marketing, finanzas y proyectos para comprender la operación de una empresa júnior y desarrollar comunicación, organización y trabajo en equipo.',
+      pt: 'Antes de atuar como consultor, passei por marketing, financeiro e projetos para entender a empresa júnior por dentro. Foi onde ganhei mais organização, comunicação e experiência de trabalhar em equipe.',
+      en: 'Before becoming a consultant, I rotated through marketing, finance, and projects to understand how the junior company worked from the inside. That was where I strengthened my organization, communication, and teamwork.',
+      es: 'Antes de trabajar como consultor, pasé por marketing, finanzas y proyectos para entender la empresa júnior desde dentro. Allí fortalecí mi organización, comunicación y trabajo en equipo.',
     },
     technologies: ['Projetos', 'Comunicação', 'Organização'],
   },
@@ -469,9 +564,9 @@ export const experiences: Experience[] = [
     organization: 'São Judas Technologies',
     period: { pt: '01/2024', en: '01/2024', es: '01/2024' },
     description: {
-      pt: 'Montagem, manutenção e configuração de computadores e notebooks, suporte direto a clientes e diagnóstico de problemas de hardware e software.',
-      en: 'Assembly, maintenance and configuration of computers and notebooks, direct customer support and diagnosis of hardware and software issues.',
-      es: 'Montaje, mantenimiento y configuración de computadoras y notebooks, soporte directo a clientes y diagnóstico de problemas de hardware y software.',
+      pt: 'Uma experiência bem mão na massa: montei, configurei e fiz manutenção em computadores e notebooks, atendi clientes e diagnostiquei problemas de hardware e software.',
+      en: 'A very hands-on role: I assembled, configured, and maintained computers and notebooks, supported customers, and diagnosed hardware and software issues.',
+      es: 'Una experiencia muy práctica: monté, configuré y mantuve computadoras y notebooks, atendí clientes y diagnostiqué problemas de hardware y software.',
     },
     technologies: ['Hardware', 'Software', 'Suporte técnico'],
   },
@@ -481,27 +576,74 @@ export const capabilityGroups = [
   {
     id: 'ai',
     label: { pt: 'IA e automação', en: 'AI & automation', es: 'IA y automatización' },
-    items: ['Python', 'FastAPI', 'LLMs', 'Redes neurais', 'Selenium'],
+    items: [
+      'Python',
+      'FastAPI',
+      'LLMs',
+      'Redes neurais',
+      'Selenium',
+      'Automação de processos',
+      'Análise de texto',
+      'Revisão de fontes',
+    ],
   },
   {
     id: 'backend',
     label: { pt: 'Back-end e APIs', en: 'Back-end & APIs', es: 'Back-end y APIs' },
-    items: ['Java', 'Node.js', 'Express', 'REST APIs', 'JWT'],
+    items: ['Java', 'Node.js', 'Express', 'REST APIs', 'JWT', 'Integração de APIs'],
   },
   {
     id: 'data',
     label: { pt: 'Dados e bancos', en: 'Data & databases', es: 'Datos y bases' },
-    items: ['SQL', 'MySQL', 'PostgreSQL', 'MongoDB', 'Pandas', 'Power BI', 'Excel'],
+    items: [
+      'SQL',
+      'MySQL',
+      'PostgreSQL',
+      'MongoDB',
+      'Pandas',
+      'Power BI',
+      'Excel',
+      'Preparação de dados',
+      'Visualização de dados',
+      'Business Analytics',
+    ],
   },
   {
     id: 'frontend',
     label: { pt: 'Interfaces', en: 'Interfaces', es: 'Interfaces' },
-    items: ['React', 'TypeScript', 'JavaScript', 'HTML', 'CSS', 'Tailwind CSS'],
+    items: [
+      'React',
+      'TypeScript',
+      'JavaScript',
+      'HTML',
+      'CSS',
+      'Tailwind CSS',
+      'Interfaces responsivas',
+      'Vite',
+      'Three.js',
+      'GSAP',
+    ],
   },
   {
     id: 'delivery',
     label: { pt: 'Cloud e entrega', en: 'Cloud & delivery', es: 'Cloud y entrega' },
-    items: ['AWS', 'Git', 'GitHub', 'Postman', 'Vercel'],
+    items: ['AWS', 'Git', 'GitHub', 'Postman', 'Vercel', 'Cloud computing'],
+  },
+  {
+    id: 'quality',
+    label: {
+      pt: 'Qualidade e manutenção',
+      en: 'Quality & maintenance',
+      es: 'Calidad y mantenimiento',
+    },
+    items: [
+      'Diagnóstico e correção de bugs',
+      'Manutenção de sistemas',
+      'Documentação técnica',
+      'Suporte técnico',
+      'Vitest',
+      'Playwright',
+    ],
   },
 ] satisfies Array<{ id: string; label: LocalizedText; items: string[] }>;
 
@@ -529,8 +671,11 @@ export const education = [
 export const certifications = [
   'IBM Web Development Fundamentals',
   'IBM Introduction to Cloud Computing',
-  'IMT Python para Ciência de Dados',
-  'IMT Power BI — Básico',
+  'IMT Data Preparation and Visualization for Business Analytics — 40h · 1º semestre de 2026',
+  'IMT Engenharia de Software na Prática — 40h · 1º semestre de 2026',
+  'IMT A Bolsa de Valores no Brasil e seus ativos financeiros — 40h · 1º semestre de 2026',
+  'IMT Python para Ciência de Dados — 40h · 2º semestre de 2025',
+  'IMT Power BI — Básico — 40h · 2º semestre de 2025',
   'USP/MBX Introdução ao Python e Machine Learning',
   'ALR Excel Intermediário/Avançado',
   'ALR HTML e CSS',
@@ -572,6 +717,115 @@ export const socialLinks = {
   email: 'mailto:contatoomarabdalah@gmail.com',
 };
 
+const technologyLabels: Record<string, LocalizedText> = {
+  'Open source': { pt: 'Código aberto', en: 'Open source', es: 'Código abierto' },
+  Documentação: { pt: 'Documentação', en: 'Documentation', es: 'Documentación' },
+  Colaboração: { pt: 'Colaboração', en: 'Collaboration', es: 'Colaboración' },
+  'IA investigativa': {
+    pt: 'IA investigativa',
+    en: 'Investigative AI',
+    es: 'IA investigativa',
+  },
+  'Análise de afirmações': {
+    pt: 'Análise de afirmações',
+    en: 'Claim analysis',
+    es: 'Análisis de afirmaciones',
+  },
+  'Revisão de fontes': {
+    pt: 'Revisão de fontes',
+    en: 'Source review',
+    es: 'Revisión de fuentes',
+  },
+  'Sinais de manipulação': {
+    pt: 'Sinais de manipulação',
+    en: 'Manipulation signals',
+    es: 'Señales de manipulación',
+  },
+  'Gestão de fornecedores': {
+    pt: 'Gestão de fornecedores',
+    en: 'Supplier management',
+    es: 'Gestión de proveedores',
+  },
+  'Listas comerciais': {
+    pt: 'Listas comerciais',
+    en: 'Supplier lists',
+    es: 'Listas de proveedores',
+  },
+  'Operação do lojista': {
+    pt: 'Operação do lojista',
+    en: 'Retail operations',
+    es: 'Operación minorista',
+  },
+  'Produto para varejo': {
+    pt: 'Produto para varejo',
+    en: 'Retail product',
+    es: 'Producto para retail',
+  },
+  Projetos: { pt: 'Projetos', en: 'Projects', es: 'Proyectos' },
+  Comunicação: { pt: 'Comunicação', en: 'Communication', es: 'Comunicación' },
+  Organização: { pt: 'Organização', en: 'Organization', es: 'Organización' },
+  'Suporte técnico': {
+    pt: 'Suporte técnico',
+    en: 'Technical support',
+    es: 'Soporte técnico',
+  },
+  'Redes neurais': { pt: 'Redes neurais', en: 'Neural networks', es: 'Redes neuronales' },
+  'Automação de processos': {
+    pt: 'Automação de processos',
+    en: 'Process automation',
+    es: 'Automatización de procesos',
+  },
+  'Análise de texto': {
+    pt: 'Análise de texto',
+    en: 'Text analysis',
+    es: 'Análisis de texto',
+  },
+  'Integração de APIs': {
+    pt: 'Integração de APIs',
+    en: 'API integration',
+    es: 'Integración de APIs',
+  },
+  'Preparação de dados': {
+    pt: 'Preparação de dados',
+    en: 'Data preparation',
+    es: 'Preparación de datos',
+  },
+  'Visualização de dados': {
+    pt: 'Visualização de dados',
+    en: 'Data visualization',
+    es: 'Visualización de datos',
+  },
+  'Interfaces responsivas': {
+    pt: 'Interfaces responsivas',
+    en: 'Responsive interfaces',
+    es: 'Interfaces adaptables',
+  },
+  'Cloud computing': {
+    pt: 'Computação em nuvem',
+    en: 'Cloud computing',
+    es: 'Computación en la nube',
+  },
+  'Diagnóstico e correção de bugs': {
+    pt: 'Diagnóstico e correção de bugs',
+    en: 'Bug diagnosis and fixes',
+    es: 'Diagnóstico y corrección de errores',
+  },
+  'Manutenção de sistemas': {
+    pt: 'Manutenção de sistemas',
+    en: 'System maintenance',
+    es: 'Mantenimiento de sistemas',
+  },
+  'Documentação técnica': {
+    pt: 'Documentação técnica',
+    en: 'Technical documentation',
+    es: 'Documentación técnica',
+  },
+};
+
 export function localize(value: LocalizedText, locale: Locale): string {
   return value[locale];
+}
+
+export function localizeTechnology(value: string, locale: Locale): string {
+  return technologyLabels[value]?.[locale] ?? value;
 }

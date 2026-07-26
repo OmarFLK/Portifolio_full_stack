@@ -1,6 +1,6 @@
 # Omar Saliba — Signal / Selected Work
 
-Portfólio trilíngue de Omar Saliba, reconstruído em React, Vite e TypeScript para apresentar projetos, experiência, formação e contato nas áreas de inteligência artificial, automação, dados e engenharia de software.
+Portfólio trilíngue de Omar Saliba, reconstruído em React, Vite e TypeScript para apresentar projetos, resultados, experiência, formação e contato nas áreas de inteligência artificial, automação, dados e engenharia de software.
 
 O projeto migra o portfólio estático anterior para uma aplicação componentizada, testável e com build reproduzível. A interface mantém todo o conteúdo principal em HTML semântico e trata movimento, smooth scroll e 3D como melhorias progressivas.
 
@@ -13,9 +13,9 @@ O conceito **Signal / Selected Work** parte da ideia de “engenharia em modo de
 - cinzas e âmbar criam matéria, profundidade e hierarquia;
 - bounding boxes, handles, rabiscos, papel rasgado e painéis de sistema funcionam como vocabulário editorial;
 - o gradiente líquido é tratado como metal aquecido ou tinta gráfica, sem retomar o tema aquático anterior;
-- os cinco projetos reais recebem composições próprias, em vez de uma grade de cards idênticos.
+- os cinco projetos selecionados recebem composições próprias, em vez de uma grade de cards idênticos.
 
-A narrativa segue oito capítulos: sinal, contexto, provas, trajetória, ferramentas, base, laboratório e contato. A direção detalhada está em [docs/design-plan.md](docs/design-plan.md), os tokens em [docs/design-dna.json](docs/design-dna.json) e as regras de movimento em [docs/animation-map.md](docs/animation-map.md).
+Depois do sinal de abertura, a narrativa segue oito capítulos numerados: contexto, provas, impacto, trajetória, ferramentas, base, laboratório e contato. A direção detalhada está em [docs/design-plan.md](docs/design-plan.md), os tokens em [docs/design-dna.json](docs/design-dna.json) e as regras de movimento em [docs/animation-map.md](docs/animation-map.md).
 
 ## Stack e decisões
 
@@ -35,9 +35,15 @@ A narrativa segue oito capítulos: sinal, contexto, provas, trajetória, ferrame
 
 React Three Fiber, Drei, Anime.js e Lottie não foram adicionados: o Three.js direto atende a cena atual, GSAP já é o proprietário do movimento coordenado e uma segunda camada de abstração aumentaria o custo sem benefício concreto.
 
-## Conteúdo preservado
+## Conteúdo e seleção atual
 
-- cinco projetos reais, com links e estados de disponibilidade honestos;
+- cinco projetos selecionados, com links e estados de disponibilidade honestos:
+  - Verithaz — IA investigativa que separa notícias em afirmações, revisa fontes e procura indícios de campanha ou manipulação; a dialética erística descrita por Arthur Schopenhauer funciona como lente crítica, sem prometer veredito automático;
+  - Vira Price — startup voltada ao gerenciamento de listas de fornecedores para lojistas;
+  - Automação de Enriquecimento de Leads;
+  - EduCore — Gestão Acadêmica;
+  - OpenSource Lab;
+- seção `#resultados` com aproximadamente R$ 70 mil economizados em gastos com IA, ganho de 15% em eficiência operacional e semanas de trabalho manual poupadas — sem atribuir uma quantidade não documentada ao terceiro resultado;
 - experiência atualizada de estágio em IA e automação na OneBox - DNE;
 - AWS, Java, Python, FastAPI, APIs REST, MySQL, PostgreSQL, manutenção e correção de bugs;
 - experiências da Mauá Júnior e São Judas Technologies;
@@ -45,7 +51,7 @@ React Three Fiber, Drei, Anime.js e Lottie não foram adicionados: o Three.js di
 - versões em português, inglês e espanhol;
 - GitHub, LinkedIn, WhatsApp, Behance, Drive e e-mail;
 - currículos PT-BR e EN;
-- vídeos locais de OpenSource Lab, EduCore e FinCore, agora montados somente após interação.
+- vídeos locais usados por OpenSource Lab e EduCore, montados somente após interação.
 
 A fonte central do conteúdo do site é [src/data/portfolio.ts](src/data/portfolio.ts).
 
@@ -116,13 +122,9 @@ npm run test:e2e
 npm run format:check
 ```
 
-Os testes end-to-end usam Microsoft Edge e iniciam `vite preview` em `http://127.0.0.1:4173`. Os seis projetos Playwright cobrem 320×720, 375×812, 390×844, 768×1024, 1440×900 e 1920×1080.
+Os testes end-to-end usam Microsoft Edge e iniciam `vite preview` em `http://127.0.0.1:4173`. A matriz atual possui dez projetos Playwright: 320×720, 375×812, 390×844, 768×1024, 1024×768, 1280×800, 1366×768, 1440×900, 1600×900 e 1920×1080.
 
-Resultado final:
-
-- Vitest: **15/15**;
-- Playwright: **48 testes — 40 aprovados, 8 ignorados intencionalmente por viewport e 0 falhas**;
-- screenshots dos seis viewports gerados localmente em `artifacts/` (evidências de QA ignoradas no Git).
+A revisão da seção de resultados e da coreografia semântica da estrela ampliou a suíte. Ela cobre hash direto e scrollspy de `#resultados`, conteúdo PT/EN/ES, semântica das métricas, ausência da ilha pesada no caminho compacto, tamanho/oclusão da estrela e remount ao cruzar o breakpoint de 1280 px. A execução integral dessa matriz e as novas evidências visuais ainda devem ser confirmadas no estado final da branch; contagens do snapshot anterior não são reaproveitadas como resultado desta revisão.
 
 Consulte [docs/migration-report.md](docs/migration-report.md) para o estado de validação e [docs/performance-report.md](docs/performance-report.md) para os budgets e o snapshot do bundle.
 
@@ -133,6 +135,7 @@ A implementação inclui:
 - skip link e landmarks semânticos;
 - um único `h1` e hierarquia de títulos por seção;
 - navegação por âncoras com compensação do header;
+- scrollspy com `aria-current="location"`, incluindo acesso direto a `#resultados`;
 - foco visível em alto contraste;
 - menu mobile operável por teclado, fechamento com `Escape`, contenção de foco e retorno ao acionador;
 - seletor PT/EN/ES com botões e `aria-pressed`;
@@ -154,6 +157,7 @@ EditorialMotion/GSAP, Lenis e Three.js compartilham o mesmo capability gate. Ele
 - ponteiro fino e suporte real a hover;
 - `prefers-reduced-motion: no-preference`;
 - `Save-Data` desativado;
+- suporte WebGL disponível sem `failIfMajorPerformanceCaveat`;
 - memória de dispositivo ausente ou de pelo menos 4 GB.
 
 No mobile, tablet compacto, touch primário, economia de dados ou movimento reduzido:
@@ -161,21 +165,25 @@ No mobile, tablet compacto, touch primário, economia de dados ou movimento redu
 - `EditorialMotion`, GSAP, `@gsap/react` e ScrollTrigger não são solicitados;
 - Lenis não é solicitado;
 - Three.js e o componente da cena não são solicitados;
-- não existe WebGL;
-- uma estrela SVG estática mantém a composição;
+- nenhum canvas ou contexto WebGL persistente da cena é criado;
+- estrelas SVG locais no Hero e em Resultados mantêm a composição;
 - o scroll permanece nativo;
 - projetos e painéis ficam no fluxo de leitura;
 - vídeos só entram no DOM após clique explícito.
 
-A estrela 3D usa renderização orientada a eventos — scroll, resize, pointer e retorno à aba — em vez de um loop infinito. O DPR é limitado a `1.5`, e geometria, materiais, listeners e contexto WebGL são liberados no cleanup.
+A estrela 3D usa renderização orientada a eventos — mudanças da timeline de scroll, resize e retorno à aba — em vez de um loop infinito. O canvas quadrado mede de 190 a 230 px antes da escala semântica; no Hero pode chegar a cerca de 258 px. A peça segue waypoints reais da página, desaparece em Projetos e outras áreas densas e só ocupa gutters quando há espaço comprovado. Entre 1280 e 1599 px, a presença dinâmica fica concentrada no Hero e no slot reservado de Resultados; gutters adicionais são liberados progressivamente em viewports maiores.
+
+Ao sair de um waypoint visível para uma área densa, a estrela ainda percorre um deslocamento curto, scroll-linked, com rotação e escala acompanhando o gesto. O fade acontece só depois desse movimento; então a cena pode ser reposicionada invisível para a próxima entrada sem atravessar a coluna de leitura.
+
+Os posters SVG de Hero e Resultados permanecem visíveis até o primeiro render válido. Depois, `data-desktop-star-ready` troca o baseline estático pelo canvas; falha de import, criação do renderer ou perda do contexto restaura o poster. O DPR é limitado a `1.5`, e geometria, materiais, listeners e contexto WebGL são liberados no cleanup.
 
 ## Performance
 
-O snapshot final do build registra apenas `79,55 kB gzip` de JavaScript inicial (`index`, ícones e runtime), dentro do budget de `170 kB gzip`. CSS principal: `14,28 kB gzip`. Toda a ilha desktop — EditorialMotion, GSAP, Lenis, cena e Three.js — é dinâmica e adiciona aproximadamente `192,87 kB gzip` somente quando o capability gate é aprovado.
+O snapshot arquivado em 25/07/2026 registrou `79,55 kB gzip` de JavaScript inicial (`index`, ícones e runtime), dentro do budget de `170 kB gzip`, e `14,28 kB gzip` de CSS principal. Naquele build, a ilha desktop dinâmica adicionava aproximadamente `192,87 kB gzip`. Esses números são a linha de base anterior à nova seção e à reescrita da cena; um novo snapshot deve ser registrado antes de tratá-los como valores atuais.
 
-As três demonstrações em MP4 somam aproximadamente `25,5 MiB`, mas não pertencem à carga inicial. O componente de mídia monta o `<video>` apenas dentro do dialog aberto, sem autoplay.
+Os três arquivos MP4 públicos somam aproximadamente `25,5 MiB`, incluindo um asset legado que não pertence à seleção atual, e não fazem parte da carga inicial. O componente de mídia monta apenas o vídeo associado a um projeto selecionado e somente dentro do dialog aberto, sem autoplay.
 
-Lighthouse registrou `100/100/100/100` no desktop e `97/100/100/100` na amostra mobile final para Performance, Acessibilidade, Best Practices e SEO. A mediana de três amostras mobile foi Performance `97`, FCP `1,97 s`, LCP `2,12 s`, CLS `0,007` e TBT `7 ms`. Esses resultados são laboratoriais e não substituem INP ou Web Vitals de campo.
+No mesmo snapshot anterior, Lighthouse registrou `100/100/100/100` no desktop e `97/100/100/100` na amostra mobile para Performance, Acessibilidade, Best Practices e SEO. A mediana de três amostras mobile foi Performance `97`, FCP `1,97 s`, LCP `2,12 s`, CLS `0,007` e TBT `7 ms`. A revisão atual ainda precisa de nova medição; de todo modo, resultados laboratoriais não substituem INP ou Web Vitals de campo.
 
 ## Deploy
 

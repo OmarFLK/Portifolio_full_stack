@@ -54,6 +54,58 @@ export default function EditorialMotion({ scopeRef }: EditorialMotionProps) {
         });
       });
 
+      const resultMetrics = gsap.utils.toArray<HTMLElement>('[data-result-metric]');
+
+      if (resultMetrics.length > 0) {
+        gsap.from(resultMetrics, {
+          y: 26,
+          opacity: 0,
+          duration: 0.72,
+          stagger: 0.09,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '#resultados',
+            start: 'top 76%',
+            once: true,
+          },
+        });
+      }
+
+      gsap.utils.toArray<HTMLElement>('[data-result-counter]').forEach((counter) => {
+        const target = Number(counter.dataset.resultCounter);
+        const value = { current: 0 };
+
+        if (!Number.isFinite(target)) {
+          return;
+        }
+
+        gsap.to(value, {
+          current: target,
+          duration: 0.9,
+          ease: 'power2.out',
+          onUpdate: () => {
+            counter.textContent = String(Math.round(value.current));
+          },
+          scrollTrigger: {
+            trigger: counter,
+            start: 'top 84%',
+            once: true,
+          },
+        });
+      });
+
+      gsap.from('[data-result-line]', {
+        scaleX: 0,
+        transformOrigin: 'left center',
+        duration: 0.78,
+        ease: 'power2.inOut',
+        scrollTrigger: {
+          trigger: '#resultados',
+          start: 'top 72%',
+          once: true,
+        },
+      });
+
       gsap.to('[data-liquid="hero"]', {
         yPercent: 12,
         rotate: -5,

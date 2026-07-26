@@ -1,12 +1,14 @@
 # Relatório de migração
 
-Data: 25/07/2026
+Data da reconstrução-base: 25/07/2026
+
+Revisão cirúrgica: 25/07/2026
 
 Origem: portfólio estático em HTML, CSS e JavaScript.
 
 Destino: React 19 + Vite 8 + TypeScript 5.9.
 
-Branch de trabalho: `feat/react-vite-portfolio-redesign`.
+Branch de trabalho atual: `feat/fix-scroll-star-and-results`.
 
 ## Resultado da reconstrução
 
@@ -16,35 +18,37 @@ A mudança substitui a linguagem aquática anterior por **Signal / Selected Work
 
 ## Antes e depois
 
-| Área      | Legado                                           | Nova arquitetura                                            |
-| --------- | ------------------------------------------------ | ----------------------------------------------------------- |
-| Entrada   | HTML monolítico                                  | `index.html` mínimo + `src/main.tsx`                        |
-| UI        | DOM estático                                     | componentes React                                           |
-| Conteúdo  | duplicado entre HTML e dicionários JS            | `src/data/portfolio.ts` tipado                              |
-| Idiomas   | mutação de `innerHTML`                           | Context API e render React PT/EN/ES                         |
-| Estilos   | uma folha global extensa                         | reset, tokens, tipografia, globals e CSS Modules            |
-| Motion    | loader, bolhas e efeitos contínuos               | GSAP com scope, reduced motion e cleanup                    |
-| 3D        | dependência não utilizada                        | ilha Three.js lazy-loaded e condicionada                    |
-| Scroll    | listeners e blur a cada evento                   | nativo por padrão; Lenis opcional no desktop                |
-| Projetos  | cards repetidos, embeds/autoplay e placeholder   | cinco composições reais, links honestos e vídeo sob demanda |
-| Qualidade | sem lint, types ou testes                        | ESLint, TypeScript, Vitest e Playwright                     |
-| Deploy    | arquivos estáticos sem configuração reproduzível | build `dist` + fallback SPA para Vercel                     |
+| Área       | Legado                                           | Nova arquitetura                                                    |
+| ---------- | ------------------------------------------------ | ------------------------------------------------------------------- |
+| Entrada    | HTML monolítico                                  | `index.html` mínimo + `src/main.tsx`                                |
+| UI         | DOM estático                                     | componentes React                                                   |
+| Conteúdo   | duplicado entre HTML e dicionários JS            | `src/data/portfolio.ts` tipado                                      |
+| Idiomas    | mutação de `innerHTML`                           | Context API e render React PT/EN/ES                                 |
+| Estilos    | uma folha global extensa                         | reset, tokens, tipografia, globals e CSS Modules                    |
+| Motion     | loader, bolhas e efeitos contínuos               | GSAP com scope, reduced motion e cleanup                            |
+| 3D         | dependência não utilizada                        | ilha Three.js lazy-loaded e condicionada                            |
+| Scroll     | listeners e blur a cada evento                   | nativo por padrão; Lenis opcional no desktop                        |
+| Projetos   | cards repetidos, embeds/autoplay e placeholder   | cinco composições reais, links honestos e vídeo sob demanda         |
+| Resultados | não existia capítulo de impacto navegável        | seção `#resultados` tipada, trilíngue e semanticamente independente |
+| Qualidade  | sem lint, types ou testes                        | ESLint, TypeScript, Vitest e Playwright                             |
+| Deploy     | arquivos estáticos sem configuração reproduzível | build `dist` + fallback SPA para Vercel                             |
 
-## Conteúdo preservado
+## Conteúdo preservado e seleção atual
 
 - nome, posicionamento profissional e contatos;
 - formação no Senac Aclimação e Instituto Mauá de Tecnologia;
 - certificações e níveis de idioma;
-- cinco projetos reais:
+- seleção atual de cinco projetos:
+  - Verithaz — IA Investigativa;
+  - Vira Price;
   - Automação de Enriquecimento de Leads;
-  - Sistema de Reservas para Restaurantes;
+  - EduCore — Gestão Acadêmica;
   - OpenSource Lab;
-  - EduCore;
-  - FinCore;
 - links GitHub, demonstração, YouTube, Behance e Drive disponíveis;
+- resultados documentados de aproximadamente R$ 70 mil economizados em gastos com IA, 15% de ganho em eficiência operacional e semanas de trabalho manual poupadas;
 - experiências da Mauá Júnior e São Judas Technologies;
 - currículos PT-BR e EN;
-- vídeos originais de OpenSource Lab, EduCore e FinCore;
+- vídeos originais mantidos como assets públicos; OpenSource Lab e EduCore permanecem na seleção atual;
 - alternância PT/EN/ES com persistência em `localStorage`.
 
 ## Conteúdo atualizado
@@ -54,6 +58,26 @@ A experiência autônoma desatualizada foi substituída pela experiência mais r
 **Estágio em IA e Automação — OneBox - DNE**
 
 O conteúdo registra trabalho com serviços AWS, Java, Python, FastAPI, APIs REST, MySQL, PostgreSQL, manutenção do sistema e correção de bugs. As três versões linguísticas derivam da mesma estrutura tipada.
+
+A copy geral também foi retrabalhada em PT, EN e ES para soar mais direta, curiosa e prática. O conteúdo evita abstrações corporativas, descreve o processo de perguntar, rascunhar, construir e testar e mantém a mesma personalidade nos três idiomas.
+
+### Seleção atual de projetos
+
+- **Verithaz:** IA investigativa que divide notícias em afirmações, revisa as fontes relacionadas e procura indícios de campanha ou manipulação. As estratégias da dialética erística descritas por Arthur Schopenhauer são uma lente crítica; o produto não promete um veredito automático.
+- **Vira Price:** startup para gerenciamento de listas de fornecedores por lojistas.
+- **Automação de Enriquecimento de Leads**, **EduCore** e **OpenSource Lab** completam a seleção.
+
+Sistema de Reservas para Restaurantes e FinCore não fazem parte da seleção editorial atual. Seus registros históricos não são reescritos por esta revisão; o arquivo `finexp.mp4`, ainda presente em `public/`, permanece apenas como asset legado.
+
+### Novo capítulo de Resultados
+
+`#resultados` entra depois de Projetos e antes de Experiência. A seção usa três artigos semânticos e dados centralizados em `resultMetrics`:
+
+- `≈ R$ 70 mil` economizados em gastos com IA;
+- `+15%` de eficiência operacional;
+- semanas de trabalho manual poupadas.
+
+O terceiro resultado permanece deliberadamente sem número: não havia quantidade documentada para sustentar uma precisão maior. Os valores visuais animados são ocultos de tecnologia assistiva; cada artigo mantém um label localizado completo e estático.
 
 ## O que foi substituído
 
@@ -84,7 +108,7 @@ A limpeza física foi concluída:
 
 - `src/main.tsx` carrega fontes, CSS base, provider de locale e aplicação.
 - `src/app/LocaleContext.tsx` persiste PT/EN/ES, atualiza `document.lang` e o título.
-- `src/app/App.tsx` organiza landmarks, seções, dividers, GSAP e enhancements desktop.
+- `src/app/App.tsx` organiza landmarks, seções, dividers e o ponto de montagem dos enhancements desktop.
 
 ### Dados
 
@@ -97,6 +121,7 @@ A limpeza física foi concluída:
 - formação;
 - certificações;
 - idiomas;
+- resultados e seus labels acessíveis;
 - redes e contato.
 
 ### UI
@@ -104,17 +129,17 @@ A limpeza física foi concluída:
 - `components/layout`: header, navegação, menu mobile e locale;
 - `components/ui`: heading, bounding box, estrela SVG, papel rasgado, rabisco e system notice;
 - `components/projects`: dialog nativo e montagem sob demanda de MP4;
-- `sections`: hero, sobre, projetos, experiência, capacidades, formação, laboratório, contato e footer.
+- `sections`: hero, sobre, projetos, resultados, experiência, capacidades, formação, laboratório, contato e footer.
 
 ### Motion e 3D
 
 - `App.tsx`: shell sem imports de runtime de motion;
 - `DesktopEnhancements.tsx`: capability gate e imports lazy de EditorialMotion, Lenis e cena;
-- `EditorialMotion.tsx`: GSAP/`@gsap/react`/ScrollTrigger para hero, reveals, SVG e recorte líquido, apenas no desktop elegível;
-- `DesktopStarScene.tsx`: Three.js imperativo, event-driven e com cleanup completo;
-- `useHeavyVisuals.ts`: observa viewport, pointer, hover e preferência de movimento;
-- `utils/heavyVisuals.ts`: regra pura e testável do gate.
-- `utils/scroll.ts`: clamp, mapeamento e interpolação consumidos pela cena e cobertos por testes.
+- `EditorialMotion.tsx`: GSAP/`@gsap/react`/ScrollTrigger para hero, reveals, SVG, recorte líquido e entrada/contadores de Resultados, apenas no desktop elegível;
+- `DesktopStarScene.tsx`: Three.js imperativo, event-driven, guiado por waypoints semânticos e com cleanup completo;
+- `useHeavyVisuals.ts`: observa viewport, pointer, hover e preferência de movimento; o ambiente também considera `Save-Data`, memória e WebGL;
+- `utils/heavyVisuals.ts`: regra pura e testável do gate, incluindo detecção de suporte WebGL.
+- `utils/scroll.ts`: fornece o `clamp` consumido pela cena e mantém utilitários cobertos por testes.
 
 ### CSS
 
@@ -152,15 +177,18 @@ Não foram adicionados Anime.js, React Three Fiber, Drei, Lottie ou bibliotecas 
 
 Em clientes elegíveis, a composição recebe:
 
-- estrela 3D em um canvas decorativo lateral;
-- rotação e deslocamento derivados do scroll;
-- resposta sutil ao ponteiro;
+- estrela 3D em canvas quadrado de 190–230 px, com escala do Hero abaixo de 300 px;
+- rotação, deslocamento, escala e opacidade derivados de waypoints reais da página;
+- presença concentrada no Hero e em Resultados entre 1280 e 1599 px;
+- gutters adicionais liberados apenas em larguras maiores e quando existe respiro fora do conteúdo;
+- opacidade zero em Projetos, painel de métricas, Ferramentas, Laboratório e footer;
+- saída em duas etapas: deslocamento curto scroll-linked com rotação/escala, seguido de fade;
 - Lenis integrado ao ticker GSAP;
 - revelações editoriais e SVGs desenhados;
 - DPR WebGL limitado a `1.5`;
 - render somente por evento, sem animação infinita.
 
-O conteúdo principal permanece no centro e não é renderizado no canvas.
+O conteúdo principal permanece no centro e não é renderizado no canvas. O movimento por ponteiro foi removido: a estrela funciona como fio narrativo do scroll e não como controle. Antes de desaparecer em uma área densa, ela ainda se desloca com o scroll; somente depois desse movimento entra o fade.
 
 ## Mobile e tablet compacto
 
@@ -168,8 +196,8 @@ Mobile é uma composição própria:
 
 - coluna única e gutters responsivos;
 - menu sólido operável por teclado;
-- estrela SVG estática;
-- sem EditorialMotion, GSAP, ScrollTrigger, Three.js, WebGL ou Lenis;
+- estrelas SVG estáticas no Hero e em Resultados;
+- sem EditorialMotion, GSAP, ScrollTrigger, Three.js, canvas WebGL ou Lenis;
 - sem pin e sem parallax da cena;
 - painéis no fluxo;
 - targets de toque;
@@ -188,10 +216,10 @@ Com `prefers-reduced-motion: reduce`:
 - o scroll volta ao comportamento instantâneo do sistema;
 - Lenis não é importado;
 - a cena Three.js não é importada;
-- a estrela SVG permanece disponível;
+- as estrelas SVG de Hero e Resultados permanecem disponíveis;
 - todo conteúdo continua na mesma ordem.
 
-O mesmo fallback estático é usado para `Save-Data`, touch primário, ausência de hover, viewport abaixo de `1280px` e, quando disponível, `deviceMemory < 4`.
+O mesmo fallback estático é usado para `Save-Data`, touch primário, ausência de hover, viewport abaixo de `1280px`, WebGL indisponível e, quando disponível, `deviceMemory < 4`.
 
 ## Acessibilidade implementada
 
@@ -207,6 +235,7 @@ O mesmo fallback estático é usado para `Save-Data`, touch primário, ausência
 - canvas sem foco e oculto da árvore acessível;
 - links externos com `rel="noreferrer"`;
 - compensação do header em navegação por hash;
+- scrollspy com `aria-current="location"`, incluindo `#resultados`;
 - preferência de maior contraste;
 - conteúdo essencial independente de motion/3D.
 
@@ -224,7 +253,7 @@ Vite copia `public/` para a raiz de `dist/`. Renomear qualquer arquivo exige atu
 
 ## Build e bundle
 
-O snapshot mais recente registra:
+O snapshot de 25/07, anterior a Resultados e à reescrita da cena, registra:
 
 - JS inicial: `250,07 kB bruto / 79,55 kB gzip`, composto por index, ícones e runtime;
 - CSS principal: `69,31 kB bruto / 14,28 kB gzip`;
@@ -236,18 +265,20 @@ O snapshot mais recente registra:
 - CSS da cena: `0,24 kB gzip`, dinâmico;
 - Three.js: `140,12 kB gzip`, dinâmico e desktop-only.
 
-A ilha desktop completa adiciona aproximadamente `192,87 kB gzip`; o total com todos os enhancements elegíveis é aproximadamente `272,42 kB gzip`.
+A ilha desktop daquele snapshot adicionava aproximadamente `192,87 kB gzip`; o total com todos os enhancements elegíveis era aproximadamente `272,42 kB gzip`.
+
+Esses valores são baseline histórico. A revisão atual altera CSS, `EditorialMotion` e `DesktopStarScene`; um novo build deve substituir os números antes de qualquer declaração de tamanho final.
 
 Detalhes e budgets: [performance-report.md](performance-report.md).
 
-O Lighthouse final registrou:
+O Lighthouse do mesmo baseline registrou:
 
 | Perfil                | Performance | Acessibilidade | Best Practices | SEO |   FCP |   LCP |   CLS |   TBT |
 | --------------------- | ----------: | -------------: | -------------: | --: | ----: | ----: | ----: | ----: |
 | Desktop               |         100 |            100 |            100 | 100 | 0,6 s | 0,7 s | 0,036 | 10 ms |
 | Mobile, amostra final |          97 |            100 |            100 | 100 | 2,0 s | 2,1 s | 0,007 | 30 ms |
 
-A mediana de três amostras mobile foi Performance 97, FCP 1,97 s, LCP 2,12 s, CLS 0,007 e TBT 7 ms.
+A mediana de três amostras mobile foi Performance 97, FCP 1,97 s, LCP 2,12 s, CLS 0,007 e TBT 7 ms. Lighthouse ainda não foi reexecutado para a revisão cirúrgica posterior.
 
 ## Deploy
 
@@ -287,28 +318,29 @@ Nenhum deploy, push ou merge faz parte deste relatório.
 
 ## Estado de validação
 
-Build, Lighthouse, Vitest, Playwright e screenshots possuem evidência final registrada.
+O baseline de 25/07 possui evidência arquivada. Para a revisão atual, considerar apenas o último run executado depois de todos os ajustes:
 
-| Verificação                                 | Estado                                                                                                          |
-| ------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| `npm run lint`                              | comando disponível; resultado não incluído neste snapshot documental                                            |
-| `npm run typecheck`                         | comando disponível; resultado não incluído neste snapshot documental                                            |
-| `npm run test`                              | **APROVADO: 15/15**                                                                                             |
-| `npm run build` após os últimos ajustes     | **APROVADO:** bundle final registrado                                                                           |
-| `npm run test:e2e` em todos os projetos     | **APROVADO:** 48 testes, 40 aprovados, 8 skips intencionais por viewport e 0 falhas                             |
-| screenshots 320, 375, 390, 768, 1440 e 1920 | **GERADOS LOCALMENTE** em `artifacts/` (ignorado no Git)                                                        |
-| teclado e leitor de tela                    | **PARCIAL:** fluxos de teclado cobertos; leitor de tela e zoom continuam QA manual                              |
-| contraste e acessibilidade automatizada     | **APROVADO NO LIGHTHOUSE:** 100 em desktop e mobile; auditoria manual ainda recomendada                         |
-| Lighthouse mobile/desktop                   | **APROVADO:** 100/100/100/100 desktop e 97/100/100/100 na amostra mobile final                                  |
-| LCP e CLS                                   | **MEDIDOS:** desktop 0,7 s / 0,036; mediana mobile 2,12 s / 0,007                                               |
-| INP                                         | **NÃO MEDIDO:** Lighthouse lab registrou TBT de 10 ms desktop, 30 ms na amostra mobile e 7 ms na mediana mobile |
-| link checker externo                        | **PENDENTE QA**                                                                                                 |
-| downloads e vídeos no deploy preview        | **PENDENTE PREVIEW**                                                                                            |
-| deploy de produção                          | **NÃO EXECUTADO**                                                                                               |
+| Verificação                                         | Estado                                                                                 |
+| --------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `npm run lint`                                      | **APROVADO**                                                                           |
+| `npm run typecheck`                                 | **APROVADO**                                                                           |
+| `npm run format:check`                              | **APROVADO**                                                                           |
+| `npm run test`                                      | **PENDENTE REGISTRO FINAL:** a suíte foi ampliada; não reutilizar 15/15 do baseline    |
+| `npm run build`                                     | **PENDENTE SNAPSHOT FINAL:** substituir os tamanhos históricos acima                   |
+| `npm run test:e2e` em dez projetos                  | **PENDENTE EXECUÇÃO INTEGRAL**                                                         |
+| hash/scrollspy/semântica de `#resultados`           | **IMPLEMENTADO; E2E FINAL PENDENTE**                                                   |
+| tamanho, ocultação e ausência de overlap da estrela | **IMPLEMENTADO; E2E E REVISÃO VISUAL PENDENTES**                                       |
+| 64 screenshots seccionais em oito larguras          | **PENDENTE QA** em `artifacts/star-results/`                                           |
+| teclado e leitor de tela                            | **PARCIAL:** fluxos automatizados previstos; leitor de tela e zoom continuam QA manual |
+| Lighthouse mobile/desktop da revisão                | **NÃO EXECUTADO:** valores anteriores são baseline                                     |
+| LCP, CLS e INP atuais                               | **NÃO MEDIDOS**                                                                        |
+| link checker externo                                | **PENDENTE QA**                                                                        |
+| downloads e vídeos no deploy preview                | **PENDENTE PREVIEW**                                                                   |
+| deploy de produção                                  | **NÃO EXECUTADO**                                                                      |
 
 ## Riscos remanescentes
 
-- a ilha desktop adiciona `192,87 kB gzip` quando o gate passa, incluindo `140,12 kB gzip` de Three.js;
+- a ilha desktop adicionava `192,87 kB gzip` no baseline; o custo atual ainda precisa ser medido;
 - os MP4 originais continuam grandes, apesar de serem on-demand;
 - traduções e conteúdo devem ser revisados por uma pessoa fluente;
 - URLs externas podem mudar independentemente do build;
@@ -324,7 +356,8 @@ A migração pode ser considerada pronta para publicação quando:
 - mobile, tablet compacto e reduced motion não baixarem EditorialMotion/GSAP, Lenis ou Three;
 - menu, locale, dialog, âncoras e currículos funcionarem por teclado;
 - contraste e foco atenderem WCAG AA;
-- os cinco projetos e quatro experiências estiverem corretos nos três idiomas;
+- Verithaz, Vira Price, Enriquecimento de Leads, EduCore e OpenSource Lab estiverem corretos nos três idiomas;
+- os três resultados estiverem corretos e legíveis em PT, EN e ES, sem atribuir número às semanas poupadas;
 - vídeos continuarem estritamente sob demanda;
 - o preview Vercel for aprovado antes de produção;
 - o diff não incorporar deleções ou arquivos legados sem intenção explícita.

@@ -45,11 +45,12 @@ A navegação conta uma progressão simples:
 1. **Sinal** — quem é Omar e qual direção profissional busca;
 2. **Contexto** — IA, dados, automação e engenharia de software;
 3. **Provas** — projetos reais e seus artefatos;
-4. **Trajetória** — experiências e responsabilidades;
-5. **Ferramentas** — capacidades, tecnologias e formas de trabalhar;
-6. **Formação** — educação, certificações e idiomas;
-7. **Laboratório** — Power BI, artigos, Behance e experimentos existentes;
-8. **Contato** — meios reais de conversar e acessar os currículos.
+4. **Impacto** — resultados documentados que chegaram à operação;
+5. **Trajetória** — experiências e responsabilidades;
+6. **Ferramentas** — capacidades, tecnologias e formas de trabalhar;
+7. **Formação** — educação, certificações e idiomas;
+8. **Laboratório** — Power BI, artigos, Behance e experimentos existentes;
+9. **Contato** — meios reais de conversar e acessar os currículos.
 
 O conteúdo deve vir dos arquivos existentes no repositório. Não serão criadas métricas, cargos, datas, clientes, depoimentos ou resultados inexistentes. Conflitos entre o HTML legado e os currículos atualizados devem ser resolvidos a favor da fonte mais recente, com revisão humana antes da publicação.
 
@@ -83,7 +84,7 @@ O site da [Studio Freight](https://studiofreight.com/work/studio-freight) orient
 ### 1. Cabeçalho
 
 - wordmark “OMAR / SELECTED WORK”;
-- links âncora para Trabalho, Experiência, Sobre e Contato;
+- links âncora para Sobre, Projetos, Resultados, Experiência, Ferramentas, Formação e Contato;
 - seletor de idioma PT/EN/ES preservando o comportamento atual;
 - indicador curto de disponibilidade apenas se houver informação verdadeira;
 - botão de contato com texto explícito, sem ícone isolado.
@@ -114,13 +115,13 @@ O texto é a primeira camada visual. A estrela nunca cruza o parágrafo nem se t
 
 ### 4. Projetos em destaque — “Provas”
 
-Preservar e revisar os projetos encontrados:
+A seleção editorial atual reúne:
 
-- Automação de Enriquecimento de Leads;
-- Sistema de Reservas para Restaurantes;
-- OpenSource Lab;
-- EduCore;
-- FinCore.
+- **Verithaz** — IA investigativa que separa notícias em afirmações, revisa fontes e procura indícios de campanha ou manipulação; as estratégias da dialética erística descritas por Arthur Schopenhauer entram como lente crítica, não como atalho para um veredito;
+- **Vira Price** — startup voltada ao gerenciamento de listas de fornecedores para lojistas;
+- **Automação de Enriquecimento de Leads**;
+- **EduCore — Gestão Acadêmica**;
+- **OpenSource Lab**.
 
 Não manter cards vazios ou “Projeto 06”. Cada projeto real recebe:
 
@@ -133,9 +134,18 @@ Não manter cards vazios ou “Projeto 06”. Cada projeto real recebe:
 - link de demonstração quando existente;
 - estado honesto de indisponibilidade quando necessário.
 
-O primeiro projeto pode ocupar uma composição editorial ampla. Os demais alternam texto e mídia, sem uma grade de seis cards idênticos.
+Verithaz pode ocupar a composição editorial de maior peso. Os demais alternam texto e mídia, sem uma grade de cards idênticos.
 
-### 5. Experiência — “Trajetória”
+### 5. Resultados — “Impacto”
+
+- seção navegável com `id="resultados"`, depois de Projetos e antes de Experiência;
+- aproximadamente R$ 70 mil economizados em gastos com IA;
+- ganho de 15% em eficiência operacional;
+- semanas de trabalho manual poupadas, sem inventar uma quantidade;
+- artigos semânticos com labels completos em PT, EN e ES;
+- linguagem visual de painel técnico/editorial, não uma grade SaaS de KPIs.
+
+### 6. Experiência — “Trajetória”
 
 - linha vertical de registro, não uma timeline corporativa genérica;
 - cargos, organizações e descrições confirmados;
@@ -143,7 +153,7 @@ O primeiro projeto pode ocupar uma composição editorial ampla. Os demais alter
 - cada item recebe período somente se a fonte indicar;
 - tecnologias entram como nota marginal, não como dezenas de pills.
 
-### 6. Capacidades — “Ferramentas”
+### 7. Capacidades — “Ferramentas”
 
 Agrupar tecnologias existentes por função, não por logo:
 
@@ -155,7 +165,7 @@ Agrupar tecnologias existentes por função, não por logo:
 
 Os grupos devem ser derivados do conteúdo confirmado. Um diagrama editorial pode substituir a “nuvem de badges”.
 
-### 7. Formação — “Base”
+### 8. Formação — “Base”
 
 - Instituto Mauá de Tecnologia;
 - Senac Aclimação;
@@ -164,14 +174,14 @@ Os grupos devem ser derivados do conteúdo confirmado. Um diagrama editorial pod
 
 As barras de idioma não devem sugerir precisão falsa. Preferir rótulos textuais (Nativo, B2, A2–B1, A1) com uma escala visual discreta e acessível.
 
-### 8. Laboratório / Power BI / Artigos
+### 9. Laboratório / Power BI / Artigos
 
 - Behance;
 - pasta de artigos no Drive;
 - experimentos e mídia que já existirem;
 - nenhum conteúdo “em breve” sem utilidade.
 
-### 9. Contato
+### 10. Contato
 
 - frase de fechamento;
 - e-mail somente se confirmado no repositório/currículo;
@@ -179,7 +189,7 @@ As barras de idioma não devem sugerir precisão falsa. Preferir rótulos textua
 - downloads de currículo;
 - painel autoral inspirado em notificação de sistema, sem copiar interface Apple.
 
-### 10. Footer
+### 11. Footer
 
 - nome;
 - ano dinâmico;
@@ -206,7 +216,7 @@ As barras de idioma não devem sugerir precisão falsa. Preferir rótulos textua
 - gutters com estrela, medidores, recortes e janelas pequenas;
 - hero com altura mínima entre 760 e 900 px, sem forçar `100vh` em telas baixas;
 - projetos alternam `7/5`, `5/7` e faixa total;
-- nenhum trecho pinned; a estrela responde ao progresso total sem reter o visitante;
+- nenhum trecho pinned; a estrela responde a waypoints semânticos, desaparece em áreas densas e não retém o visitante;
 - elementos laterais podem ultrapassar o container, mas ficam dentro de `overflow: clip`;
 - nenhuma informação indispensável além da largura central;
 - alvo de teste: 1440×900 e 1920×1080.
@@ -215,12 +225,12 @@ As barras de idioma não devem sugerir precisão falsa. Preferir rótulos textua
 
 - grid de 8 colunas;
 - coluna de leitura de 6–8 colunas;
-- estrela vira poster SVG estático em tablets, sem runtime WebGL;
+- estrelas de Hero e Resultados viram posters SVG estáticos em tablets, sem runtime Three.js;
 - gutters menores; objetos decorativos migram para faixas entre seções;
 - projetos ficam em uma coluna com mídia de proporção controlada;
 - cabeçalho reduz a quantidade de links visíveis;
 - evitar painéis sobrepostos e qualquer pin;
-- alvo de teste: 768×1024 e 1024×1366.
+- alvo de teste: 768×1024 e 1024×768.
 
 ### Mobile — 320 a 767 px
 
@@ -230,7 +240,7 @@ Mobile é outra composição, não desktop comprimido:
 - gutter externo de 16 px em 320–375 px e 20 px em 390–430 px;
 - tipografia fluida sem palavras cortadas;
 - hero com `min-height: 100svh` e respeito a `safe-area-inset-*`;
-- estrela em SVG/AVIF estática, já integrada à colagem;
+- estrelas SVG estáticas no Hero e em Resultados, já integradas à composição;
 - sem EditorialMotion/GSAP, ScrollTrigger, Three.js, WebGL, sequência de frames, Lenis, parallax ou pin;
 - projeto em blocos verticais com ordem texto → mídia → links;
 - painéis de sistema no fluxo, não flutuando sobre o conteúdo;
@@ -381,11 +391,17 @@ A auditoria confirmou que o repositório não possuía sequência de frames, GLB
 2. material físico metálico amarelo, clearcoat e luzes branca/âmbar;
 3. Three.js direto, sem React Three Fiber ou Drei;
 4. importação dinâmica apenas após o capability gate;
-5. renderer orientado por eventos: renderiza em scroll, resize, pointer e retorno da aba, sem loop infinito;
+5. renderer orientado por eventos: renderiza quando a timeline muda, em resize e no retorno da aba, sem loop infinito;
 6. `devicePixelRatio` limitado a 1.5 e descarte explícito de geometria, materiais, renderer e contexto;
-7. poster SVG cromado como baseline, fallback de erro, tablet, mobile, Save-Data e reduced motion.
+7. canvas quadrado de 190–230 px, com escala do Hero abaixo de 300 px;
+8. waypoints ligados às seções reais, com opacidade zero em Projetos e outros blocos densos;
+9. posters SVG locais no Hero e em Resultados como baseline, fallback de erro, tablet, mobile, `Save-Data`, WebGL indisponível e reduced motion.
 
-O canvas é fixo no gutter direito, não recebe eventos e mapeia o progresso total do documento para posição Y, rotação XYZ, escala e luz. Ele nunca cruza a coluna de leitura. O chunk Three.js fica separado e não é solicitado pelo caminho mobile; a decisão pode ser reavaliada no futuro se uma sequência offline medida ficar menor que o chunk dinâmico.
+O canvas é fixo, não recebe eventos e interpola posição, rotação, escala e opacidade entre waypoints semânticos. No Hero e em Resultados, usa slots decorativos reservados. Em viewports largas, só entra em um gutter quando o espaço livre comporta objeto, 32 px de respiro do conteúdo e 16 px de borda; nos cinco projetos selecionados, no painel de métricas, em Ferramentas, no Laboratório e no footer, permanece invisível.
+
+Ao deixar um waypoint visível, a peça primeiro percorre um deslocamento curto, scroll-linked, com rotação e escala ainda respondendo ao scroll. O fade ocupa somente o trecho final dessa saída. Depois de invisível, o canvas pode ser reposicionado para a próxima pose e reaparecer sem cruzar a coluna de leitura.
+
+O chunk Three.js fica separado e não é solicitado pelo caminho compacto ou quando o capability gate rejeita WebGL. A decisão pode ser reavaliada no futuro se uma sequência offline medida ficar menor que o chunk dinâmico.
 
 ## Componentes propostos
 
@@ -399,6 +415,8 @@ O canvas é fixo no gutter direito, não recebe eventos e mapeia o progresso tot
 - `ProjectFeature`;
 - `ProjectListItem`;
 - `ProjectMedia`;
+- `ResultsSection`;
+- `ResultMetric`;
 - `ExperienceLedger`;
 - `CapabilityDiagram`;
 - `EducationRecord`;
@@ -476,7 +494,7 @@ Orçamentos iniciais:
 
 Estratégia:
 
-- conteúdo e poster SVG renderizam antes do WebGL;
+- conteúdo e posters SVG de Hero/Resultados renderizam antes da cena WebGL;
 - dynamic import de `EditorialMotion`, GSAP/ScrollTrigger, Lenis e Three.js somente no desktop elegível;
 - renderização event-driven, sem RAF contínuo;
 - não renderizar enquanto `document.hidden`;
@@ -487,6 +505,7 @@ Estratégia:
 - sem blur grande em várias camadas;
 - animações limitadas a `transform`, `opacity`, clip/mask já rasterizada;
 - respeitar `navigator.connection.saveData` quando disponível.
+- testar contexto WebGL/WebGL2 com `failIfMajorPerformanceCaveat` antes do import da ilha pesada.
 
 ## Acessibilidade
 
@@ -501,6 +520,8 @@ Estratégia:
 - canvas/estrela, textura, handles e rabiscos decorativos com `aria-hidden="true"`;
 - nenhum controle falso inspirado em iOS/macOS;
 - estado ativo indicado por texto/forma, não só por amarelo;
+- navegação ativa indicada por `aria-current="location"`;
+- métricas visuais de Resultados ocultas da árvore acessível, com labels localizados estáticos;
 - alt text contextual para mídia de projeto;
 - seletor de idioma operável por teclado e com rótulo explícito;
 - mensagens de formulário/ação em região viva somente se houver interação real;
@@ -534,7 +555,7 @@ Esta avaliação mede o legado atual como ponto de partida e define a barra do r
 | Tipografia          |                4.0 | sistema atual genérico e escala limitada          | Bricolage Grotesque + IBM Plex Mono, escala e largura de leitura definidas |  9.0 |
 | Paleta              |                3.5 | azul aquático domina                              | sistema Ink/Paper/Signal com uso percentual e contraste                    |  9.2 |
 | Composição          |                4.5 | grid previsível e centrado                        | coluna editorial + gutters + alternância de projetos                       |  8.8 |
-| Clareza             |                6.0 | conteúdo existe, mas é denso e pouco priorizado   | narrativa Sinal → Provas → Trajetória e copy enxuta                        |  9.0 |
+| Clareza             |                6.0 | conteúdo existe, mas é denso e pouco priorizado   | narrativa Sinal → Provas → Impacto → Trajetória e copy enxuta              |  9.0 |
 | Originalidade       |                4.0 | estética aquática comum                           | software collage autoral, amarelo-sinal e artefatos próprios               |  9.2 |
 | Consistência        |                5.0 | componentes e detalhes competem                   | tokens, variantes limitadas e regras de densidade                          |  9.0 |
 | Responsividade      |                5.5 | versão responsiva é adaptação do mesmo layout     | composições desktop/tablet/mobile explícitas                               |  8.8 |
@@ -550,7 +571,7 @@ Esta avaliação mede o legado atual como ponto de partida e define a barra do r
 
 Antes de considerar a direção pronta:
 
-1. gerar screenshots em 320×720, 375×812, 390×844, 768×1024, 1440×900 e 1920×1080;
+1. gerar screenshots completos em 320×720, 375×812, 390×844, 768×1024, 1024×768, 1280×800, 1366×768, 1440×900, 1600×900 e 1920×1080;
 2. validar que cada viewport possui um foco dominante;
 3. remover qualquer ornamento que não comunique seleção, processo ou autoria;
 4. verificar que o amarelo não excede aproximadamente 15% da área percebida;
@@ -560,6 +581,8 @@ Antes de considerar a direção pronta:
 8. testar teclado, foco, zoom e 320 px;
 9. medir bundle, LCP, CLS e INP;
 10. repetir a matriz GStack e corrigir qualquer nota abaixo de 8 antes do aceite.
+11. gerar e inspecionar oito posições seccionais em 375, 390, 1024, 1280, 1366, 1440, 1600 e 1920 px;
+12. validar hash direto, scrollspy, copy PT/EN/ES e semântica de `#resultados`.
 
 ## Critérios visuais de rejeição
 
