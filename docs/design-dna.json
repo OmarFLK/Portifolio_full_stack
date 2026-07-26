@@ -1,0 +1,489 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "Signal / Selected Work",
+  "version": "1.0.0",
+  "thesis": {
+    "visual": "Engenharia em modo de edição: editorial técnico de alto contraste, tátil e autoral.",
+    "narrative": "Sinal -> Contexto -> Provas -> Trajetória -> Ferramentas -> Base -> Laboratório -> Contato.",
+    "interaction": "Selecionar, inspecionar, avançar. O movimento explica foco e progresso sem bloquear o scroll nativo.",
+    "paletteDirection": "Amarelo-sinal, preto-tinta, branco-papel e cinzas. Sem magenta dominante e sem linguagem aquática."
+  },
+  "colors": {
+    "ink": "#0A0A08",
+    "nearBlack": "#141412",
+    "graphite": "#24241F",
+    "gray900": "#1A1A17",
+    "gray700": "#45453F",
+    "gray500": "#77776E",
+    "gray300": "#B8B8AE",
+    "gray150": "#DDDDD4",
+    "paper": "#F4F1E8",
+    "white": "#FFFDF7",
+    "signalYellow": "#FFD400",
+    "amber": "#FFB800",
+    "paleYellow": "#FFF1A6",
+    "focusBlack": "#000000",
+    "semantic": {
+      "backgroundDark": "{colors.ink}",
+      "backgroundLight": "{colors.paper}",
+      "surfaceDark": "{colors.nearBlack}",
+      "surfaceLight": "{colors.white}",
+      "textOnDark": "{colors.paper}",
+      "textOnLight": "{colors.ink}",
+      "textMutedOnDark": "{colors.gray300}",
+      "textMutedOnLight": "{colors.gray700}",
+      "action": "{colors.signalYellow}",
+      "actionText": "{colors.ink}",
+      "selection": "{colors.signalYellow}",
+      "borderDark": "{colors.gray700}",
+      "borderLight": "{colors.gray300}",
+      "focusOuter": "{colors.signalYellow}",
+      "focusInner": "{colors.focusBlack}"
+    },
+    "usage": {
+      "inkAndGraphitePercent": "50-60",
+      "paperAndWhitePercent": "25-35",
+      "yellowAndAmberPercent": "8-15",
+      "rule": "Yellow is a signal and selection color, not a body-text or full-page background color."
+    },
+    "forbiddenCombinations": [
+      "white text on signalYellow",
+      "yellow body text on paper or white",
+      "small gray500 text on ink",
+      "long text directly on liquid gradients",
+      "magenta, purple, blue or cyan as dominant accents"
+    ]
+  },
+  "typography": {
+    "families": {
+      "display": {
+        "name": "Bricolage Grotesque Variable",
+        "fallback": "system-ui, sans-serif",
+        "license": "SIL OFL 1.1",
+        "source": "@fontsource-variable"
+      },
+      "body": {
+        "name": "Bricolage Grotesque Variable",
+        "fallback": "system-ui, sans-serif",
+        "license": "SIL OFL 1.1",
+        "source": "@fontsource-variable"
+      },
+      "mono": {
+        "name": "IBM Plex Mono",
+        "fallback": "\"SFMono-Regular\", Consolas, monospace",
+        "license": "SIL OFL 1.1",
+        "source": "self-hosted or @fontsource"
+      }
+    },
+    "weights": {
+      "display": [680, 720, 760],
+      "body": [430, 500, 650],
+      "mono": [400, 500]
+    },
+    "styles": {
+      "displayXXL": {
+        "family": "display",
+        "size": "clamp(5rem, 13vw, 12rem)",
+        "lineHeight": 0.82,
+        "letterSpacing": "-0.018em",
+        "transform": "uppercase"
+      },
+      "displayXL": {
+        "family": "display",
+        "size": "clamp(3.75rem, 8vw, 8rem)",
+        "lineHeight": 0.86,
+        "letterSpacing": "-0.012em",
+        "transform": "uppercase"
+      },
+      "projectTitle": {
+        "family": "body",
+        "weight": 600,
+        "size": "clamp(2rem, 4vw, 4.5rem)",
+        "lineHeight": 0.96,
+        "letterSpacing": "-0.035em"
+      },
+      "lead": {
+        "family": "body",
+        "weight": 400,
+        "size": "clamp(1.25rem, 2vw, 1.75rem)",
+        "lineHeight": 1.35,
+        "maxCharacters": 54
+      },
+      "body": {
+        "family": "body",
+        "weight": 400,
+        "size": "clamp(1rem, calc(0.3vw + 0.94rem), 1.125rem)",
+        "lineHeight": 1.58,
+        "maxCharacters": 72
+      },
+      "label": {
+        "family": "mono",
+        "weight": 500,
+        "size": "clamp(0.6875rem, 0.15vw + 0.66rem, 0.8125rem)",
+        "lineHeight": 1.3,
+        "letterSpacing": "0.08em",
+        "transform": "uppercase"
+      },
+      "technicalNote": {
+        "family": "mono",
+        "weight": 400,
+        "size": "clamp(0.75rem, 0.2vw + 0.71rem, 0.875rem)",
+        "lineHeight": 1.45
+      }
+    },
+    "fontLoading": {
+      "format": "woff2",
+      "display": "swap",
+      "preload": ["Bricolage Grotesque Variable Latin", "IBM Plex Mono Latin 400/500"],
+      "rule": "Use local WOFF2 subsets and font-display swap; the variable Bricolage file covers display and body roles."
+    }
+  },
+  "spacing": {
+    "base": 4,
+    "scalePx": {
+      "0": 0,
+      "1": 4,
+      "2": 8,
+      "3": 12,
+      "4": 16,
+      "5": 20,
+      "6": 24,
+      "8": 32,
+      "10": 40,
+      "12": 48,
+      "16": 64,
+      "20": 80,
+      "24": 96,
+      "32": 128,
+      "40": 160
+    },
+    "sectionRhythm": {
+      "desktop": ["96px", "128px", "160px"],
+      "tablet": ["72px", "96px", "120px"],
+      "mobile": ["56px", "72px", "96px"]
+    },
+    "rule": "Use varied editorial rhythm; do not apply the same vertical padding to every section."
+  },
+  "grid": {
+    "shellMax": "1600px",
+    "readingColumnMax": "860px",
+    "desktop": {
+      "minWidth": "1280px",
+      "columns": 12,
+      "gutter": "clamp(24px, 2.8vw, 48px)",
+      "outerMargin": "clamp(32px, 4vw, 80px)",
+      "contentColumns": "6-8 centered",
+      "decorativeColumns": "remaining side gutters"
+    },
+    "tablet": {
+      "minWidth": "768px",
+      "maxWidth": "1279px",
+      "columns": 8,
+      "gutter": "24px",
+      "outerMargin": "32px",
+      "contentColumns": "6-8"
+    },
+    "mobile": {
+      "minWidth": "320px",
+      "maxWidth": "767px",
+      "columns": 1,
+      "gutter": "0px",
+      "outerMargin": "16px at 320-375px; 20px at 390-430px"
+    },
+    "breakpoints": {
+      "compact": "480px",
+      "tablet": "768px",
+      "desktop": "1280px",
+      "wide": "1600px"
+    }
+  },
+  "radius": {
+    "none": "0px",
+    "micro": "2px",
+    "control": "4px",
+    "card": "8px",
+    "systemPanel": "18px",
+    "softObject": "24px",
+    "pill": "999px",
+    "rules": [
+      "Default editorial cards use 0-8px.",
+      "18px is reserved for system-inspired panels.",
+      "Pill radius is reserved for real compact status or segmented controls.",
+      "Do not give every surface the same radius."
+    ]
+  },
+  "borders": {
+    "hairline": "1px solid currentColor",
+    "structural": "2px solid currentColor",
+    "focus": "3px solid",
+    "boundingHandleSize": {
+      "desktop": "8px",
+      "mobile": "10px"
+    },
+    "boundingVariants": {
+      "ink": {
+        "line": "#0A0A08",
+        "handleFill": "#FFFDF7"
+      },
+      "paper": {
+        "line": "#F4F1E8",
+        "handleFill": "#0A0A08"
+      },
+      "signal": {
+        "line": "#FFD400",
+        "handleFill": "#0A0A08"
+      }
+    }
+  },
+  "shadows": {
+    "none": "none",
+    "paperLift": "0 2px 0 rgba(10,10,8,0.22), 0 16px 36px rgba(10,10,8,0.14)",
+    "systemPanel": "0 1px 0 rgba(255,255,255,0.2) inset, 0 18px 50px rgba(0,0,0,0.24)",
+    "floatingArtifact": "0 24px 70px rgba(0,0,0,0.28)",
+    "focus": "0 0 0 2px #0A0A08, 0 0 0 5px #FFD400",
+    "rule": "No generic colored glow. Shadows express physical stacking only."
+  },
+  "textures": {
+    "noise": {
+      "softOpacity": 0.035,
+      "mediumOpacity": 0.07,
+      "maxOpacity": 0.1,
+      "scale": "128px",
+      "blendModeDark": "soft-light",
+      "blendModeLight": "multiply",
+      "animation": "none",
+      "rule": "Never place medium or max noise over paragraph text."
+    },
+    "grain": {
+      "type": "small repeatable static WebP/AVIF",
+      "assetBudget": "24KB",
+      "preferredTargets": ["liquid gradients", "project media", "paper collage"]
+    },
+    "dither": {
+      "type": "pre-rendered monochrome mask",
+      "maxCoverage": "25% of a section",
+      "animation": "none"
+    },
+    "tornPaper": {
+      "type": "SVG mask or repeatable monochrome WebP",
+      "assetBudget": "24KB per variant",
+      "variants": ["paper-on-ink", "ink-on-paper", "signal-on-ink"],
+      "frequency": "one divider per major chapter at most"
+    },
+    "liquidSignal": {
+      "colors": ["#FFD400", "#FFB800", "#FFF1A6", "#77776E", "#24241F"],
+      "construction": "3-5 radial/conic gradients, irregular mask and static grain",
+      "meaning": "heated metal, signal ink and light; never water",
+      "maxInstancesPerViewport": 1
+    }
+  },
+  "motion": {
+    "durationsMs": {
+      "instant": 120,
+      "micro": 180,
+      "control": 260,
+      "reveal": 420,
+      "section": 700,
+      "hero": 900,
+      "ambientCycle": 16000
+    },
+    "easings": {
+      "snap": "cubic-bezier(0.22, 1, 0.36, 1)",
+      "editorial": "cubic-bezier(0.16, 1, 0.3, 1)",
+      "system": "cubic-bezier(0.2, 0.8, 0.2, 1)",
+      "standard": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "exit": "cubic-bezier(0.4, 0, 1, 1)",
+      "linear": "linear"
+    },
+    "staggerMs": {
+      "lettersOrWords": 28,
+      "handles": 45,
+      "listItems": 70
+    },
+    "budgets": {
+      "simultaneousScrollScrubs": 2,
+      "simultaneousEntranceItems": 8,
+      "continuousAmbientAnimations": 1,
+      "maxPinnedDistance": "140vh",
+      "rule": "No infinite object rotation; no animated noise; no React state updates per frame."
+    },
+    "libraries": {
+      "scrollAndTimelines": "GSAP + ScrollTrigger + @gsap/react",
+      "microInteractions": "CSS transitions and keyframes",
+      "smoothScroll": "Lenis only on eligible desktop as progressive enhancement",
+      "fake3d": "Static authored SVG poster for the baseline path",
+      "runtime3d": "Direct Three.js in an isolated dynamic desktop module",
+      "animejs": "not required"
+    },
+    "reducedMotion": {
+      "disable": [
+        "scrub",
+        "pin",
+        "parallax",
+        "smooth scroll",
+        "WebGL scene",
+        "stroke drawing",
+        "ambient gradient drift"
+      ],
+      "replaceWith": [
+        "final visible state",
+        "static star poster",
+        "instant anchor navigation",
+        "opacity transition <= 120ms only when helpful"
+      ]
+    }
+  },
+  "components": {
+    "SiteHeader": {
+      "shape": "thin editorial rail",
+      "mobile": "solid compact panel",
+      "avoid": "floating glass pill"
+    },
+    "BoundingBoxFrame": {
+      "maxUses": "hero, one featured project and one selected state",
+      "handles": "4 default, 8 desktop optional",
+      "decorativeA11y": "aria-hidden=true; pointer-events=none",
+      "avoid": "fake drag behavior"
+    },
+    "SystemNotice": {
+      "purpose": "short factual status or contact information",
+      "radius": "{radius.systemPanel}",
+      "avoid": "copied Apple assets and fake controls"
+    },
+    "InspectorPanel": {
+      "purpose": "project technologies and metadata",
+      "desktop": "gutter or media edge",
+      "mobile": "in document flow"
+    },
+    "WindowPreview": {
+      "purpose": "frame project media with neutral authored chrome",
+      "avoid": "browser mockup around every project"
+    },
+    "TornPaperDivider": {
+      "purpose": "major chapter transition",
+      "maxFrequency": "one per two sections"
+    },
+    "Scribble": {
+      "types": [
+        "arrow-short",
+        "circle-imperfect",
+        "underline-double",
+        "star-four-point",
+        "motion-lines",
+        "review-mark"
+      ],
+      "stroke": "1.5-2.5px currentColor",
+      "maxPerViewport": 2,
+      "animatedInstancesPerPage": "2-3"
+    },
+    "ProjectFeature": {
+      "layout": "variable editorial composition",
+      "avoid": "identical SaaS card grid"
+    },
+    "ExperienceLedger": {
+      "layout": "record ledger with marginal notes",
+      "avoid": "generic alternating timeline"
+    },
+    "DesktopStarScene": {
+      "geometry": "Procedural five-point ExtrudeGeometry",
+      "material": "MeshPhysicalMaterial with signal yellow, metalness and clearcoat",
+      "loading": "Dynamic import after desktop capability gate",
+      "renderLoop": "Event-driven scroll, resize, pointer and visibility renders only",
+      "dprCap": 1.5,
+      "a11y": "decorative only; all meaning remains in DOM",
+      "cleanup": "Dispose geometry, edge geometry, materials, renderer and WebGL context",
+      "fallback": "StaticSignalStar SVG",
+      "mobile": "Three.js and Lenis are not imported or downloaded"
+    }
+  },
+  "responsiveRules": {
+    "desktop": [
+      "Center the 780-900px reading column.",
+      "Use both gutters for nonessential artifacts.",
+      "Allow controlled overlap without horizontal scroll.",
+      "Run the dynamic Three.js scene only after capability and preference checks.",
+      "Do not pin the document."
+    ],
+    "tablet": [
+      "Use an 8-column grid.",
+      "Move gutter artifacts into in-flow chapter bands.",
+      "Use a static or short light poster treatment.",
+      "No pin and no stacked translucent panels."
+    ],
+    "mobile": [
+      "Use a dedicated one-column composition.",
+      "Do not import Three.js, WebGL, frame sequence or Lenis.",
+      "Use static SVG/AVIF star and lightweight liquid crop.",
+      "Place system panels in normal document flow.",
+      "Use 44x44px minimum touch targets and safe-area insets.",
+      "Do not rely on hover or hide essential content in decoration."
+    ]
+  },
+  "accessibility": {
+    "contrast": {
+      "normalText": "4.5:1 minimum",
+      "largeTextAndUI": "3:1 minimum"
+    },
+    "focusStyle": "3px signalYellow plus 2px ink separation",
+    "minimumTouchTarget": "44x44px",
+    "reflowWidth": "320px",
+    "zoomTarget": "200%",
+    "rules": [
+      "One h1 and sequential heading hierarchy.",
+      "Use semantic landmarks and a skip link.",
+      "Decorative canvas, handles, scribbles and texture are aria-hidden.",
+      "Controls that look interactive must be interactive.",
+      "No information conveyed by color alone.",
+      "No essential text inside images or canvas.",
+      "Language switcher supports keyboard and explicit labels."
+    ]
+  },
+  "performance": {
+    "budgets": {
+      "initialJsGzip": "170KB",
+      "scrollChunkGzip": "80KB",
+      "heroPoster": "120KB",
+      "starSequenceTotal": "3.5MB",
+      "firstStarBatch": "500KB",
+      "texture": "32KB each",
+      "preloadedFonts": "140KB",
+      "lcp": "2.5s",
+      "cls": "0.1",
+      "inp": "200ms"
+    },
+    "rules": [
+      "Render content and poster before animation JavaScript.",
+      "Dynamically import the Three.js scene only after the capability gate.",
+      "Render on demand and stop rendering while the document is hidden.",
+      "Limit canvas DPR to 1.5.",
+      "Use static noise and pre-rendered masks.",
+      "Keep Three.js in a separate desktop-only chunk; do not add R3F/Drei.",
+      "Do not request Three.js or Lenis on mobile, Save-Data or reduced motion."
+    ]
+  },
+  "forbiddenElements": [
+    "aquatic theme",
+    "bubbles",
+    "ocean waves",
+    "blue or cyan dominant palette",
+    "magenta or purple dominant palette",
+    "generic purple-blue gradient",
+    "generic neon glow",
+    "identical SaaS card grid",
+    "excessive pills",
+    "excessive glassmorphism",
+    "same border radius everywhere",
+    "long centered body copy",
+    "custom cursor replacing the native cursor",
+    "long blocking loader",
+    "infinite decorative rotation",
+    "animated full-screen noise",
+    "WebGL or frame-sequence download on mobile",
+    "fake draggable bounding boxes",
+    "copied Apple system assets",
+    "emoji used as interface icons",
+    "important content rendered only in canvas",
+    "placeholder project cards",
+    "invented metrics, projects, roles or dates"
+  ]
+}

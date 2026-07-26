@@ -1,0 +1,8 @@
+interface:
+  display_name: 'Signal Portfolio Review'
+  short_description: 'Audits visual and technical portfolio DNA'
+  brand_color: '#FFD400'
+  default_prompt: 'Use $signal-portfolio-review to audit this portfolio change before it is merged.'
+
+policy:
+  allow_implicit_invocation: true
