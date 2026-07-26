@@ -1,0 +1,123 @@
+html {
+  font-family: var(--font-body);
+  font-synthesis: none;
+  font-weight: 430;
+  line-height: 1.58;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-size: var(--font-body-size);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 680;
+  letter-spacing: -0.045em;
+  line-height: 0.96;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--font-display-xxl);
+  font-weight: 760;
+  line-height: 0.82;
+  letter-spacing: -0.065em;
+}
+
+h2 {
+  font-size: var(--font-display-xl);
+  line-height: 0.86;
+}
+
+h3 {
+  font-size: var(--font-title);
+}
+
+h4 {
+  font-size: clamp(1.35rem, 2vw, 2rem);
+}
+
+p,
+li,
+dd {
+  text-wrap: pretty;
+}
+
+strong,
+b {
+  font-weight: 650;
+}
+
+small {
+  font-size: var(--font-note);
+}
+
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--font-mono);
+}
+
+::selection {
+  color: var(--color-ink);
+  background: var(--color-signal);
+  text-shadow: none;
+}
+
+.display-xxl {
+  font-family: var(--font-display);
+  font-size: var(--font-display-xxl);
+  font-weight: 760;
+  line-height: 0.82;
+  letter-spacing: -0.065em;
+  text-wrap: balance;
+}
+
+.display-xl {
+  font-family: var(--font-display);
+  font-size: var(--font-display-xl);
+  font-weight: 680;
+  line-height: 0.86;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+}
+
+.lede {
+  max-width: 54ch;
+  font-size: var(--font-lead);
+  line-height: 1.35;
+  letter-spacing: -0.018em;
+}
+
+.eyebrow,
+.technical-label {
+  font-family: var(--font-mono);
+  font-size: var(--font-label);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.technical-note {
+  font-family: var(--font-mono);
+  font-size: var(--font-note);
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+@media (max-width: 29.999rem) {
+  h1,
+  .display-xxl {
+    hyphens: none;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+}

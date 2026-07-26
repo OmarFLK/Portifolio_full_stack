@@ -1,0 +1,132 @@
+:root {
+  color-scheme: dark;
+
+  /* Color: ink / paper / signal. Yellow is an action, not a wallpaper. */
+  --color-ink: #0a0a08;
+  --color-near-black: #141412;
+  --color-gray-900: #1a1a17;
+  --color-graphite: #24241f;
+  --color-gray-700: #45453f;
+  --color-gray-500: #77776e;
+  --color-gray-300: #b8b8ae;
+  --color-gray-150: #ddddd4;
+  --color-paper: #f4f1e8;
+  --color-white: #fffdf7;
+  --color-signal: #ffd400;
+  --color-amber: #ffb800;
+  --color-pale-signal: #fff1a6;
+  --color-focus-black: #000;
+
+  --surface-page: var(--color-ink);
+  --surface-raised: var(--color-near-black);
+  --surface-paper: var(--color-paper);
+  --surface-white: var(--color-white);
+  --text-primary: var(--color-paper);
+  --text-secondary: var(--color-gray-300);
+  --text-on-paper: var(--color-ink);
+  --text-muted-on-paper: var(--color-gray-700);
+  --border-on-dark: var(--color-gray-700);
+  --border-on-light: var(--color-gray-300);
+  --action: var(--color-signal);
+  --action-text: var(--color-ink);
+
+  /* The variable family is intentionally shared by display and body. */
+  --font-display: 'Bricolage Grotesque Variable', 'Arial Narrow', 'Roboto Condensed', sans-serif;
+  --font-body:
+    'Bricolage Grotesque Variable', Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+
+  --font-display-xxl: clamp(4.2rem, 12vw, 11.5rem);
+  --font-display-xl: clamp(3.25rem, 8vw, 7.75rem);
+  --font-display-lg: clamp(2.5rem, 5vw, 5.25rem);
+  --font-title: clamp(1.9rem, 4vw, 4.25rem);
+  --font-lead: clamp(1.2rem, 1.4vw + 0.9rem, 1.75rem);
+  --font-body-size: clamp(1rem, 0.3vw + 0.94rem, 1.125rem);
+  --font-label: clamp(0.6875rem, 0.15vw + 0.66rem, 0.8125rem);
+  --font-note: clamp(0.75rem, 0.2vw + 0.71rem, 0.875rem);
+
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+  --space-40: 10rem;
+
+  --page-gutter: clamp(1rem, 4vw, 5rem);
+  --shell-max: 100rem;
+  --reading-max: 54rem;
+  --section-space-sm: clamp(3.5rem, 7vw, 6rem);
+  --section-space-md: clamp(4.5rem, 9vw, 8rem);
+  --section-space-lg: clamp(5.5rem, 11vw, 10rem);
+  --header-offset: 5.5rem;
+
+  --radius-micro: 0.125rem;
+  --radius-control: 0.25rem;
+  --radius-card: 0.5rem;
+  --radius-system: 1.125rem;
+  --radius-soft-object: 1.5rem;
+  --radius-pill: 999px;
+
+  --line-hairline: 1px;
+  --line-structural: 2px;
+  --handle-size: 0.5rem;
+
+  --shadow-paper: 0 2px 0 rgb(10 10 8 / 22%), 0 16px 36px rgb(10 10 8 / 14%);
+  --shadow-system: inset 0 1px 0 rgb(255 255 255 / 20%), 0 18px 50px rgb(0 0 0 / 24%);
+  --shadow-artifact: 0 24px 70px rgb(0 0 0 / 28%);
+  --shadow-focus: 0 0 0 2px var(--color-focus-black), 0 0 0 5px var(--color-signal);
+
+  --duration-instant: 120ms;
+  --duration-micro: 180ms;
+  --duration-control: 260ms;
+  --duration-reveal: 420ms;
+  --duration-section: 700ms;
+  --duration-hero: 900ms;
+  --ease-snap: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-system: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --z-base: 0;
+  --z-art: 10;
+  --z-content: 20;
+  --z-header: 80;
+  --z-modal: 100;
+
+  --liquid-signal:
+    radial-gradient(circle at 18% 25%, var(--color-white) 0 2%, transparent 18%),
+    radial-gradient(circle at 72% 28%, var(--color-pale-signal) 0 7%, transparent 30%),
+    radial-gradient(circle at 45% 78%, var(--color-amber) 0 13%, transparent 38%),
+    conic-gradient(
+      from 145deg at 52% 46%,
+      var(--color-graphite),
+      var(--color-signal),
+      var(--color-gray-500),
+      var(--color-pale-signal),
+      var(--color-graphite)
+    );
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --page-gutter: clamp(2rem, 4vw, 5rem);
+    --handle-size: 0.5rem;
+    --header-offset: 6rem;
+  }
+}
+
+@media (max-width: 47.999rem) {
+  :root {
+    --handle-size: 0.625rem;
+  }
+}

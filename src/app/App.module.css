@@ -1,0 +1,17 @@
+.app {
+  position: relative;
+  min-width: 0;
+  min-height: 100vh;
+  overflow: clip;
+}
+
+.app main {
+  position: relative;
+  z-index: var(--z-base, 0);
+}
+
+@media print {
+  .app {
+    overflow: visible;
+  }
+}

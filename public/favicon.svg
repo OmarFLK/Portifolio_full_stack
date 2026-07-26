@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#0a0a08"/>
+  <path d="M8 8h48v48H8z" fill="none" stroke="#ffd400" stroke-width="2"/>
+  <path d="M8 14V8h6M50 8h6v6M56 50v6h-6M14 56H8v-6" fill="none" stroke="#fffdf7" stroke-width="3"/>
+  <text x="32" y="39" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="800" fill="#ffd400">OS</text>
+</svg>

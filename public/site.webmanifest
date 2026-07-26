@@ -1,0 +1,17 @@
+{
+  "name": "Omar Saliba — Selected Work",
+  "short_name": "Omar Saliba",
+  "description": "Portfólio de inteligência artificial, automação, dados e desenvolvimento.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a08",
+  "theme_color": "#ffd400",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

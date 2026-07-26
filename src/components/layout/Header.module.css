@@ -1,0 +1,371 @@
+.header {
+  --header-ink: var(--color-ink, #0a0a08);
+  --header-paper: var(--color-paper, #f4f1e8);
+  --header-white: var(--color-white, #fffdf7);
+  --header-gray: var(--color-gray-700, #45453f);
+  --header-signal: var(--color-signal, #ffd400);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  color: var(--header-paper);
+  background: var(--header-ink);
+  border-top: 3px solid var(--header-signal);
+  border-bottom: 1px solid var(--header-gray);
+}
+
+.rail {
+  width: min(100%, 100rem);
+  min-height: 4.25rem;
+  margin-inline: auto;
+  padding: env(safe-area-inset-top, 0) max(1rem, env(safe-area-inset-right, 0)) 0
+    max(1rem, env(safe-area-inset-left, 0));
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  column-gap: clamp(1.25rem, 2.5vw, 3rem);
+}
+
+.brand {
+  width: fit-content;
+  min-height: 2.75rem;
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.brandMark {
+  width: 2.25rem;
+  height: 2.25rem;
+  color: var(--header-ink);
+  background: var(--header-signal);
+  border: 1px solid var(--header-signal);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  transform: rotate(-2deg);
+  transition:
+    transform 180ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 180ms ease;
+}
+
+.brand:hover .brandMark {
+  transform: rotate(2deg);
+  background: var(--header-white);
+}
+
+.brandName {
+  display: grid;
+  font-family: var(--font-body, 'Bricolage Grotesque', system-ui, sans-serif);
+  font-size: 0.9375rem;
+  font-weight: 650;
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+
+.brandName small {
+  margin-top: 0.28rem;
+  color: var(--color-gray-300, #b8b8ae);
+  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.5625rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.desktopNavigation ol,
+.mobileNavigation ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.desktopNavigation ol {
+  display: flex;
+  align-items: stretch;
+}
+
+.desktopNavigation a {
+  min-height: 4rem;
+  padding-inline: clamp(0.55rem, 1vw, 1rem);
+  color: var(--color-gray-300, #b8b8ae);
+  display: grid;
+  place-items: center;
+  position: relative;
+  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.055em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 180ms ease;
+}
+
+.desktopNavigation a::after {
+  content: '';
+  width: calc(100% - 1.1rem);
+  height: 2px;
+  position: absolute;
+  right: 0.55rem;
+  bottom: 0;
+  background: var(--header-signal);
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.desktopNavigation a:hover,
+.desktopNavigation a:focus-visible {
+  color: var(--header-white);
+}
+
+.desktopNavigation a:hover::after,
+.desktopNavigation a:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+.languageSwitcher {
+  min-height: 2.75rem;
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--header-gray);
+}
+
+.languageButton {
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0.45rem;
+  color: var(--color-gray-300, #b8b8ae);
+  background: transparent;
+  border: 0;
+  border-left: 1px solid var(--header-gray);
+  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  cursor: pointer;
+  transition:
+    color 180ms ease,
+    background-color 180ms ease;
+}
+
+.languageButton:first-child {
+  border-left: 0;
+}
+
+.languageButton:hover {
+  color: var(--header-white);
+  background: var(--color-graphite, #24241f);
+}
+
+.languageButton[data-active='true'] {
+  color: var(--header-ink);
+  background: var(--header-signal);
+}
+
+.menuButton {
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0;
+  color: var(--header-paper);
+  background: transparent;
+  border: 1px solid var(--header-gray);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.menuButton span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.menuButton svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.mobilePanel {
+  height: calc(100dvh - 4.4375rem - env(safe-area-inset-top, 0));
+  padding: 1.25rem max(1rem, env(safe-area-inset-right, 0))
+    max(1.25rem, env(safe-area-inset-bottom, 0)) max(1rem, env(safe-area-inset-left, 0));
+  position: fixed;
+  inset: calc(4.4375rem + env(safe-area-inset-top, 0)) 0 0;
+  color: var(--header-ink);
+  background:
+    linear-gradient(90deg, transparent calc(100% - 1px), rgb(10 10 8 / 10%) calc(100% - 1px)) 0 0 /
+      2rem 100%,
+    var(--header-paper);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  animation: panel-in 260ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.panelIndex,
+.panelFooter {
+  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.625rem;
+  line-height: 1.35;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.panelIndex {
+  padding-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid currentColor;
+}
+
+.mobileNavigation {
+  align-self: center;
+}
+
+.mobileNavigation li {
+  border-bottom: 1px solid rgb(10 10 8 / 28%);
+}
+
+.mobileNavigation li:first-child {
+  border-top: 1px solid rgb(10 10 8 / 28%);
+}
+
+.mobileNavigation a {
+  min-height: 3.75rem;
+  padding-block: clamp(0.45rem, 1.5vh, 1rem);
+  color: inherit;
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  align-items: center;
+  font-family: var(--font-display, 'Bricolage Grotesque', system-ui, sans-serif);
+  font-size: clamp(1.65rem, 7.2vw, 3.2rem);
+  font-weight: 650;
+  line-height: 0.92;
+  letter-spacing: -0.055em;
+  text-decoration: none;
+}
+
+.mobileNavigation a span {
+  align-self: start;
+  padding-top: 0.2rem;
+  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.5625rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.06em;
+}
+
+.mobileNavigation a:hover,
+.mobileNavigation a:focus-visible {
+  padding-left: 0.5rem;
+  color: var(--header-ink);
+  background: var(--header-signal);
+}
+
+.panelFooter {
+  padding-top: 1rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 2px solid currentColor;
+}
+
+.mobileLanguages {
+  border-color: var(--header-ink);
+}
+
+.mobileLanguages .languageButton {
+  color: var(--header-ink);
+  border-color: var(--header-ink);
+}
+
+.mobileLanguages .languageButton:hover {
+  color: var(--header-paper);
+  background: var(--header-ink);
+}
+
+.mobileLanguages .languageButton[data-active='true'] {
+  color: var(--header-ink);
+  background: var(--header-signal);
+}
+
+.brand:focus-visible,
+.desktopNavigation a:focus-visible,
+.languageButton:focus-visible,
+.menuButton:focus-visible,
+.mobileNavigation a:focus-visible {
+  outline: 3px solid var(--header-signal);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 2px var(--header-ink);
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.75rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 74rem) {
+  .desktopNavigation a {
+    padding-inline: 0.55rem;
+    font-size: 0.625rem;
+  }
+}
+
+@media (max-width: 56.249rem) {
+  .rail {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .desktopNavigation,
+  .desktopLanguages {
+    display: none;
+  }
+
+  .menuButton {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 25rem) {
+  .brandName small {
+    display: none;
+  }
+
+  .panelFooter > span {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brandMark,
+  .desktopNavigation a::after,
+  .languageButton,
+  .mobileNavigation a {
+    transition-duration: 0.01ms;
+  }
+
+  .mobilePanel {
+    animation: none;
+  }
+}

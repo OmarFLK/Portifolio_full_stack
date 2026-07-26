@@ -1,0 +1,448 @@
+.sectionHeading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-4);
+  width: min(100%, 72rem);
+}
+
+.headingDark {
+  color: var(--color-paper);
+}
+
+.headingLight {
+  color: var(--color-ink);
+}
+
+.sectionIndex {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: fit-content;
+  font-family: var(--font-mono);
+  font-size: var(--font-label);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sectionIndex::before {
+  width: 1.75rem;
+  height: 0.375rem;
+  background: var(--color-signal);
+  border: 1px solid currentColor;
+  content: '';
+}
+
+.sectionTitle {
+  max-width: 12ch;
+  margin: 0;
+  font-size: var(--font-display-xl);
+  font-weight: 690;
+  line-height: 0.86;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+
+.sectionIntro {
+  max-width: 58ch;
+  font-size: var(--font-lead);
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+}
+
+.headingDark .sectionIntro {
+  color: var(--color-gray-300);
+}
+
+.headingLight .sectionIntro {
+  color: var(--color-gray-700);
+}
+
+.boundingBox {
+  position: relative;
+  isolation: isolate;
+}
+
+.boundingInline {
+  display: inline;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.boundingDecoration {
+  position: absolute;
+  z-index: 2;
+  inset: -0.07em -0.12em;
+  color: var(--bounding-line);
+  border: var(--line-hairline) solid currentColor;
+  pointer-events: none;
+}
+
+.boundingInk {
+  --bounding-line: var(--color-ink);
+  --bounding-handle: var(--color-white);
+  --bounding-handle-border: var(--color-ink);
+  --bounding-label-bg: var(--color-ink);
+  --bounding-label-text: var(--color-paper);
+}
+
+.boundingPaper {
+  --bounding-line: var(--color-paper);
+  --bounding-handle: var(--color-ink);
+  --bounding-handle-border: var(--color-paper);
+  --bounding-label-bg: var(--color-paper);
+  --bounding-label-text: var(--color-ink);
+}
+
+.boundingSignal {
+  --bounding-line: var(--color-signal);
+  --bounding-handle: var(--color-ink);
+  --bounding-handle-border: var(--color-signal);
+  --bounding-label-bg: var(--color-signal);
+  --bounding-label-text: var(--color-ink);
+}
+
+.handle {
+  position: absolute;
+  width: var(--handle-size);
+  height: var(--handle-size);
+  background: var(--bounding-handle);
+  border: 1px solid var(--bounding-handle-border);
+  transform: translate(-50%, -50%);
+}
+
+.topLeft {
+  top: 0;
+  left: 0;
+}
+
+.topRight {
+  top: 0;
+  left: 100%;
+}
+
+.bottomLeft {
+  top: 100%;
+  left: 0;
+}
+
+.bottomRight {
+  top: 100%;
+  left: 100%;
+}
+
+.topMiddle {
+  top: 0;
+  left: 50%;
+}
+
+.rightMiddle {
+  top: 50%;
+  left: 100%;
+}
+
+.bottomMiddle {
+  top: 100%;
+  left: 50%;
+}
+
+.leftMiddle {
+  top: 50%;
+  left: 0;
+}
+
+.boundingLabel,
+.boundingMeasurement {
+  position: absolute;
+  padding: 0.25rem 0.4rem;
+  color: var(--bounding-label-text);
+  background: var(--bounding-label-bg);
+  font-family: var(--font-mono);
+  font-size: clamp(0.625rem, 0.2vw + 0.59rem, 0.75rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.boundingLabel {
+  bottom: calc(100% + var(--space-2));
+  left: 0;
+}
+
+.boundingMeasurement {
+  top: calc(100% + var(--space-2));
+  right: 0;
+}
+
+.signalStar {
+  width: min(100%, 22rem);
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(0.7rem 1rem 0 rgb(10 10 8 / 32%)) drop-shadow(0 1.5rem 2rem rgb(0 0 0 / 24%));
+}
+
+.starDepth {
+  fill: var(--color-ink);
+  stroke: var(--color-ink);
+  stroke-linejoin: round;
+  stroke-width: 5;
+}
+
+.starBody {
+  stroke: var(--color-ink);
+  stroke-linejoin: round;
+  stroke-width: 4;
+}
+
+.starFacet {
+  fill: none;
+  stroke: var(--color-ink);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-opacity: 0.35;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.starGlint {
+  fill: none;
+  stroke: var(--color-white);
+  stroke-linecap: round;
+  stroke-opacity: 0.72;
+  stroke-width: 4;
+  vector-effect: non-scaling-stroke;
+}
+
+.tornDivider {
+  width: 100%;
+  height: clamp(3rem, 6vw, 6rem);
+  overflow: hidden;
+  line-height: 0;
+}
+
+.tornDivider svg {
+  width: 100%;
+  height: calc(100% + 1px);
+}
+
+.tornDivider path {
+  fill: currentColor;
+}
+
+.paperOnInk {
+  color: var(--color-paper);
+  background: var(--color-ink);
+}
+
+.inkOnPaper {
+  color: var(--color-ink);
+  background: var(--color-paper);
+}
+
+.signalOnInk {
+  color: var(--color-signal);
+  background: var(--color-ink);
+}
+
+.tornFlip {
+  transform: scaleY(-1);
+}
+
+.scribble {
+  width: min(100%, 10.5rem);
+  height: auto;
+  overflow: visible;
+  color: inherit;
+  transform-origin: center;
+}
+
+.scribble path {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.25;
+  vector-effect: non-scaling-stroke;
+}
+
+.scribbleEcho {
+  opacity: 0.42;
+  stroke-width: 1.4 !important;
+}
+
+.left {
+  transform: scaleX(-1);
+}
+
+.downRight {
+  transform: rotate(36deg);
+}
+
+.downLeft {
+  transform: rotate(144deg);
+}
+
+.systemNotice {
+  position: relative;
+  display: grid;
+  gap: var(--space-3);
+  width: min(100%, 25rem);
+  padding: var(--space-5) var(--space-5) var(--space-5) var(--space-6);
+  overflow: hidden;
+  border: 1px solid var(--notice-border);
+  border-radius: var(--radius-system);
+  box-shadow: var(--shadow-system);
+}
+
+.noticedark {
+  --notice-border: var(--color-gray-700);
+  --notice-muted: var(--color-gray-300);
+  color: var(--color-paper);
+  background: var(--color-near-black);
+}
+
+.noticelight {
+  --notice-border: var(--color-gray-300);
+  --notice-muted: var(--color-gray-700);
+  color: var(--color-ink);
+  background: var(--color-white);
+}
+
+.noticesignal {
+  --notice-border: var(--color-ink);
+  --notice-muted: var(--color-gray-700);
+  color: var(--color-ink);
+  background: var(--color-signal);
+}
+
+.noticeRail {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0.35rem;
+  background: var(--color-signal);
+}
+
+.noticesignal .noticeRail {
+  background: var(--color-ink);
+}
+
+.noticeHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+}
+
+.noticeEyebrow,
+.noticeStatus {
+  font-family: var(--font-mono);
+  font-size: var(--font-label);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.noticeEyebrow {
+  color: var(--notice-muted);
+}
+
+.noticesignal .noticeEyebrow {
+  color: var(--color-ink);
+}
+
+.noticeStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.noticeStatusDot {
+  width: 0.55rem;
+  height: 0.55rem;
+  flex: 0 0 auto;
+  background: var(--color-signal);
+  border: 1px solid currentColor;
+  border-radius: 50%;
+}
+
+.noticesignal .noticeStatusDot {
+  background: var(--color-ink);
+}
+
+.noticeTitle {
+  max-width: 26ch;
+  font-size: clamp(1.15rem, 1vw + 1rem, 1.55rem);
+  font-weight: 650;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+}
+
+.noticeBody {
+  max-width: 42ch;
+  color: var(--notice-muted);
+  font-size: var(--font-note);
+  line-height: 1.55;
+}
+
+.noticesignal .noticeBody {
+  color: var(--color-ink);
+}
+
+@media (min-width: 48rem) {
+  .sectionHeading {
+    grid-template-columns: minmax(8rem, 0.24fr) minmax(0, 1fr);
+    column-gap: clamp(2rem, 5vw, 6rem);
+  }
+
+  .sectionIndex {
+    grid-column: 1;
+    align-self: start;
+    margin-top: 0.5rem;
+  }
+
+  .sectionTitle,
+  .sectionIntro {
+    grid-column: 2;
+  }
+
+  .sectionIntro {
+    margin-top: var(--space-2);
+  }
+}
+
+@media (max-width: 47.999rem) {
+  .sectionTitle {
+    max-width: 10ch;
+  }
+
+  .boundingLabel,
+  .boundingMeasurement {
+    display: none;
+  }
+
+  .topMiddle,
+  .rightMiddle,
+  .bottomMiddle,
+  .leftMiddle {
+    display: none;
+  }
+
+  .systemNotice {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scribble,
+  .signalStar,
+  .tornDivider,
+  .boundingDecoration {
+    animation: none !important;
+    transition: none !important;
+  }
+}

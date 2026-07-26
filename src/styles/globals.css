@@ -1,0 +1,219 @@
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-offset);
+  background: var(--surface-page);
+}
+
+body {
+  color: var(--text-primary);
+  background:
+    linear-gradient(rgb(255 255 255 / 1.5%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 1.5%) 1px, transparent 1px), var(--surface-page);
+  background-size: 4rem 4rem;
+  overflow-x: clip;
+}
+
+#root {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+}
+
+main {
+  display: block;
+}
+
+section[id] {
+  scroll-margin-top: var(--header-offset);
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.2em;
+}
+
+:where(a, button, input, textarea, select, summary, [tabindex]):focus {
+  outline: none;
+}
+
+:where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+  border-radius: var(--radius-micro);
+  box-shadow: var(--shadow-focus);
+}
+
+.skip-link {
+  position: fixed;
+  z-index: calc(var(--z-modal) + 1);
+  top: var(--space-4);
+  left: var(--space-4);
+  min-height: 2.75rem;
+  padding: var(--space-3) var(--space-4);
+  color: var(--color-ink);
+  background: var(--color-signal);
+  border: 2px solid var(--color-ink);
+  font-family: var(--font-mono);
+  font-size: var(--font-label);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transform: translateY(calc(-100% - var(--space-8)));
+  transition: transform var(--duration-instant) var(--ease-snap);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+.shell {
+  width: min(100%, var(--shell-max));
+  margin-inline: auto;
+  padding-inline: var(--page-gutter);
+}
+
+.reading-column {
+  width: min(100%, var(--reading-max));
+  margin-inline: auto;
+}
+
+.section-space {
+  padding-block: var(--section-space-md);
+}
+
+.section-space--large {
+  padding-block: var(--section-space-lg);
+}
+
+.surface-ink {
+  color: var(--color-paper);
+  background: var(--color-ink);
+}
+
+.surface-paper {
+  color: var(--color-ink);
+  background: var(--color-paper);
+}
+
+.surface-signal {
+  color: var(--color-ink);
+  background: var(--color-signal);
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 2.75rem;
+  padding: 0.75rem 1rem;
+  color: var(--color-paper);
+  background: transparent;
+  border: 1px solid var(--color-gray-500);
+  border-radius: var(--radius-control);
+  font-family: var(--font-mono);
+  font-size: var(--font-label);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    color var(--duration-micro) var(--ease-snap),
+    background-color var(--duration-micro) var(--ease-snap),
+    border-color var(--duration-micro) var(--ease-snap),
+    transform var(--duration-instant) var(--ease-standard);
+}
+
+.button:hover,
+.button:focus-visible {
+  color: var(--color-ink);
+  background: var(--color-signal);
+  border-color: var(--color-signal);
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.button--signal {
+  color: var(--color-ink);
+  background: var(--color-signal);
+  border-color: var(--color-signal);
+}
+
+.button--signal:hover,
+.button--signal:focus-visible {
+  background: var(--color-white);
+  border-color: var(--color-white);
+}
+
+.button--on-paper {
+  color: var(--color-ink);
+  border-color: var(--color-gray-700);
+}
+
+.button--on-paper:hover,
+.button--on-paper:focus-visible {
+  color: var(--color-ink);
+  background: var(--color-signal);
+  border-color: var(--color-ink);
+}
+
+@media (hover: none) {
+  .button:hover {
+    color: inherit;
+    background: inherit;
+    border-color: inherit;
+  }
+
+  .button--signal:hover {
+    color: var(--color-ink);
+    background: var(--color-signal);
+    border-color: var(--color-signal);
+  }
+}
+
+@media (max-width: 23.4375rem) {
+  :root {
+    --page-gutter: 1rem;
+  }
+}
+
+@media (min-width: 24.375rem) and (max-width: 47.999rem) {
+  :root {
+    --page-gutter: 1.25rem;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --color-gray-300: #e8e8df;
+    --color-gray-700: #30302c;
+  }
+
+  .button {
+    border-width: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
