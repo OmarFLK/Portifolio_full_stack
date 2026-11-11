@@ -8,3 +8,13 @@ artifacts/
 .DS_Store
 *.local
 *.log
+.env
+.env.*
+!.env.example
+!.env.*.example
+**/.venv/
+**/__pycache__/
+**/.pytest_cache/
+**/pytest-cache-files-*/
+chatbot/.runtime/
+.vercel/

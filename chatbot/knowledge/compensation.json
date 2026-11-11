@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "documents": [{
+    "id": "approved-compensation",
+    "restricted": true,
+    "title": {"pt": "Referências de remuneração autorizadas", "en": "Approved compensation references", "es": "Referencias de remuneración autorizadas"},
+    "url": "/#contact",
+    "content": {
+      "pt": "Omar prefere discutir remuneração diretamente. Apenas se o recrutador insistir em perguntar, pode informar que busca bolsa de estágio de no mínimo R$ 2.500, além de VT, VR e benefício de academia como Wellhub. Para vagas júnior, o mínimo informado é R$ 4.000. São referências de interesse profissional, não aceite de oferta. Detalhes de benefícios e condições devem ser alinhados diretamente. O salário atual não é público e não deve ser inferido.",
+      "en": "Omar prefers to discuss compensation directly. Only after a recruiter asks repeatedly, he authorizes sharing a minimum internship stipend of BRL 2,500, plus transport allowance, meal benefits and a gym benefit such as Wellhub. His stated minimum for junior roles is BRL 4,000. These are job preference references, not acceptance of an offer. Conditions must be discussed directly. His current pay is not public and must not be inferred.",
+      "es": "Omar prefiere hablar de remuneración directamente. Solo si el reclutador insiste, autoriza informar una bolsa mínima de prácticas de R$ 2.500, más transporte, alimentación y beneficio de gimnasio como Wellhub. Para puestos júnior, el mínimo indicado es R$ 4.000. Son referencias de interés, no aceptación de oferta. Las condiciones deben acordarse directamente. Su salario actual no es público ni debe inferirse."
+    },
+    "tags": ["salário", "bolsa", "salary", "remuneração", "VR", "VT", "Wellhub", "estágio", "júnior"]
+  }]
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "documents": [{
+    "id": "ai-tools",
+    "title": {"pt": "Ferramentas de IA no fluxo de trabalho", "en": "AI tools in the workflow", "es": "Herramientas de IA"},
+    "url": "/#skills",
+    "content": {
+      "pt": "Omar utiliza ferramentas de IA como Claude, ChatGPT, Kimi, DeepSeek e Gemini no seu fluxo de trabalho, conforme informou para o portfólio. Trabalha também com integração dos modelos Gemma e Qwen. São ferramentas e modelos de terceiros: ele não criou esses modelos. Usa IA como apoio, com revisão do código e verificação dos resultados. A presença de uma logo não significa que treinou o modelo ou que tem experiência avançada com a API de cada fornecedor.",
+      "en": "Omar uses AI tools such as Claude, ChatGPT, Kimi, DeepSeek and Gemini in his workflow, as he confirmed for the portfolio. He also works with Gemma and Qwen model integration. These are third-party tools and models, not models he created. He reviews code and verifies results. A logo does not imply model training or advanced API proficiency with every provider.",
+      "es": "Omar utiliza Claude, ChatGPT, Kimi, DeepSeek y Gemini en su flujo de trabajo, según confirmó para el portafolio. También integra Gemma y Qwen. Son herramientas y modelos de terceros, no creados por él. Revisa el código y verifica resultados. Una logo no implica entrenamiento del modelo ni dominio avanzado de todas las APIs."
+    },
+    "tags": ["Claude", "ChatGPT", "Kimi", "DeepSeek", "Gemini", "Gemma", "Qwen", "ferramentas", "workflow"]
+  }]
+}

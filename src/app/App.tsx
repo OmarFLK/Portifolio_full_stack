@@ -15,6 +15,7 @@ import {
 } from '../sections/PortfolioSections';
 import { useLocale } from './locale';
 import styles from './App.module.css';
+import { OmarIAPage, OmarIAWidget } from '../components/chat/OmarIA';
 
 export function App() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -55,6 +56,8 @@ export function App() {
     };
   }, []);
 
+  if (window.location.pathname.replace(/\/+$/, '') === '/omaria') return <OmarIAPage />;
+
   return (
     <div className={styles.app} id="top" ref={rootRef}>
       <a className="skip-link" href="#main-content">
@@ -76,6 +79,7 @@ export function App() {
       </main>
 
       <Footer />
+      <OmarIAWidget />
     </div>
   );
 }

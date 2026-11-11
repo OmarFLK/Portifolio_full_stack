@@ -3,6 +3,7 @@ import { Menu, X } from 'lucide-react';
 import { useLocale } from '../../app/locale';
 import { localeNames, type Locale } from '../../data/portfolio';
 import styles from './Header.module.css';
+import { BrandLogo } from '../ui/BrandLogo';
 
 type SectionId =
   'about' | 'projects' | 'resultados' | 'experience' | 'skills' | 'education' | 'contact';
@@ -167,6 +168,12 @@ function Navigation({
             </a>
           </li>
         ))}
+        <li>
+          <a href="/omaria" onClick={onNavigate}>
+            {mobile && <span aria-hidden="true">09</span>}
+            OmarIA
+          </a>
+        </li>
       </ol>
     </nav>
   );
@@ -175,7 +182,6 @@ function Navigation({
 export function Header() {
   const { locale, text } = useLocale();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [menuActiveSection, setMenuActiveSection] = useState<SectionId | null>(null);
   const activeSection = useActiveSection(isMenuOpen);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const menuPanelRef = useRef<HTMLDivElement>(null);
@@ -258,9 +264,7 @@ export function Header() {
     <header className={styles.header} data-menu-open={isMenuOpen}>
       <div className={styles.rail}>
         <a className={styles.brand} href="#top" onClick={() => closeMenu()}>
-          <span className={styles.brandMark} aria-hidden="true">
-            OS
-          </span>
+          <BrandLogo className={styles.brandMark} />
           <span className={styles.brandName}>
             Omar Saliba
             <small>Portfolio / 2026</small>
@@ -279,17 +283,6 @@ export function Header() {
           aria-expanded={isMenuOpen}
           aria-controls="mobile-menu"
           onClick={() => {
-            if (!isMenuOpen) {
-              const hashSection = getHashSection();
-              const hashTarget = hashSection ? document.getElementById(hashSection) : null;
-              const hashRect = hashTarget?.getBoundingClientRect();
-              const hashTargetIsVisible =
-                hashRect !== undefined && hashRect.bottom > 0 && hashRect.top < window.innerHeight;
-
-              setMenuActiveSection(
-                hashTargetIsVisible && hashSection ? hashSection : activeSection,
-              );
-            }
             setIsMenuOpen((current) => !current);
           }}
         >
@@ -307,15 +300,11 @@ export function Header() {
           <div className={styles.panelIndex} aria-hidden="true">
             <span>INDEX</span>
             <span>
-              {String(navItems.length).padStart(2, '0')} ENTRIES / {locale.toUpperCase()}
+              {String(navItems.length + 1).padStart(2, '0')} ENTRIES / {locale.toUpperCase()}
             </span>
           </div>
 
-          <Navigation
-            activeSection={menuActiveSection ?? activeSection}
-            mobile
-            onNavigate={() => closeMenu(true)}
-          />
+          <Navigation activeSection={activeSection} mobile onNavigate={() => closeMenu(true)} />
 
           <div className={styles.panelFooter}>
             <LanguageSwitcher className={styles.mobileLanguages} onSelect={() => closeMenu(true)} />

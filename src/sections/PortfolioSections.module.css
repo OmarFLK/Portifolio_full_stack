@@ -905,3 +905,28 @@
     transform: none;
   }
 }
+@media (max-width: 47.999rem) {
+  .heroFooter {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.65rem;
+  }
+}
+.orbitBrand {
+  display: block;
+  width: clamp(7rem, 11vw, 10rem);
+  height: auto;
+  margin-inline: auto;
+  border-radius: 50%;
+}
+.footer > p:first-child {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.footerBrand {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}

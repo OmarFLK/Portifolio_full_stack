@@ -32,6 +32,10 @@ Novos resultados fornecidos diretamente pelo Omar: o ERP da Avenida Tintas reduz
 
 ## Validação
 
+Refinamentos de identidade e navegação: marca fornecida em `Logo S com círculo marfim perfeito.png`, preservada em `public/assets/brand/omar-saliba-logo.png`. Versões de exibição e ícones em 32, 180, 192 e 512 px, com favicon SVG autossuficiente. Marca aplicada ao cabeçalho, centro da órbita, rodapé e cabeçalho da página OmarIA. A animação da órbita mantém os mesmos movimentos e tempos.
+
+No mobile, OneBox/DNE, Mauá Júnior e IMT ocupam linhas separadas. Somente a seção ativa recebe sublinhado no desktop ou preenchimento no menu mobile; hover e foco não simulam outro item ativo. A compensação das âncoras fica em `scroll-margin-top` das seções, evitando o salto de foco causado pela aplicação simultânea de `scroll-padding-top` no documento. A seção no menu mobile é determinada pela posição atual, sem prioridade ao hash de um clique antigo.
+
 Build, Vitest e Playwright. Capturas em artifacts/redesign/ (ignorado no Git).
 
 Prévia: `npm run dev -- --host 127.0.0.1 --port 5173`.

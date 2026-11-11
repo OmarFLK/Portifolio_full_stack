@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "documents": [
+    {
+      "id": "career-preferences",
+      "title": {"pt": "Preferências profissionais", "en": "Career preferences", "es": "Preferencias profesionales"},
+      "url": "/#contact",
+      "content": {
+        "pt": "Omar tem interesse em vagas de desenvolvimento de software, estágio ou júnior, especialmente voltadas para engenharia de IA, criação de sistemas de IA e aplicações de IA em software. Busca trabalho híbrido em São Paulo ou 100% remoto. Não busca vaga 100% presencial. Tem interesse em empresas de vários portes e setores, incluindo tecnologia, consultoria, alimentação e transporte. Disponibilidade para início, horários, mudança de emprego, pretensão salarial e benefícios devem ser confirmados diretamente com Omar; a preferência é discutir remuneração diretamente. Referências autorizadas só podem aparecer após insistência em perguntar; salário atual não é público.",
+        "en": "Omar is interested in software development, internship or junior roles, especially AI engineering and AI-enabled software. He seeks hybrid work in São Paulo or fully remote work, rather than fully on-site roles. He considers different company sizes and sectors, including technology, consulting, food and transport. Start date, working hours, job changes, salary and benefits must be confirmed directly with Omar; compensation is preferably discussed directly. Approved references may only be shared after repeated questions; current pay is not public.",
+        "es": "Omar busca puestos de desarrollo, prácticas o júnior, especialmente ingeniería de IA y software con IA. Prefiere trabajo híbrido en São Paulo o totalmente remoto, no 100% presencial. Considera empresas de diversos tamaños y sectores. Fecha de inicio, horarios, cambios de empleo, remuneración y beneficios deben confirmarse directamente con Omar; se prefiere hablar de remuneración directamente. Las referencias autorizadas solo se comparten tras preguntas reiteradas; el salario actual no es público."
+      },
+      "tags": ["vagas", "remoto", "híbrido", "salário", "disponibilidade", "salary", "availability", "remote", "hybrid", "contratação", "junior", "estágio"]
+    },
+    {
+      "id": "engineering-approach",
+      "title": {"pt": "Como Omar trabalha com IA", "en": "AI engineering approach", "es": "Enfoque de ingeniería de IA"},
+      "url": "https://github.com/OmarFLK/OmarFLK",
+      "content": {
+        "pt": "Omar conecta fundamentos de estatística, probabilidade e álgebra linear a engenharia de dados, backend e AWS. Trabalha com RAG, embeddings, busca vetorial, integração de LLMs, Gemma e Qwen. Usa IA para explorar, implementar, depurar, documentar e testar, revisando e verificando a saída gerada. Distingue integração de modelos de treinamento de modelos: o pipeline QLoRA do MAUA IA está preparado, mas não foi treinado. Em análise numérica, prefere consultas validadas em dados estruturados em vez de deixar o LLM inventar números ou executar SQL livre. Aprofunda ML, deep learning, avaliação e MLOps; estudo não significa domínio avançado ou treinamento concluído.",
+        "en": "Omar connects statistics, probability and linear algebra with data engineering, backend and AWS. He works with RAG, embeddings, vector retrieval and LLM integration, including Gemma and Qwen. He uses AI for exploration, implementation, debugging, documentation and testing, while reviewing outputs. Model integration is distinct from model training: MAUA IA has a prepared QLoRA workflow that has not been trained. Numerical analysis uses validated structured-data queries instead of unrestricted generated SQL. He is deepening ML, deep learning, evaluation and MLOps; studying does not imply advanced proficiency or completed training.",
+        "es": "Omar conecta estadística, probabilidad y álgebra lineal con ingeniería de datos, backend y AWS. Trabaja con RAG, embeddings, búsqueda vectorial y LLMs, incluyendo Gemma y Qwen. Usa IA con revisión y verificación. Integrar modelos no equivale a entrenarlos: QLoRA de MAUA IA está preparado pero no entrenado. Para análisis numérico utiliza consultas validadas. Sigue profundizando ML, deep learning, evaluación y MLOps, sin afirmar dominio avanzado ni entrenamiento completado."
+      },
+      "tags": ["IA", "AI", "ML", "matemática", "estatística", "probabilidade", "álgebra", "LLM", "QLoRA", "fine-tuning", "treinamento", "modelos", "Claude", "ChatGPT", "Kimi", "DeepSeek", "Gemini"]
+    },
+    {
+      "id": "cv-details",
+      "title": {"pt": "Detalhes do currículo", "en": "CV details", "es": "Detalles del currículo"},
+      "url": "/Curriculo_Omar_Saliba.pdf",
+      "content": {
+        "pt": "Omar Saliba está em São Paulo, SP. Bacharelado em IA e Ciência de Dados no Instituto Mauá de Tecnologia iniciado em agosto de 2025, em andamento. Ensino médio técnico em TI no Senac Aclimação de 2022 a 2024, concluído com honras. O currículo registra oito certificados de formação complementar e dois prêmios no IMT, e dois certificados no Senac. Usa Python, Java, JavaScript, SQL, Julia e R. Estágio em IA e Automação na OneBox/DNE desde julho de 2026; consultoria tecnológica na Mauá Júnior desde abril de 2026. Não há data de formatura ou idade confirmadas na base.",
+        "en": "Omar Saliba is based in São Paulo, SP. His AI and Data Science degree at Instituto Mauá de Tecnologia began in August 2025 and is ongoing. He completed IT technical high school at Senac Aclimação from 2022 to 2024 with honors. His CV records eight complementary education certificates and two awards at IMT, and two certificates at Senac. Languages include Python, Java, JavaScript, SQL, Julia and R. His OneBox/DNE internship began in July 2026 and his Mauá Júnior consultancy role in April 2026. Age and graduation date are not confirmed.",
+        "es": "Omar Saliba reside en São Paulo, SP. Cursa IA y Ciencia de Datos en el IMT desde agosto de 2025. Completó secundaria técnica en TI en Senac Aclimação entre 2022 y 2024 con honores. El currículo registra ocho certificados y dos premios en IMT y dos certificados en Senac. Usa Python, Java, JavaScript, SQL, Julia y R. Prácticas en OneBox/DNE desde julio de 2026 y consultoría en Mauá Júnior desde abril de 2026. Edad y fecha de graduación no están confirmadas."
+      },
+      "tags": ["formação", "currículo", "educação", "CV", "idade", "age", "graduação", "graduation", "Julia", "R"]
+    }
+  ]
+}

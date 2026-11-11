@@ -11,22 +11,22 @@ test('technology ribbon moves continuously, joins seamlessly and can pause', asy
   const before = await track.evaluate((el) => getComputedStyle(el).transform);
   await expect.poll(() => track.evaluate((el) => getComputedStyle(el).transform)).not.toBe(before);
   const geometry = await track.evaluate((element) => {
-    const animation = element.getAnimations()[0]!;
+    const animation = element.getAnimations()[0];
     const duration = Number(animation.effect!.getTiming().duration);
     const groups = element.children;
     animation.pause();
     animation.currentTime = 0;
-    const start = groups[0]!.getBoundingClientRect().left;
+    const start = groups[0].getBoundingClientRect().left;
     animation.currentTime = duration - 0.1;
-    const end = groups[1]!.getBoundingClientRect().left;
+    const end = groups[1].getBoundingClientRect().left;
     animation.currentTime = 0;
     animation.play();
     return {
       start,
       end,
       iterations: animation.effect!.getTiming().iterations,
-      widthA: groups[0]!.getBoundingClientRect().width,
-      widthB: groups[1]!.getBoundingClientRect().width,
+      widthA: groups[0].getBoundingClientRect().width,
+      widthB: groups[1].getBoundingClientRect().width,
     };
   });
   expect(Math.abs(geometry.start - geometry.end)).toBeLessThan(1);

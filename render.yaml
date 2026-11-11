@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: omaria-api
+    runtime: python
+    plan: free
+    rootDir: chatbot
+    buildCommand: pip install -r requirements.txt && python -m app.sync_knowledge
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT --workers 1 --no-access-log
+    healthCheckPath: /api/assistant/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.6
+      - key: BARO_API_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: KNOWLEDGE_ADMIN_DATABASE_URL
+        sync: false
+      - key: BARO_BASE_URL
+        value: https://ia.maua.br/api/v1
+      - key: BARO_MODEL
+        value: google/gemma-3-27b
+      - key: ALLOWED_ORIGINS
+        value: https://fullstackdevomar.vercel.app
+      - key: CHAT_RATE_LIMIT
+        value: 12
+      - key: CHAT_GLOBAL_LIMIT
+        value: 100
+      - key: CHAT_DAILY_LIMIT
+        value: 500

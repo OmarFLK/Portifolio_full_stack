@@ -30,6 +30,7 @@ import {
 } from '../data/portfolio';
 import { ProjectMediaDialog } from '../components/projects/ProjectMediaDialog';
 import { TechnologyMarquee } from '../components/ui/TechnologyMarquee';
+import { BrandLogo } from '../components/ui/BrandLogo';
 import { ScribbleArrow, SectionHeading, StaticSignalStar } from '../components/ui/Graphics';
 import styles from './PortfolioSections.module.css';
 
@@ -147,7 +148,8 @@ export function Hero() {
             <span />
             <span />
             <strong>
-              OS<span>AI / DATA / CLOUD</span>
+              <BrandLogo className={styles.orbitBrand} />
+              <span>AI / DATA / CLOUD</span>
             </strong>
           </div>
           <div className={styles.visualCaption}>
@@ -644,7 +646,8 @@ export function Footer() {
   return (
     <footer className={styles.footer}>
       <p>
-        © {new Date().getFullYear()} OMAR SALIBA — {text.rights}
+        <BrandLogo className={styles.footerBrand} />© {new Date().getFullYear()} OMAR SALIBA —{' '}
+        {text.rights}
       </p>
       <p>{text.footerNote}</p>
       <a href="#top">

@@ -18,7 +18,7 @@ describe('portfolio', () => {
     renderApp();
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Engenharia de IA.');
     const nav = screen.getByRole('navigation', { name: 'Navegação principal' });
-    expect(within(nav).getAllByRole('link')).toHaveLength(4);
+    expect(within(nav).getAllByRole('link')).toHaveLength(5);
     expect(screen.getByRole('link', { name: 'Ver projetos' })).toHaveAttribute('href', '#projects');
     expect(screen.getByRole('link', { name: /Baixar currículo/ })).toHaveAttribute(
       'href',

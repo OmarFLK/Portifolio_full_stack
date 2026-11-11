@@ -1,0 +1,576 @@
+{
+  "schema_version": 1,
+  "documents": [
+    {
+      "id": "profile",
+      "title": {
+        "pt": "Sobre Omar",
+        "en": "About Omar",
+        "es": "Sobre Omar"
+      },
+      "url": "/#about",
+      "content": {
+        "pt": "Sou estudante de IA e Ciência de Dados na Mauá, estagiário na OneBox e consultor na Mauá Júnior. Construo APIs, automações e aplicações com IA — dos dados à infraestrutura.\nEstudo Inteligência Artificial e Ciência de Dados no Instituto Mauá de Tecnologia. Minha base técnica veio do Senac Aclimação; hoje conecto estatística e álgebra linear à construção de software.\nTrabalho com automação e APIs na AWS na OneBox, e com soluções para empresas na Mauá Júnior. Meu foco é engenharia de IA: preparar dados, integrar modelos, avaliar resultados e operar os sistemas por trás deles.",
+        "en": "AI and Data Science student at Mauá, intern at OneBox and technology consultant at Mauá Júnior. I build APIs, automation and AI applications — from data to infrastructure.\nI study Artificial Intelligence and Data Science at Instituto Mauá de Tecnologia. My technical foundation started at Senac Aclimação; today I connect statistics and linear algebra to software engineering.\nI work with automation and AWS APIs at OneBox, and business solutions at Mauá Júnior. My focus is AI engineering: preparing data, integrating models, evaluating results and operating the systems behind them.",
+        "es": "Estudiante de IA y Ciencia de Datos en Mauá, pasante en OneBox y consultor en Mauá Júnior. Construyo APIs, automatizaciones y aplicaciones con IA, desde los datos hasta la infraestructura.\nEstudio Inteligencia Artificial y Ciencia de Datos en el Instituto Mauá de Tecnologia. Mi base técnica comenzó en Senac Aclimação; hoy conecto estadística y álgebra lineal con la ingeniería de software.\nTrabajo con automatización y APIs en AWS en OneBox y soluciones empresariales en Mauá Júnior. Mi foco es ingeniería de IA: preparar datos, integrar modelos, evaluar resultados y operar los sistemas."
+      },
+      "tags": [
+        "perfil",
+        "profile",
+        "resumo",
+        "summary",
+        "quem",
+        "who"
+      ]
+    },
+    {
+      "id": "project-maua-ia",
+      "title": {
+        "pt": "MAUA IA — Analista de mobilidade",
+        "en": "MAUA AI — Mobility analyst",
+        "es": "MAUA IA — Analista de movilidad"
+      },
+      "url": "https://github.com/OmarFLK/MAUA_IA",
+      "content": {
+        "pt": "IA + dados. Consultar dados de transporte em linguagem natural sem abrir mão da precisão. Integrei Gemma 3 27B, RAG local e consultas validadas em DuckDB, com contexto separado por usuário.\n10 tabelas canônicas em Parquet. Pipeline QLoRA preparado; treinamento ainda não executado.\nStack: Python, FastAPI, React, Gemma, RAG, DuckDB. GitHub: https://github.com/OmarFLK/MAUA_IA",
+        "en": "AI + data. Public transport analysis in natural language, with accuracy in mind. I integrated Gemma 3 27B, local RAG and validated DuckDB queries, with isolated user context.\n10 canonical Parquet tables. QLoRA pipeline prepared; training has not been run.\nStack: Python, FastAPI, React, Gemma, RAG, DuckDB. GitHub: https://github.com/OmarFLK/MAUA_IA",
+        "es": "IA + datos. Análisis de transporte en lenguaje natural. Integré Gemma 3 27B, RAG local y consultas validadas en DuckDB, con contexto aislado por usuario.\n10 tablas canónicas en Parquet. Pipeline QLoRA preparado; entrenamiento aún no ejecutado.\nStack: Python, FastAPI, React, Gemma, RAG, DuckDB. GitHub: https://github.com/OmarFLK/MAUA_IA"
+      },
+      "tags": [
+        "projeto",
+        "project",
+        "maua-ia",
+        "Python",
+        "FastAPI",
+        "React",
+        "Gemma",
+        "RAG",
+        "DuckDB"
+      ]
+    },
+    {
+      "id": "project-pendi",
+      "title": {
+        "pt": "Pendi — Cuidado que aproxima",
+        "en": "Pendi — Care that connects",
+        "es": "Pendi — Cuidado que conecta"
+      },
+      "url": "https://github.com/OmarFLK/hackaton_gamifica-o",
+      "content": {
+        "pt": "Vencedor de hackathon. Projeto vencedor em equipe do Hackathon IMT–São Camilo. Desenvolvi fluxos autenticados, APIs e conversas com IA e RAG por perfil para aproximar famílias e equipes no cuidado oncológico pediátrico.\nDemonstração acadêmica publicada com dados fictícios. Não validado para uso clínico.\nStack: React, FastAPI, Gemma, RAG, PostgreSQL. Demo: https://hackatongamifica-o.vercel.app GitHub: https://github.com/OmarFLK/hackaton_gamifica-o",
+        "en": "Hackathon winner. Team-winning project at the IMT–São Camilo Hackathon. I developed authenticated flows, APIs and role-aware AI conversations with RAG for families and pediatric oncology care teams.\nPublished academic demonstration with fictional data. Not validated for clinical use.\nStack: React, FastAPI, Gemma, RAG, PostgreSQL. Demo: https://hackatongamifica-o.vercel.app GitHub: https://github.com/OmarFLK/hackaton_gamifica-o",
+        "es": "Ganador de hackathon. Proyecto ganador en equipo del Hackathon IMT–São Camilo. Desarrollé flujos autenticados, APIs y conversaciones con IA y RAG por perfil para familias y equipos de oncología pediátrica.\nDemostración académica publicada con datos ficticios. No validado para uso clínico.\nStack: React, FastAPI, Gemma, RAG, PostgreSQL. Demo: https://hackatongamifica-o.vercel.app GitHub: https://github.com/OmarFLK/hackaton_gamifica-o"
+      },
+      "tags": [
+        "projeto",
+        "project",
+        "pendi",
+        "React",
+        "FastAPI",
+        "Gemma",
+        "RAG",
+        "PostgreSQL"
+      ]
+    },
+    {
+      "id": "project-semob",
+      "title": {
+        "pt": "SEMOB — Operação de transporte",
+        "en": "SEMOB — Transport operations",
+        "es": "SEMOB — Operación de transporte"
+      },
+      "url": "https://github.com/OmarFLK/Projeto_Integrador_SEMOB",
+      "content": {
+        "pt": "Plataforma de dados. Dados operacionais de São Caetano do Sul em um portal com filtros, relatórios e exportações. Atuei no app Flutter, na API Dart e na importação versionada, com PostgreSQL para identidade e MongoDB para transporte.\n91.108 registros de viagens preservados. Ponte para IA preparada; conexão de produção depende do contrato da API.\nStack: Flutter, Dart, PostgreSQL, MongoDB, ETL. GitHub: https://github.com/OmarFLK/Projeto_Integrador_SEMOB",
+        "en": "Data platform. São Caetano do Sul transport data in a portal with filters, reports and exports. I worked on the Flutter app, Dart API and versioned imports, with PostgreSQL for identity and MongoDB for transport.\n91,108 trip records preserved. AI bridge prepared; production connection awaits the API contract.\nStack: Flutter, Dart, PostgreSQL, MongoDB, ETL. GitHub: https://github.com/OmarFLK/Projeto_Integrador_SEMOB",
+        "es": "Plataforma de datos. Datos de transporte de São Caetano do Sul en un portal con filtros, informes y exportaciones. Trabajé en Flutter, API Dart e importación versionada, con PostgreSQL y MongoDB.\n91.108 registros de viajes preservados. Puente de IA preparado; conexión de producción pendiente del contrato de API.\nStack: Flutter, Dart, PostgreSQL, MongoDB, ETL. GitHub: https://github.com/OmarFLK/Projeto_Integrador_SEMOB"
+      },
+      "tags": [
+        "projeto",
+        "project",
+        "semob",
+        "Flutter",
+        "Dart",
+        "PostgreSQL",
+        "MongoDB",
+        "ETL"
+      ]
+    },
+    {
+      "id": "project-avenida-tintas",
+      "title": {
+        "pt": "Avenida Tintas — Estoque e ERP",
+        "en": "Avenida Tintas — Inventory & ERP",
+        "es": "Avenida Tintas — Inventario y ERP"
+      },
+      "url": "/#projects",
+      "content": {
+        "pt": "Em produção — código privado. Notas fiscais, estoque e integrações com ERP em uma única solução. Desenvolvi o sistema integralmente e mantenho a aplicação e sua infraestrutura na nuvem.\nEm produção na Avenida Tintas: leitura completa do estoque de 1 dia e meio para cerca de 2 horas. Código privado.\nStack: Python, JavaScript, MySQL, REST APIs. ",
+        "en": "In production — private source. Invoices, inventory and ERP integrations in one solution. I developed the complete system and maintain the application and its cloud infrastructure.\nIn production at Avenida Tintas: full inventory reading from 1.5 days to about 2 hours. Private source.\nStack: Python, JavaScript, MySQL, REST APIs. ",
+        "es": "En producción — código privado. Facturas, inventario e integraciones ERP en una solución. Desarrollé el sistema completo y mantengo la aplicación y su infraestructura en la nube.\nEn producción en Avenida Tintas: lectura completa del inventario de 1,5 días a unas 2 horas. Código privado.\nStack: Python, JavaScript, MySQL, REST APIs. "
+      },
+      "tags": [
+        "projeto",
+        "project",
+        "avenida-tintas",
+        "Python",
+        "JavaScript",
+        "MySQL",
+        "REST APIs"
+      ]
+    },
+    {
+      "id": "project-tech-hub",
+      "title": {
+        "pt": "Tech Hub — IA e infraestrutura AWS",
+        "en": "Tech Hub — AI & AWS infrastructure",
+        "es": "Tech Hub — IA e infraestructura AWS"
+      },
+      "url": "https://github.com/OmarFLK/mjr-techhub-ai-orchestration-cloud",
+      "content": {
+        "pt": "Em desenvolvimento. Hub tecnológico da Mauá Júnior planejado para conectar agentes de IA, memória organizacional com RAG e fluxos automatizados em infraestrutura AWS.\nPlanejamento definido; implementação pendente. Escopo previsto: orquestração de agentes, RAG, AWS e CI/CD.\nStack prevista: AI Agents, RAG, AWS, CI/CD. GitHub: https://github.com/OmarFLK/mjr-techhub-ai-orchestration-cloud",
+        "en": "In development. Mauá Júnior technology hub planned to connect AI agents, organizational memory with RAG and automated workflows on AWS infrastructure.\nPlanning defined; implementation pending. Planned scope: agent orchestration, RAG, AWS and CI/CD.\nPlanned stack: AI Agents, RAG, AWS, CI/CD. GitHub: https://github.com/OmarFLK/mjr-techhub-ai-orchestration-cloud",
+        "es": "En desarrollo. Hub tecnológico de Mauá Júnior previsto para conectar agentes de IA, memoria organizacional con RAG y flujos automatizados en infraestructura AWS.\nPlanificación definida; implementación pendiente. Alcance previsto: orquestación de agentes, RAG, AWS y CI/CD.\nStack previsto: AI Agents, RAG, AWS, CI/CD. GitHub: https://github.com/OmarFLK/mjr-techhub-ai-orchestration-cloud"
+      },
+      "tags": [
+        "projeto",
+        "project",
+        "tech-hub",
+        "AI Agents",
+        "RAG",
+        "AWS",
+        "CI/CD"
+      ]
+    },
+    {
+      "id": "project-pricing",
+      "title": {
+        "pt": "Calculadora de precificação — Mauá Júnior",
+        "en": "Pricing calculator — Mauá Júnior",
+        "es": "Calculadora de precios — Mauá Júnior"
+      },
+      "url": "https://github.com/OmarFLK/calculadoraPrecificacaoMJR",
+      "content": {
+        "pt": "MVP funcional. Aplicação para simular preços de projetos a partir de horas, custos, margem e complexidade. Desenvolvi a integração entre interface, regras de negócio e um assistente de IA para apoiar a decisão comercial.\nMemória de cálculo auditável, referência histórica por mediana e integração com monday.com. IA como apoio à análise de escopo e preço.\nStack: React, TypeScript, Flask, PostgreSQL, OpenAI. GitHub: https://github.com/OmarFLK/calculadoraPrecificacaoMJR",
+        "en": "Functional MVP. An application to simulate project prices from hours, costs, margin and complexity. I developed the integration between the interface, business rules and an AI assistant to support commercial decisions.\nAuditable calculations, historical median references and monday.com integration. AI supports scope and pricing analysis.\nStack: React, TypeScript, Flask, PostgreSQL, OpenAI. GitHub: https://github.com/OmarFLK/calculadoraPrecificacaoMJR",
+        "es": "MVP funcional. Aplicación para simular precios de proyectos según horas, costes, margen y complejidad. Desarrollé la integración entre interfaz, reglas de negocio y un asistente de IA para apoyar decisiones comerciales.\nCálculos auditables, referencias históricas por mediana e integración con monday.com. IA para apoyar el análisis de alcance y precio.\nStack: React, TypeScript, Flask, PostgreSQL, OpenAI. GitHub: https://github.com/OmarFLK/calculadoraPrecificacaoMJR"
+      },
+      "tags": [
+        "projeto",
+        "project",
+        "pricing",
+        "React",
+        "TypeScript",
+        "Flask",
+        "PostgreSQL",
+        "OpenAI"
+      ]
+    },
+    {
+      "id": "experience-onebox",
+      "title": {
+        "pt": "Estagiário em IA e Automação · OneBox - DNE",
+        "en": "AI & Automation Intern · OneBox - DNE",
+        "es": "Pasante de IA y Automatización · OneBox - DNE"
+      },
+      "url": "/#experience",
+      "content": {
+        "pt": "OneBox - DNE. Estagiário em IA e Automação. jul/2026 — atual. No estágio, trabalho com IA e automação dentro de sistemas que já precisam funcionar no mundo real. Uso serviços da AWS, Java, Python e FastAPI para criar e integrar APIs REST; também mantenho sistemas, investigo e corrijo bugs e trabalho com MySQL e PostgreSQL.\nTecnologias: AWS, Java, Python, FastAPI, REST APIs, MySQL, PostgreSQL",
+        "en": "OneBox - DNE. AI & Automation Intern. Jul 2026 — present. In my internship, I work with AI and automation in systems that already need to perform in the real world. I use AWS services, Java, Python, and FastAPI to build and integrate REST APIs; I also maintain systems, investigate and fix bugs, and work with MySQL and PostgreSQL.\nTecnologias: AWS, Java, Python, FastAPI, REST APIs, MySQL, PostgreSQL",
+        "es": "OneBox - DNE. Pasante de IA y Automatización. jul/2026 — actual. En mis prácticas, trabajo con IA y automatización en sistemas que ya tienen que funcionar en el mundo real. Uso servicios de AWS, Java, Python y FastAPI para crear e integrar APIs REST; también mantengo sistemas, investigo y corrijo errores, y trabajo con MySQL y PostgreSQL.\nTecnologias: AWS, Java, Python, FastAPI, REST APIs, MySQL, PostgreSQL"
+      },
+      "tags": [
+        "experiência",
+        "experience",
+        "estágio",
+        "internship",
+        "OneBox - DNE",
+        "AWS",
+        "Java",
+        "Python",
+        "FastAPI",
+        "REST APIs",
+        "MySQL",
+        "PostgreSQL"
+      ]
+    },
+    {
+      "id": "experience-maua-consultant",
+      "title": {
+        "pt": "Consultor Tecnológico · Mauá Júnior",
+        "en": "Technology Consultant · Mauá Júnior",
+        "es": "Consultor Tecnológico · Mauá Júnior"
+      },
+      "url": "/#experience",
+      "content": {
+        "pt": "Mauá Júnior. Consultor Tecnológico. abr/2026 — atual. Na Mauá Júnior, transformo necessidades de empresas parceiras em entregas práticas: aplicações web, dashboards, scripts, análises e automações. Também experimento com redes neurais e LLMs quando elas realmente fazem sentido para o problema.\nTecnologias: Python, Java, SQL, Power BI, JavaScript, LLMs",
+        "en": "Mauá Júnior. Technology Consultant. Apr 2026 — present. At Mauá Júnior, I turn partner companies’ needs into practical deliverables: web applications, dashboards, scripts, analysis, and automations. I also experiment with neural networks and LLMs when they genuinely fit the problem.\nTecnologias: Python, Java, SQL, Power BI, JavaScript, LLMs",
+        "es": "Mauá Júnior. Consultor Tecnológico. abr/2026 — actual. En Mauá Júnior, convierto las necesidades de empresas asociadas en entregas prácticas: aplicaciones web, dashboards, scripts, análisis y automatizaciones. También experimento con redes neuronales y LLMs cuando realmente encajan con el problema.\nTecnologias: Python, Java, SQL, Power BI, JavaScript, LLMs"
+      },
+      "tags": [
+        "experiência",
+        "experience",
+        "estágio",
+        "internship",
+        "Mauá Júnior",
+        "Python",
+        "Java",
+        "SQL",
+        "Power BI",
+        "JavaScript",
+        "LLMs"
+      ]
+    },
+    {
+      "id": "experience-maua-trainee",
+      "title": {
+        "pt": "Trainee — Formação Multidisciplinar · Mauá Júnior",
+        "en": "Trainee — Multidisciplinary Training · Mauá Júnior",
+        "es": "Trainee — Formación Multidisciplinaria · Mauá Júnior"
+      },
+      "url": "/#experience",
+      "content": {
+        "pt": "Mauá Júnior. Trainee — Formação Multidisciplinar. Formação interna. Antes de atuar como consultor, passei por marketing, financeiro e projetos para entender a empresa júnior por dentro. Foi onde ganhei mais organização, comunicação e experiência de trabalhar em equipe.\nTecnologias: Projetos, Comunicação, Organização",
+        "en": "Mauá Júnior. Trainee — Multidisciplinary Training. Internal training. Before becoming a consultant, I rotated through marketing, finance, and projects to understand how the junior company worked from the inside. That was where I strengthened my organization, communication, and teamwork.\nTecnologias: Projetos, Comunicação, Organização",
+        "es": "Mauá Júnior. Trainee — Formación Multidisciplinaria. Formación interna. Antes de trabajar como consultor, pasé por marketing, finanzas y proyectos para entender la empresa júnior desde dentro. Allí fortalecí mi organización, comunicación y trabajo en equipo.\nTecnologias: Projetos, Comunicação, Organização"
+      },
+      "tags": [
+        "experiência",
+        "experience",
+        "estágio",
+        "internship",
+        "Mauá Júnior",
+        "Projetos",
+        "Comunicação",
+        "Organização"
+      ]
+    },
+    {
+      "id": "experience-sao-judas",
+      "title": {
+        "pt": "Assistente Técnico de TI · São Judas Technologies",
+        "en": "IT Technical Assistant · São Judas Technologies",
+        "es": "Asistente Técnico de TI · São Judas Technologies"
+      },
+      "url": "/#experience",
+      "content": {
+        "pt": "São Judas Technologies. Assistente Técnico de TI. 01/2024. Uma experiência bem mão na massa: montei, configurei e fiz manutenção em computadores e notebooks, atendi clientes e diagnostiquei problemas de hardware e software.\nTecnologias: Hardware, Software, Suporte técnico",
+        "en": "São Judas Technologies. IT Technical Assistant. 01/2024. A very hands-on role: I assembled, configured, and maintained computers and notebooks, supported customers, and diagnosed hardware and software issues.\nTecnologias: Hardware, Software, Suporte técnico",
+        "es": "São Judas Technologies. Asistente Técnico de TI. 01/2024. Una experiencia muy práctica: monté, configuré y mantuve computadoras y notebooks, atendí clientes y diagnostiqué problemas de hardware y software.\nTecnologias: Hardware, Software, Suporte técnico"
+      },
+      "tags": [
+        "experiência",
+        "experience",
+        "estágio",
+        "internship",
+        "São Judas Technologies",
+        "Hardware",
+        "Software",
+        "Suporte técnico"
+      ]
+    },
+    {
+      "id": "result-avenida-inventory",
+      "title": {
+        "pt": "ERP · Avenida Tintas",
+        "en": "ERP · Avenida Tintas",
+        "es": "ERP · Avenida Tintas"
+      },
+      "url": "/#resultados",
+      "content": {
+        "pt": "ERP · Avenida Tintas: 1,5 dia → 2h. Com o ERP que desenvolvi, a leitura de 100% do estoque da Avenida Tintas passou de um dia e meio para cerca de duas horas.",
+        "en": "ERP · Avenida Tintas: 1.5 days → 2h. With the ERP I developed, reading the entire Avenida Tintas inventory went from one and a half days to about two hours.",
+        "es": "ERP · Avenida Tintas: 1,5 días → 2h. Con el ERP que desarrollé, la lectura del 100% del inventario de Avenida Tintas pasó de un día y medio a unas dos horas."
+      },
+      "tags": [
+        "resultados",
+        "results",
+        "impacto",
+        "metrics",
+        "redução",
+        "tempo",
+        "performance"
+      ]
+    },
+    {
+      "id": "result-onebox-login",
+      "title": {
+        "pt": "Login · OneBox / DNE",
+        "en": "Login · OneBox / DNE",
+        "es": "Login · OneBox / DNE"
+      },
+      "url": "/#resultados",
+      "content": {
+        "pt": "Login · OneBox / DNE: −72,7%. No estágio, analisei e otimizei queries SQL para reduzir o login de 55 para 15 segundos: 40 segundos a menos por acesso.",
+        "en": "Login · OneBox / DNE: −72.7%. During my internship, I analyzed and optimized SQL queries to reduce login time from 55 to 15 seconds: 40 seconds saved per login.",
+        "es": "Login · OneBox / DNE: −72,7%. Durante las prácticas, analicé y optimicé consultas SQL para reducir el login de 55 a 15 segundos: 40 segundos menos por acceso."
+      },
+      "tags": [
+        "resultados",
+        "results",
+        "impacto",
+        "metrics",
+        "redução",
+        "tempo",
+        "performance"
+      ]
+    },
+    {
+      "id": "result-ai-savings",
+      "title": {
+        "pt": "Prospecção automatizada",
+        "en": "Automated prospecting",
+        "es": "Prospección automatizada"
+      },
+      "url": "/#resultados",
+      "content": {
+        "pt": "Prospecção automatizada: 3 dias → 1h. Automação em Python, Selenium e pandas substituiu três dias de trabalho manual por cerca de uma hora.",
+        "en": "Automated prospecting: 3 days → 1h. Python, Selenium and pandas replaced three days of manual work with about one hour.",
+        "es": "Prospección automatizada: 3 días → 1h. Python, Selenium y pandas sustituyeron tres días de trabajo manual por cerca de una hora."
+      },
+      "tags": [
+        "resultados",
+        "results",
+        "impacto",
+        "metrics",
+        "redução",
+        "tempo",
+        "performance"
+      ]
+    },
+    {
+      "id": "result-efficiency",
+      "title": {
+        "pt": "Leads consolidados",
+        "en": "Consolidated leads",
+        "es": "Leads consolidados"
+      },
+      "url": "/#resultados",
+      "content": {
+        "pt": "Leads consolidados: 600+. Dados de prospecção organizados em planilha pelo mesmo fluxo de automação. Resultado registrado no currículo.",
+        "en": "Consolidated leads: 600+. Prospecting data organized in a spreadsheet by the same automation workflow. Result documented in my CV.",
+        "es": "Leads consolidados: 600+. Datos de prospección organizados en una hoja con el mismo flujo. Resultado documentado en el CV."
+      },
+      "tags": [
+        "resultados",
+        "results",
+        "impacto",
+        "metrics",
+        "redução",
+        "tempo",
+        "performance"
+      ]
+    },
+    {
+      "id": "result-manual-weeks",
+      "title": {
+        "pt": "Registros de viagens",
+        "en": "Trip records",
+        "es": "Registros de viajes"
+      },
+      "url": "/#resultados",
+      "content": {
+        "pt": "Registros de viagens: 91.108. Base canônica preservada pelo importador SEMOB, com deduplicação e rastreabilidade das fontes.",
+        "en": "Trip records: 91,108. Canonical dataset preserved by the SEMOB importer, with deduplication and source traceability.",
+        "es": "Registros de viajes: 91.108. Base canónica preservada por el importador SEMOB, con deduplicación y trazabilidad."
+      },
+      "tags": [
+        "resultados",
+        "results",
+        "impacto",
+        "metrics",
+        "redução",
+        "tempo",
+        "performance"
+      ]
+    },
+    {
+      "id": "skill-ai",
+      "title": {
+        "pt": "IA e aprendizado de máquina",
+        "en": "AI & machine learning",
+        "es": "IA y aprendizaje automático"
+      },
+      "url": "/#skills",
+      "content": {
+        "pt": "IA e aprendizado de máquina: LLMs, RAG, Embeddings, Gemma / Qwen, scikit-learn, QLoRA (estudo). Tecnologias usadas em projetos e fundamentos que continuo aprofundando. QLoRA e adaptação de modelos fazem parte dos meus estudos atuais.",
+        "en": "AI & machine learning: LLMs, RAG, Embeddings, Gemma / Qwen, scikit-learn, QLoRA (estudo). Tools used in projects and foundations I continue to develop. QLoRA and model adaptation are part of my current studies.",
+        "es": "IA y aprendizaje automático: LLMs, RAG, Embeddings, Gemma / Qwen, scikit-learn, QLoRA (estudo). Herramientas de los proyectos y fundamentos que sigo profundizando. QLoRA y adaptación de modelos forman parte de mis estudios actuales."
+      },
+      "tags": [
+        "stack",
+        "skills",
+        "ferramentas",
+        "LLMs",
+        "RAG",
+        "Embeddings",
+        "Gemma / Qwen",
+        "scikit-learn",
+        "QLoRA (estudo)"
+      ]
+    },
+    {
+      "id": "skill-data",
+      "title": {
+        "pt": "Dados e fundamentos",
+        "en": "Data & foundations",
+        "es": "Datos y fundamentos"
+      },
+      "url": "/#skills",
+      "content": {
+        "pt": "Dados e fundamentos: SQL, Pandas / NumPy, DuckDB / Parquet, Estatística, Álgebra linear, PostgreSQL / MongoDB. Tecnologias usadas em projetos e fundamentos que continuo aprofundando. QLoRA e adaptação de modelos fazem parte dos meus estudos atuais.",
+        "en": "Data & foundations: SQL, Pandas / NumPy, DuckDB / Parquet, Estatística, Álgebra linear, PostgreSQL / MongoDB. Tools used in projects and foundations I continue to develop. QLoRA and model adaptation are part of my current studies.",
+        "es": "Datos y fundamentos: SQL, Pandas / NumPy, DuckDB / Parquet, Estatística, Álgebra linear, PostgreSQL / MongoDB. Herramientas de los proyectos y fundamentos que sigo profundizando. QLoRA y adaptación de modelos forman parte de mis estudios actuales."
+      },
+      "tags": [
+        "stack",
+        "skills",
+        "ferramentas",
+        "SQL",
+        "Pandas / NumPy",
+        "DuckDB / Parquet",
+        "Estatística",
+        "Álgebra linear",
+        "PostgreSQL / MongoDB"
+      ]
+    },
+    {
+      "id": "skill-backend",
+      "title": {
+        "pt": "Backend e aplicações",
+        "en": "Backend & applications",
+        "es": "Backend y aplicaciones"
+      },
+      "url": "/#skills",
+      "content": {
+        "pt": "Backend e aplicações: Python, Java, FastAPI, REST APIs, React, Flutter. Tecnologias usadas em projetos e fundamentos que continuo aprofundando. QLoRA e adaptação de modelos fazem parte dos meus estudos atuais.",
+        "en": "Backend & applications: Python, Java, FastAPI, REST APIs, React, Flutter. Tools used in projects and foundations I continue to develop. QLoRA and model adaptation are part of my current studies.",
+        "es": "Backend y aplicaciones: Python, Java, FastAPI, REST APIs, React, Flutter. Herramientas de los proyectos y fundamentos que sigo profundizando. QLoRA y adaptación de modelos forman parte de mis estudios actuales."
+      },
+      "tags": [
+        "stack",
+        "skills",
+        "ferramentas",
+        "Python",
+        "Java",
+        "FastAPI",
+        "REST APIs",
+        "React",
+        "Flutter"
+      ]
+    },
+    {
+      "id": "skill-delivery",
+      "title": {
+        "pt": "AWS e infraestrutura",
+        "en": "AWS & infrastructure",
+        "es": "AWS e infraestructura"
+      },
+      "url": "/#skills",
+      "content": {
+        "pt": "AWS e infraestrutura: ECS / EC2, Lambda, S3 / SQS, RDS, CloudWatch, Docker / CI/CD. Tecnologias usadas em projetos e fundamentos que continuo aprofundando. QLoRA e adaptação de modelos fazem parte dos meus estudos atuais.",
+        "en": "AWS & infrastructure: ECS / EC2, Lambda, S3 / SQS, RDS, CloudWatch, Docker / CI/CD. Tools used in projects and foundations I continue to develop. QLoRA and model adaptation are part of my current studies.",
+        "es": "AWS e infraestructura: ECS / EC2, Lambda, S3 / SQS, RDS, CloudWatch, Docker / CI/CD. Herramientas de los proyectos y fundamentos que sigo profundizando. QLoRA y adaptación de modelos forman parte de mis estudios actuales."
+      },
+      "tags": [
+        "stack",
+        "skills",
+        "ferramentas",
+        "ECS / EC2",
+        "Lambda",
+        "S3 / SQS",
+        "RDS",
+        "CloudWatch",
+        "Docker / CI/CD"
+      ]
+    },
+    {
+      "id": "education",
+      "title": {
+        "pt": "Formação acadêmica",
+        "en": "Education",
+        "es": "Formación"
+      },
+      "url": "/#education",
+      "content": {
+        "pt": "Instituto Mauá de Tecnologia: Inteligência Artificial e Ciência de Dados — Em andamento\nSenac Aclimação: Ensino Médio Técnico em Tecnologia da Informação — Concluído em 2024",
+        "en": "Instituto Mauá de Tecnologia: Artificial Intelligence and Data Science — In progress\nSenac Aclimação: Technical High School Program in Information Technology — Completed in 2024",
+        "es": "Instituto Mauá de Tecnologia: Inteligencia Artificial y Ciencia de Datos — En curso\nSenac Aclimação: Secundaria Técnica en Tecnología de la Información — Completado en 2024"
+      },
+      "tags": [
+        "formação",
+        "education",
+        "graduação",
+        "faculdade",
+        "maua",
+        "senac"
+      ]
+    },
+    {
+      "id": "certifications",
+      "title": {
+        "pt": "Certificações e capacitações",
+        "en": "Certifications",
+        "es": "Certificaciones"
+      },
+      "url": "/#education",
+      "content": {
+        "pt": "AWS — Introdução à Engenharia de IA\nIBM Web Development Fundamentals\nIBM Introduction to Cloud Computing\nIMT Data Preparation and Visualization for Business Analytics — 40h · 1º semestre de 2026\nIMT Engenharia de Software na Prática — 40h · 1º semestre de 2026\nIMT A Bolsa de Valores no Brasil e seus ativos financeiros — 40h · 1º semestre de 2026\nIMT Python para Ciência de Dados — 40h · 2º semestre de 2025\nIMT Power BI — Básico — 40h · 2º semestre de 2025\nUSP/MBX Introdução ao Python e Machine Learning\nALR Excel Intermediário/Avançado\nALR HTML e CSS\nALR Python\nALR Git/GitHub\nEMED Melhor Apresentação Gráfica\nEMED Originalidade de Criação",
+        "en": "AWS — Introdução à Engenharia de IA\nIBM Web Development Fundamentals\nIBM Introduction to Cloud Computing\nIMT Data Preparation and Visualization for Business Analytics — 40h · 1º semestre de 2026\nIMT Engenharia de Software na Prática — 40h · 1º semestre de 2026\nIMT A Bolsa de Valores no Brasil e seus ativos financeiros — 40h · 1º semestre de 2026\nIMT Python para Ciência de Dados — 40h · 2º semestre de 2025\nIMT Power BI — Básico — 40h · 2º semestre de 2025\nUSP/MBX Introdução ao Python e Machine Learning\nALR Excel Intermediário/Avançado\nALR HTML e CSS\nALR Python\nALR Git/GitHub\nEMED Melhor Apresentação Gráfica\nEMED Originalidade de Criação",
+        "es": "AWS — Introdução à Engenharia de IA\nIBM Web Development Fundamentals\nIBM Introduction to Cloud Computing\nIMT Data Preparation and Visualization for Business Analytics — 40h · 1º semestre de 2026\nIMT Engenharia de Software na Prática — 40h · 1º semestre de 2026\nIMT A Bolsa de Valores no Brasil e seus ativos financeiros — 40h · 1º semestre de 2026\nIMT Python para Ciência de Dados — 40h · 2º semestre de 2025\nIMT Power BI — Básico — 40h · 2º semestre de 2025\nUSP/MBX Introdução ao Python e Machine Learning\nALR Excel Intermediário/Avançado\nALR HTML e CSS\nALR Python\nALR Git/GitHub\nEMED Melhor Apresentação Gráfica\nEMED Originalidade de Criação"
+      },
+      "tags": [
+        "cursos",
+        "certificados",
+        "certifications",
+        "aws"
+      ]
+    },
+    {
+      "id": "languages",
+      "title": {
+        "pt": "Idiomas",
+        "en": "Languages",
+        "es": "Idiomas"
+      },
+      "url": "/#education",
+      "content": {
+        "pt": "Português: Nativo\nEspanhol: B2 — Intermediário\nInglês: B1 — Intermediário\nÁrabe: A1 — Básico",
+        "en": "Portuguese: Native\nSpanish: B2 — Intermediate\nEnglish: B1 — Intermediate\nArabic: A1 — Basic",
+        "es": "Portugués: Nativo\nEspañol: B2 — Intermedio\nInglés: B1 — Intermedio\nÁrabe: A1 — Básico"
+      },
+      "tags": [
+        "idiomas",
+        "inglês",
+        "english",
+        "espanhol",
+        "spanish",
+        "arabic",
+        "árabe"
+      ]
+    },
+    {
+      "id": "contact",
+      "title": {
+        "pt": "Contato profissional",
+        "en": "Contact",
+        "es": "Contacto"
+      },
+      "url": "/#contact",
+      "content": {
+        "pt": "Email: contatoomarabdalah@gmail.com. LinkedIn: https://www.linkedin.com/in/omar-saliba-28b870230/. GitHub: https://github.com/OmarFLK. WhatsApp: https://wa.me/5511948485194. Currículo atualizado em português: /Curriculo_Omar_Saliba.pdf.",
+        "en": "Email: contatoomarabdalah@gmail.com. LinkedIn: https://www.linkedin.com/in/omar-saliba-28b870230/. GitHub: https://github.com/OmarFLK. WhatsApp: https://wa.me/5511948485194. Currículo atualizado em português: /Curriculo_Omar_Saliba.pdf.",
+        "es": "Email: contatoomarabdalah@gmail.com. LinkedIn: https://www.linkedin.com/in/omar-saliba-28b870230/. GitHub: https://github.com/OmarFLK. WhatsApp: https://wa.me/5511948485194. Currículo atualizado em português: /Curriculo_Omar_Saliba.pdf."
+      },
+      "tags": [
+        "contato",
+        "contact",
+        "email",
+        "currículo",
+        "resume",
+        "linkedin",
+        "github"
+      ]
+    }
+  ]
+}
