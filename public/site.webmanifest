@@ -4,8 +4,8 @@
   "description": "Portfólio de inteligência artificial, automação, dados e desenvolvimento.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0a0a08",
-  "theme_color": "#ffd400",
+  "background_color": "#100d10",
+  "theme_color": "#df1236",
   "icons": [
     {
       "src": "/favicon.svg",

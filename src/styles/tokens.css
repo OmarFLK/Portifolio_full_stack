@@ -1,20 +1,20 @@
 :root {
   color-scheme: dark;
 
-  /* Color: ink / paper / signal. Yellow is an action, not a wallpaper. */
-  --color-ink: #0a0a08;
-  --color-near-black: #141412;
-  --color-gray-900: #1a1a17;
-  --color-graphite: #24241f;
-  --color-gray-700: #45453f;
-  --color-gray-500: #77776e;
-  --color-gray-300: #b8b8ae;
-  --color-gray-150: #ddddd4;
-  --color-paper: #f4f1e8;
-  --color-white: #fffdf7;
-  --color-signal: #ffd400;
-  --color-amber: #ffb800;
-  --color-pale-signal: #fff1a6;
+  /* Color: ink / paper / signal. Crimson is reserved for primary actions. */
+  --color-ink: #100d10;
+  --color-near-black: #1b1519;
+  --color-gray-900: #1b1519;
+  --color-graphite: #32151f;
+  --color-gray-700: #40303a;
+  --color-gray-500: #8e7d86;
+  --color-gray-300: #bdb0b6;
+  --color-gray-150: #e2d8dc;
+  --color-paper: #f8f3f4;
+  --color-white: #ffffff;
+  --color-signal: #df1236;
+  --color-amber: #ae1231;
+  --color-pale-signal: #ff798b;
   --color-focus-black: #000;
 
   --surface-page: var(--color-ink);
@@ -28,7 +28,7 @@
   --border-on-dark: var(--color-gray-700);
   --border-on-light: var(--color-gray-300);
   --action: var(--color-signal);
-  --action-text: var(--color-ink);
+  --action-text: var(--color-white);
 
   /* The variable family is intentionally shared by display and body. */
   --font-display: 'Bricolage Grotesque Variable', 'Arial Narrow', 'Roboto Condensed', sans-serif;
@@ -63,7 +63,7 @@
   --space-40: 10rem;
 
   --page-gutter: clamp(1rem, 4vw, 5rem);
-  --shell-max: 100rem;
+  --shell-max: 80rem;
   --reading-max: 54rem;
   --section-space-sm: clamp(3.5rem, 7vw, 6rem);
   --section-space-md: clamp(4.5rem, 9vw, 8rem);

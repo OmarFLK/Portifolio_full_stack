@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Header } from '../components/layout/Header';
 import { DesktopEnhancements } from '../components/motion/DesktopEnhancements';
-import { TornPaperDivider } from '../components/ui/Graphics';
 import {
   About,
   Contact,
@@ -66,20 +65,13 @@ export function App() {
 
       <main id="main-content">
         <Hero />
-        <TornPaperDivider variant="paperOnInk" />
-        <About />
-        <TornPaperDivider variant="inkOnPaper" />
         <Projects />
         <Results />
-        <TornPaperDivider variant="paperOnInk" />
+        <About />
         <Experience />
-        <TornPaperDivider variant="inkOnPaper" />
         <Skills />
-        <TornPaperDivider variant="paperOnInk" />
         <Education />
-        <TornPaperDivider variant="inkOnPaper" />
         <Laboratory />
-        <TornPaperDivider variant="signalOnInk" />
         <Contact />
       </main>
 

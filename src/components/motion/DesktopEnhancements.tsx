@@ -1,19 +1,5 @@
-import {
-  Component,
-  lazy,
-  Suspense,
-  useCallback,
-  useEffect,
-  useState,
-  type ReactNode,
-  type RefObject,
-} from 'react';
+import { Component, lazy, Suspense, useEffect, type ReactNode, type RefObject } from 'react';
 import { useHeavyVisuals } from '../../hooks/useHeavyVisuals';
-
-const LazyDesktopStarScene = lazy(async () => {
-  const module = await import('../../visuals/DesktopStarScene/DesktopStarScene');
-  return { default: module.default };
-});
 
 const LazyEditorialMotion = lazy(() => import('./EditorialMotion'));
 
@@ -38,31 +24,8 @@ class SceneErrorBoundary extends Component<SceneErrorBoundaryProps, SceneErrorBo
 }
 
 function ActiveDesktopScene({ scopeRef }: { scopeRef: RefObject<HTMLDivElement | null> }) {
-  const [sceneReady, setSceneReady] = useState(false);
-  const handleReady = useCallback(() => setSceneReady(true), []);
-  const handleUnavailable = useCallback(() => setSceneReady(false), []);
-
-  useEffect(() => {
-    const scope = scopeRef.current;
-
-    if (!scope) {
-      return;
-    }
-
-    scope.dataset.desktopStarReady = String(sceneReady);
-
-    return () => {
-      delete scope.dataset.desktopStarReady;
-    };
-  }, [sceneReady, scopeRef]);
-
   return (
     <>
-      <SceneErrorBoundary>
-        <Suspense fallback={null}>
-          <LazyDesktopStarScene onReady={handleReady} onUnavailable={handleUnavailable} />
-        </Suspense>
-      </SceneErrorBoundary>
       <SceneErrorBoundary>
         <Suspense fallback={null}>
           <LazyEditorialMotion scopeRef={scopeRef} />

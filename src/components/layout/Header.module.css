@@ -372,3 +372,23 @@
     animation: none;
   }
 }
+
+.brandMark,
+.languageButton[data-active='true'] {
+  color: #fff;
+}
+.rail {
+  max-width: 80rem;
+  padding-inline: var(--page-gutter);
+}
+.brandName small {
+  display: none;
+}
+.brandMark,
+.languageButton[data-active='true'] {
+  background: linear-gradient(135deg, #df1236, #7b0d25);
+}
+.brand:hover .brandMark {
+  color: #fff;
+  background: linear-gradient(135deg, #ef2446, #99102b);
+}

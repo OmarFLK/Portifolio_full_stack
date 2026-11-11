@@ -6,10 +6,7 @@ html {
 
 body {
   color: var(--text-primary);
-  background:
-    linear-gradient(rgb(255 255 255 / 1.5%) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(255 255 255 / 1.5%) 1px, transparent 1px), var(--surface-page);
-  background-size: 4rem 4rem;
+  background: var(--surface-page);
   overflow-x: clip;
 }
 
@@ -216,4 +213,17 @@ a {
   html {
     scroll-behavior: auto;
   }
+}
+
+.button--signal {
+  color: #fff;
+}
+.button--signal:hover {
+  color: #fff;
+  background: #ae1231;
+  border-color: #ae1231;
+}
+::selection {
+  color: #fff;
+  background: #ae1231;
 }

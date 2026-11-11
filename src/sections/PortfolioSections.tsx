@@ -29,13 +29,8 @@ import {
   type Project,
 } from '../data/portfolio';
 import { ProjectMediaDialog } from '../components/projects/ProjectMediaDialog';
-import {
-  BoundingBoxFrame,
-  ScribbleArrow,
-  SectionHeading,
-  StaticSignalStar,
-  SystemNotice,
-} from '../components/ui/Graphics';
+import { TechnologyMarquee } from '../components/ui/TechnologyMarquee';
+import { ScribbleArrow, SectionHeading, StaticSignalStar } from '../components/ui/Graphics';
 import styles from './PortfolioSections.module.css';
 
 const capabilityIcons = {
@@ -48,124 +43,32 @@ const capabilityIcons = {
 } as const;
 
 function ProjectArtwork({ project }: { project: Project }) {
-  if (project.visual === 'signal') {
-    return (
-      <div className={`${styles.artwork} ${styles.signalArtwork}`} aria-hidden="true">
-        <div className={styles.artworkChrome}>
-          <span>LEAD_SCAN.PY</span>
-          <span>RUN {project.index}</span>
-        </div>
-        <div className={styles.signalCore}>
-          <span className={styles.signalTarget} />
-          <span className={styles.signalSweep} />
-          <strong>SEARCH</strong>
-          <small>PUBLIC DATA / STRUCTURED</small>
-        </div>
-        <div className={styles.dataRows}>
-          <span>NAME</span>
-          <span>ROLE</span>
-          <span>COMPANY</span>
-          <span>STATUS</span>
-          <span>●</span>
-          <span>●</span>
-          <span>●</span>
-          <span>●</span>
-        </div>
-      </div>
-    );
-  }
-
-  if (project.visual === 'ledger') {
-    return (
-      <div className={`${styles.artwork} ${styles.ledgerArtwork}`} aria-hidden="true">
-        <div className={styles.artworkChrome}>
-          <span>VIRA_PRICE / SUPPLIERS</span>
-          <span>{project.index}</span>
-        </div>
-        <div className={styles.bookingDate}>
-          <span>VP</span>
-          <div>
-            <strong>SUPPLIER LISTS</strong>
-            <small>ORGANIZE / CONSULT / MAINTAIN</small>
-          </div>
-        </div>
-        <div className={styles.bookingSlots}>
-          {['SUPPLIERS', 'RETAILERS', 'SEARCH', 'UPDATE'].map((slot, index) => (
-            <span key={slot} data-active={index === 2}>
-              {slot}
-            </span>
-          ))}
-        </div>
-        <div className={styles.bookingFooter}>
-          <span>ONE PLACE</span>
-          <span>LESS FRICTION</span>
-        </div>
-      </div>
-    );
-  }
-
-  if (project.visual === 'terminal') {
-    return (
-      <div className={`${styles.artwork} ${styles.terminalArtwork}`} aria-hidden="true">
-        <div className={styles.artworkChrome}>
-          <span>VERITHAZ / ANALYSIS</span>
-          <span>{project.index}</span>
-        </div>
-        <div className={styles.terminalCopy}>
-          <span>
-            <i>01</i> claims = split(news)
-          </span>
-          <span>
-            <i>02</i> sources = review(claims)
-          </span>
-          <span>
-            <i>03</i> signals = inspect(context)
-          </span>
-          <span>
-            <i>04</i> lens = eristicDialectic
-          </span>
-          <strong>VERIFY BEFORE VERDICT_</strong>
-        </div>
-      </div>
-    );
-  }
-
-  if (project.visual === 'paper') {
-    return (
-      <div className={`${styles.artwork} ${styles.paperArtwork}`} aria-hidden="true">
-        <div className={styles.paperSheet}>
-          <span className={styles.paperStamp}>EDU / {project.index}</span>
-          <strong>
-            ACADEMIC
-            <br />
-            RECORD
-          </strong>
-          <span>STUDENTS</span>
-          <span>TEACHERS</span>
-          <span>GRADES</span>
-          <div className={styles.paperMark}>E</div>
-        </div>
-        <div className={styles.paperTape}>FIRST YEAR / BUILD</div>
-      </div>
-    );
-  }
-
+  const { locale } = useLocale();
+  const flows: Record<string, string[]> = {
+    'maua-ia': ['Parquet / DuckDB', 'QueryPlan + RAG', 'Gemma 3 27B'],
+    pendi: ['React', 'FastAPI + RAG', 'Gemma 27B'],
+    semob: ['Flutter', 'Dart / Shelf', 'PostgreSQL + MongoDB'],
+    'avenida-tintas': ['JavaScript', 'Python / APIs', 'MySQL + ERP'],
+    'tech-hub': ['AI Agents', 'RAG', 'AWS / CI/CD'],
+    pricing: ['React / TypeScript', 'Flask / OpenAI', 'PostgreSQL'],
+  };
   return (
-    <div className={`${styles.artwork} ${styles.gridArtwork}`} aria-hidden="true">
+    <div className={styles.artwork} aria-hidden="true">
       <div className={styles.artworkChrome}>
-        <span>OPENSOURCE / REPOSITORY</span>
-        <span>{project.index}</span>
+        <span>{project.id.toUpperCase()}</span>
+        <span>
+          {project.index} / {String(projects.length).padStart(2, '0')}
+        </span>
       </div>
-      <div className={styles.repositorySummary}>
-        <small>PUBLIC BUILD</small>
-        <strong>OPEN</strong>
-        <span>STUDY / REUSE / IMPROVE</span>
-      </div>
-      <div className={styles.repositoryModules}>
-        {['CODE', 'DOCS', 'COLLAB', 'REUSE'].map((label) => (
-          <span key={label}>{label}</span>
+      <div className={styles.projectDiagram}>
+        {(flows[project.id] ?? project.technologies.slice(0, 3)).map((label, i) => (
+          <div key={label}>
+            <span>0{i + 1}</span>
+            <strong>{label}</strong>
+          </div>
         ))}
       </div>
+      <div className={styles.artworkFooter}>{localize(project.status!, locale)}</div>
     </div>
   );
 }
@@ -175,7 +78,6 @@ function SectionIntro({
   title,
   body,
   id,
-  tone = 'ink',
 }: {
   index: string;
   title: string;
@@ -190,60 +92,34 @@ function SectionIntro({
       title={title}
       intro={<p>{body}</p>}
       id={id}
-      tone={tone === 'paper' ? 'dark' : 'light'}
+      tone="dark"
     />
   );
 }
 
 export function Hero() {
-  const { text } = useLocale();
-
+  const { locale, text } = useLocale();
+  const roles = {
+    pt: ['Engenharia de IA.', 'Dados e automação.'],
+    en: ['AI engineering.', 'Data & automation.'],
+    es: ['Ingeniería de IA.', 'Datos y automatización.'],
+  };
   return (
-    <section
-      className={styles.hero}
-      id="hero"
-      aria-labelledby="hero-title"
-      data-star-waypoint="hero"
-    >
-      <div className={styles.heroLiquid} aria-hidden="true" data-liquid="hero">
-        <span className={styles.heroLiquidNoise} />
-      </div>
-
+    <section className={styles.hero} id="hero" aria-labelledby="hero-title">
       <div className={styles.heroTopline} data-hero>
         <p>{text.heroEyebrow}</p>
-        <p>OMAR SALIBA / BUILDING SYSTEMS</p>
+        <p>SÃO PAULO, BRASIL / 2026</p>
       </div>
-
       <div className={styles.heroComposition}>
-        <div className={styles.heroName} data-hero>
-          <span>OMAR</span>
-          <span>SALIBA</span>
-        </div>
-
-        <div className={styles.staticStar} aria-hidden="true" data-hero>
-          <StaticSignalStar />
-          <span>STATIC / LIGHT MODE</span>
-        </div>
-
         <div className={styles.heroStatement}>
-          <p className={styles.heroAreas} data-hero>
-            AI / AUTOMATION / DATA / SOFTWARE
+          <p className={styles.heroName} data-hero>
+            OMAR SALIBA
           </p>
-          <h1 id="hero-title" data-hero data-star-protected>
-            <span>{text.heroTitleTop}</span>
-            <BoundingBoxFrame
-              className={styles.selectedWord}
-              inline
-              label={text.selectedLabel}
-              measurement="W: 100% / H: AUTO"
-              variant="ink"
-              showMiddleHandles
-            >
-              {text.heroTitleSelected}
-            </BoundingBoxFrame>
-            <span>{text.heroTitleBottom}</span>
+          <h1 id="hero-title" data-hero>
+            <span>{roles[locale][0]}</span>
+            <span>{roles[locale][1]}</span>
           </h1>
-          <p className={styles.heroLead} data-hero data-hero-lead>
+          <p className={styles.heroLead} data-hero>
             {text.heroLead}
           </p>
           <div className={styles.heroActions} data-hero>
@@ -251,34 +127,40 @@ export function Hero() {
               {text.heroProjects}
               <ArrowDownRight aria-hidden="true" />
             </a>
-            <a className={styles.textAction} href="#contact">
-              {text.heroContact}
-              <ArrowUpRight aria-hidden="true" />
+            <a className={styles.textAction} href="/Curriculo_Omar_Saliba.pdf" download>
+              <Download aria-hidden="true" />
+              {text.heroResumePt}
+            </a>
+          </div>
+          <div className={styles.resumeLinks} data-hero>
+            <a href={socialLinks.github} target="_blank" rel="noreferrer">
+              GitHub <ArrowUpRight aria-hidden="true" />
+            </a>
+            <a href={socialLinks.linkedin} target="_blank" rel="noreferrer">
+              LinkedIn <ArrowUpRight aria-hidden="true" />
             </a>
           </div>
         </div>
-
-        <SystemNotice
-          ariaLabel={text.heroStatus}
-          className={styles.statusNotice}
-          eyebrow="STATUS.SYS"
-          statusLabel="ONLINE"
-          title={text.heroStatus}
-          tone="light"
-        >
-          <span>{text.heroAvailability}</span>
-        </SystemNotice>
+        <div className={styles.heroVisual} aria-hidden="true">
+          <div className={styles.orbit}>
+            <span />
+            <span />
+            <span />
+            <strong>
+              OS<span>AI / DATA / CLOUD</span>
+            </strong>
+          </div>
+          <div className={styles.visualCaption}>
+            <span>01 — IDEIA</span>
+            <span>02 — SISTEMA</span>
+          </div>
+        </div>
       </div>
-
-      <div className={styles.resumeLinks} data-hero>
-        <a href="/Curriculo_OmarSaliba_PT-BR.pdf" download>
-          <Download aria-hidden="true" />
-          {text.heroResumePt}
-        </a>
-        <a href="/Curriculo_OmarSaliba_ENG.pdf" download>
-          <Download aria-hidden="true" />
-          {text.heroResumeEn}
-        </a>
+      <TechnologyMarquee />
+      <div className={styles.heroFooter}>
+        <span>OneBox / DNE</span>
+        <span>Mauá Júnior</span>
+        <span>Instituto Mauá de Tecnologia</span>
       </div>
     </section>
   );
@@ -350,10 +232,13 @@ export function Projects() {
               <div className={styles.projectCopy}>
                 <p className={styles.projectIndex}>
                   <span>{project.index}</span>
-                  <span>PROJECT / {project.visual.toUpperCase()}</span>
+                  <span>{project.status ? localize(project.status, locale) : 'PROJECT'}</span>
                 </p>
                 <h3>{localize(project.title, locale)}</h3>
                 <p className={styles.projectDescription}>{localize(project.description, locale)}</p>
+                <p className={styles.projectOutcome}>
+                  {project.outcome ? localize(project.outcome, locale) : null}
+                </p>
                 <p className={styles.techLine}>
                   <span>{project.metaLabel ? localize(project.metaLabel, locale) : 'STACK'}</span>
                   {project.technologies
@@ -382,25 +267,13 @@ export function Projects() {
                       dialogTitle={text.mediaDialogTitle}
                     />
                   ) : null}
-                  {!hasLiveLink ? (
+                  {!hasLiveLink && project.links.length > 0 ? (
                     <span className={styles.unavailable}>{text.projectUnavailable}</span>
                   ) : null}
                 </div>
               </div>
               <div className={styles.projectVisual}>
-                {index === 0 ? (
-                  <BoundingBoxFrame
-                    className={styles.selectedArtwork}
-                    label="SELECTED / 01"
-                    measurement="LIVE OBJECT"
-                    variant="paper"
-                    showMiddleHandles
-                  >
-                    <ProjectArtwork project={project} />
-                  </BoundingBoxFrame>
-                ) : (
-                  <ProjectArtwork project={project} />
-                )}
+                <ProjectArtwork project={project} />
               </div>
             </article>
           );
@@ -646,8 +519,15 @@ export function Laboratory() {
   const { locale, text } = useLocale();
   const links = [
     {
-      label: text.behance,
-      href: socialLinks.behance,
+      label: localize(
+        {
+          pt: 'Automação de prospecção',
+          en: 'Prospecting automation',
+          es: 'Automatización de prospección',
+        },
+        locale,
+      ),
+      href: 'https://github.com/OmarFLK/script_automa-o_planilha_python',
       detail: {
         pt: 'ESTUDOS VISUAIS / UI',
         en: 'VISUAL STUDIES / UI',
@@ -656,8 +536,15 @@ export function Laboratory() {
       icon: PanelsTopLeft,
     },
     {
-      label: text.drive,
-      href: socialLinks.drive,
+      label: localize(
+        {
+          pt: 'Estatística e análise de dados',
+          en: 'Statistics & data analysis',
+          es: 'Estadística y análisis de datos',
+        },
+        locale,
+      ),
+      href: 'https://github.com/OmarFLK/atividade01_ICD203',
       detail: {
         pt: 'ARTIGOS / PESQUISA',
         en: 'ARTICLES / RESEARCH',

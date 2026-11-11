@@ -59,7 +59,6 @@ export default function EditorialMotion({ scopeRef }: EditorialMotionProps) {
       if (resultMetrics.length > 0) {
         gsap.from(resultMetrics, {
           y: 26,
-          opacity: 0,
           duration: 0.72,
           stagger: 0.09,
           ease: 'power3.out',
@@ -106,17 +105,6 @@ export default function EditorialMotion({ scopeRef }: EditorialMotionProps) {
         },
       });
 
-      gsap.to('[data-liquid="hero"]', {
-        yPercent: 12,
-        rotate: -5,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '[data-liquid="hero"]',
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 0.6,
-        },
-      });
     },
     { scope: scopeRef },
   );

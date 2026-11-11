@@ -11,12 +11,9 @@ type NavLabelKey =
   'about' | 'projects' | 'results' | 'experience' | 'skills' | 'education' | 'contact';
 
 const navItems = [
-  { id: 'about', labelKey: 'about', index: '01' },
-  { id: 'projects', labelKey: 'projects', index: '02' },
-  { id: 'resultados', labelKey: 'results', index: '03' },
+  { id: 'projects', labelKey: 'projects', index: '01' },
+  { id: 'about', labelKey: 'about', index: '02' },
   { id: 'experience', labelKey: 'experience', index: '04' },
-  { id: 'skills', labelKey: 'skills', index: '05' },
-  { id: 'education', labelKey: 'education', index: '06' },
   { id: 'contact', labelKey: 'contact', index: '08' },
 ] as const satisfies ReadonlyArray<{
   id: SectionId;
