@@ -1,5 +1,6 @@
 from collections import defaultdict, deque
 import asyncio
+import logging
 import re
 import time
 from typing import Literal
@@ -12,6 +13,7 @@ from .config import Settings
 from .provider import BaroProvider, ProviderError
 from .retrieval import KnowledgeIndex, normalize
 from .security import PublicAPIGuard
+from .response_policy import enforce_public_response, VERSION as RESPONSE_POLICY_VERSION
 
 COMPENSATION = re.compile(r'\b(salari\w*|salary|bolsa|remuner\w*|compensation|pretensao|vr|vt|beneficios|benefits|wellhub)\b')
 SECRETS = re.compile(r'\b(mostre|revele|imprima|exiba|show|reveal|copie|liste)\b.{0,60}\b(baro_api_key|system prompt|prompt do sistema|instrucoes internas|segredos?|senhas?|credencial|credenciais|api.?keys?|passwords?)\b|\b(qual e|what is)\b.{0,20}\b(sua chave|sua senha|seu prompt|your password|your api key)\b', re.I)
@@ -110,7 +112,7 @@ def create_app(settings: Settings | None = None, provider=None):
 
     @app.get('/api/assistant/health')
     async def health():
-        return {'status': 'ok', 'configured': bool(settings.api_key), 'knowledge_documents': len(index.documents), 'knowledge_version': index.version, 'knowledge_store': index.store}
+        return {'status': 'ok', 'configured': bool(settings.api_key), 'knowledge_documents': len(index.documents), 'knowledge_version': index.version, 'knowledge_store': index.store, 'response_policy_version': RESPONSE_POLICY_VERSION}
 
     def result(answer, docs=(), locale='pt', generated=False):
         return {'answer': answer, 'sources': [{'id':d.id,'title':d.title[locale],'url':d.url} for d in docs], 'generated': generated}
@@ -140,7 +142,10 @@ def create_app(settings: Settings | None = None, provider=None):
         except (ProviderError, TimeoutError) as error:
             code = error.args[0] if isinstance(error, ProviderError) else 'timeout'
             return JSONResponse({'error':code,'message':TEXT[locale]['timeout' if code == 'timeout' else 'error']}, status_code=504 if code == 'timeout' else 503)
-        sources = [doc for doc in docs if doc.id in ids]
+        answer, guarded, has_model_content = enforce_public_response(answer, locale)
+        if guarded:
+            logging.getLogger('omaria.response').warning('Unsupported model action claim removed')
+        sources = [doc for doc in docs if doc.id in ids] if has_model_content else []
         return result(answer, sources, locale, generated=True)
 
     return app

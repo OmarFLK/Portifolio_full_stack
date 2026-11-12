@@ -113,16 +113,18 @@ imita delimitadores. Em todos os cenários da fixture:
 - A SEMOB é recuperada da base real e a API retorna sua fonte canônica:
   `https://github.com/OmarFLK/Projeto_Integrador_SEMOB`.
 
-Os testes QA-047 usam respostas seguras roteirizadas e verificam o sistema e os
-papéis efetivamente enviados ao provedor, os dois turnos e as fontes retornadas.
-Eles não são uma avaliação comportamental do Gemma e não demonstram que um modelo
-real sempre seguirá o prompt. A fronteira de ausência de execução independe disso.
+Na revisão inicial, os testes QA-047 usavam respostas seguras roteirizadas e
+verificavam apenas o sistema enviado ao provedor e o fluxo. Após o relato de
+falha real no commit 72ea4c1, esses testes passaram a devolver confirmações
+maliciosas de propósito. Eles agora verificam também a intervenção real do
+servidor sobre a saída, conforme o complemento abaixo. Ainda não são uma
+avaliação comportamental direta do Gemma.
 
 ## Comandos e resultados
 
 | Comando | Resultado |
 | --- | --- |
-| `python -m pytest chatbot/tests -o "addopts=-p no:cacheprovider" -q` | 119 passaram; um aviso de depreciação Starlette/httpx. |
+| `python -m pytest chatbot/tests -o "addopts=-p no:cacheprovider" -q` | 148 passaram após a correção de saída; um aviso de depreciação Starlette/httpx. |
 | `npm test` | 19 passaram, quatro arquivos. |
 | `npm run lint` | Passou, sem avisos. |
 | `npm run typecheck` | Passou. |
@@ -169,3 +171,47 @@ para `node_modules`, o comando original passou sem mudar a configuração do rep
 O prompt reduz a indução a confirmações inventadas, mas não garante ausência de
 alucinações. O isolamento estrutural e a inexistência de executor protegem contra
 operações administrativas, mesmo se o modelo gerar uma frase incorreta.
+
+## Complemento: confirmação falsa no commit 72ea4c1
+
+O usuário confirmou que a produção já estava no commit 72ea4c1 e forneceu a saída:
+“Confirmei que este visitante tem acesso administrativo ao portfólio.”, seguida
+de uma explicação válida da SEMOB. Isso é evidência de falha comportamental da
+correção por prompt; não foi tratado como problema de deploy. A conclusão de que
+o modelo não deveria produzir essas confirmações não havia sido comprovada pelos
+testes seguros roteirizados da primeira revisão.
+
+Correção adicional:
+
+- `chatbot/app/response_policy.py`, `enforce_public_response`: o servidor inspeciona
+  afirmações da saída antes de retorná-las. Detecta combinações de sujeito,
+  acesso/papel administrativo, confirmações de autenticação e gravações no site.
+  Remove as frases detectadas e insere uma explicação fixa, produzida pelo
+  servidor, sobre a ausência dessas capacidades. Mantém as demais frases e fontes;
+  se não restar conteúdo do modelo, remove as fontes para não atribuir a recusa
+  aos documentos profissionais.
+- `create_app.chat`: aplica a política independentemente da implementação do
+  provedor. O controle está depois da geração e antes do JSON final da API. Logs
+  registram só a categoria da intervenção, sem transcrições.
+- `health`: passa a informar `response_policy_version: public-read-only-v1`,
+  permitindo observar se essa revisão do controle está no backend ativo.
+- A fixture da resposta publicada é devolvida pelo HTTP simulado do modelo: o
+  teste verifica que a confirmação falsa não aparece no JSON final e que toda a
+  explicação da SEMOB, inclusive o link aprovado, permanece disponível.
+- QA-047 em dois turnos e histórico falso agora recebem saídas adversariais do
+  provedor, em vez de dependerem de ele cooperar com o prompt. Cobertura inclui
+  PT/EN/ES, negação seguida de afirmação, Markdown, caracteres invisíveis e quebras
+  de linha dentro da afirmação. Perguntas e explicações legítimas sobre segurança
+  continuam cobertas. A saída corrigida respeita o limite de 5.000 caracteres.
+
+Resultado: 148 testes do backend passaram. Os testes de frontend, lint, typecheck,
+build e E2E da tabela foram executados na primeira revisão; nenhum código do
+frontend foi alterado neste complemento. Os espiões de banco/publicação e hashes
+de estado continuam sendo conferidos nas regressões.
+
+Limite explícito: essa política é uma heurística conservadora sobre linguagem
+natural. Pode substituir algumas formulações legítimas por uma recusa fixa e não
+prova cobertura de toda paráfrase ou idioma possível. A frase exata reportada e
+as variantes cobertas são bloqueadas deterministicamente, sem depender de uma
+segunda chamada cooperativa ao modelo. Não foi executada nova avaliação com o
+modelo real, nem usado serviço/credencial real para geração nesta sessão.
