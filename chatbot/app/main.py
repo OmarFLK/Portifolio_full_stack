@@ -36,12 +36,18 @@ TEXT = {
 }
 
 class Turn(BaseModel):
-    model_config = ConfigDict(extra='forbid', str_strip_whitespace=True)
+    model_config = ConfigDict(extra='forbid', str_strip_whitespace=True, strict=True)
     role: Literal['user', 'assistant']
     content: str = Field(min_length=1, max_length=5000)
 
+    @field_validator('content')
+    @classmethod
+    def no_nulls(cls, value):
+        if '\x00' in value: raise ValueError('Invalid content')
+        return value
+
 class ChatInput(BaseModel):
-    model_config = ConfigDict(extra='forbid', str_strip_whitespace=True)
+    model_config = ConfigDict(extra='forbid', str_strip_whitespace=True, strict=True)
     message: str = Field(min_length=2, max_length=4000)
     locale: Literal['pt', 'en', 'es'] = 'pt'
     history: list[Turn] = Field(default_factory=list, max_length=12)

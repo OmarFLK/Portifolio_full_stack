@@ -160,7 +160,14 @@ test('network errors are recoverable and answer text is never interpreted as HTM
       await route.fulfill({
         json: {
           answer: '<img src=x onerror=alert(1)> Resultado confirmado.',
-          sources: [{ id: 'bad', title: 'Fonte insegura', url: 'javascript:alert(1)' }],
+          sources: [
+            { id: 'bad', title: 'Fonte insegura', url: 'javascript:alert(1)' },
+            {
+              id: 'project-semob',
+              title: 'SEMOB <img src=x onerror=alert(1)>',
+              url: 'https://github.com/OmarFLK/Projeto_Integrador_SEMOB',
+            },
+          ],
           generated: true,
         },
       });
@@ -187,6 +194,10 @@ test('network errors are recoverable and answer text is never interpreted as HTM
   await expect(page.getByText('<img src=x onerror=alert(1)> Resultado confirmado.')).toBeVisible();
   await expect(page.locator('img[src="x"]')).toHaveCount(0);
   await expect(page.getByRole('link', { name: 'Fonte insegura' })).toHaveCount(0);
+  await expect(page.getByRole('link', { name: 'SEMOB <img src=x onerror=alert(1)>' })).toHaveAttribute(
+    'href',
+    'https://github.com/OmarFLK/Projeto_Integrador_SEMOB',
+  );
 });
 
 test('round chat stays in the portfolio corner at every scroll position', async ({ page }) => {

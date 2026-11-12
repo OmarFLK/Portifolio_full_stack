@@ -201,7 +201,7 @@ def test_provider_retries_invalid_format_once_then_validates(bad):
     provider=BaroProvider(Settings(api_key='test-key'),httpx.MockTransport(fake))
     answer,ids,ok=asyncio.run(provider.answer('Qual experiência com RAG?',[],[doc],'pt'))
     assert len(calls)==2 and ok and ids==['project-maua-ia']
-    assert 'formato inválido' in calls[1]['messages'][-1]['content']
+    assert 'formato inválido' in calls[1]['messages'][0]['content']
 
 def test_provider_does_not_retry_exposed_credential():
     calls=[]
